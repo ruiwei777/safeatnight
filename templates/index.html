@@ -1,0 +1,165 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+
+
+
+
+
+    <!-- Carousel================================================== -->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel" data-pause="null" data-interval="12000">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+            {#            <li data-target="#myCarousel" data-slide-to="3"></li>#}
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            <div class="item active item1">
+                {#                <img class="first-slide"#}
+                {#                     src="{% static 'images/night.jpg' %}"#}
+                {#                     alt="First slide">#}
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1>Night-shift Worker
+                            <sapn style="font-family: 'Arial'; color:deepskyblue; font-size: larger;">Safety</sapn>
+                        </h1>
+                        <p>Provide safety information for people working at night.</p>
+                        <p class="top-padding-btn"></p>
+                        <p class="btn-line"><a class="btn btn-primary outline width-group" href="{% url 'crime:crime_home' %}"
+                                               role="button">Crime Stats</a></p>
+                        {#                        <p class="btn-line"><a class="btn btn-primary outline width-group" href="{% url 'map:map_home' %}"#}
+                        {#                                               role="button">Police Station</a></p>#}
+                        <p class="btn-line"><a class="btn btn-primary outline width-group"
+                                               href="{% url 'sms:sms_home' %}"
+                                               role="button">Safety Switch</a></p>
+
+                        {#                        <p class="btn-view"><a class="btn btn-primary outline width-group btn-blue"#}
+                        {#                                               href="#position" role="button">Getting Started</a></p>#}
+
+                    </div>
+                </div>
+            </div>
+            {#            <div class="item item2">#}
+            {#                <img class="second-slide"#}
+            {#                     src="{% static 'images/police.jpg' %}"#}
+            {#                     alt="Second slide">#}
+            {#                <div class="container">#}
+            {#                    <div class="carousel-caption">#}
+            {#                        <h1>Finding Police Station</h1>#}
+            {#                        <p>Pinpoint your location <br/>#}
+            {#                            locating the <a href="{% url 'map:map_home' %}">nearest police station</a>.</p>#}
+            {#                        <p><a class="btn btn-primary outline width-group" href="{% url 'map:map_home' %}" role="button">Getting#}
+            {#                            Started</a></p>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {#            </div>#}
+            <div class="item item3">
+                {#                <img class="third-slide"#}
+                {#                     src="{% static 'images_raw/phone.jpg' %}"#}
+                {#                     alt="Third slide">#}
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1>Safety Switch</h1>
+                        <p>Not arrive home on time?<br/>
+                            Tell your family with our <a href="{% url 'sms:sms_home' %}">safety switch</a> text
+                            messaging.</p>
+
+
+                        <p><a class="btn btn-primary outline width-group" href="{% url 'sms:sms_home' %}" role="button">Getting
+                            Started</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="item item4">
+{#                <img class="third-slide"#}
+{#                     src="{% static 'images_raw/phone.jpg' %}"#}
+{#                     alt="Third slide">#}
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1>Safety Around You</h1>
+                        <p>Showing <a href="{% url 'crime:crime_home' %}">crime rate</a> around your working area.</p>
+
+
+                        <p><a class="btn btn-primary outline width-group" href="{% url 'crime:crime_home' %}" role="button">Getting
+                            Started</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div><!-- /.carousel -->
+
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing" id="position">
+
+        <!-- Three columns of text below the carousel -->
+        <div class="row">
+            <div class="col-lg-4">
+                <a href="{% url 'crime:crime_home' %}">
+                    <img class="img-circle"
+                         src="{% static 'images_raw/crime_icon.png' %}"
+                         alt="Generic placeholder image" width="60" height="60">
+                </a>
+                <h3 class="h3-margin-top">Showing Crime Rate</h3>
+                <p>Collecting data from <a href="http://www.crimestatistics.vic.gov.au">Crime Statistics Agency
+                    Victoria</a> and
+                    show you the crime statistics around your working area. </p>
+{#                <p><a class="btn btn-default" href="{% url 'crime:crime_home' %}" role="button">View details &raquo;</a></p>#}
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+                {#                <a href="{% url 'map:map_home' %}">#}
+                {#                    <img class="img-circle"#}
+                {#                         src="{% static 'images_raw/police_icon.png' %}"#}
+                {#                         alt="Generic placeholder image" width="60" height="60">#}
+                {#                </a>#}
+                {#                <h3 class="h3-margin-top">Finding Police Station</h3>#}
+                {#                <p>Locating your nearest police station in case you need.</p>#}
+                {#                <p><a class="btn btn-default" href="{% url 'map:map_home' %}" role="button">View details &raquo;</a></p>#}
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+                <a href="{% url 'sms:sms_home' %}"><img class="img-circle"
+                                                        src="{% static 'images_raw/clock_icon.png' %}"
+                                                        alt="Generic placeholder image" width="60" height="60">
+                </a>
+
+                <h3 class="h3-margin-top">Safety Switch</h3>
+                <p>Allow user to send text message to specified phone number at setting time. Nofity your family when
+                    bad things happen.</p>
+                {#                <p><a class="btn btn-default" href="{% url 'sms:sms_home' %}" role="button">View details &raquo;</a></p>#}
+            </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
+
+
+        <!-- FOOTER -->
+        <footer>
+            {#            <p class="pull-right"><a href="#">Back to top</a></p>#}
+            <p>&copy; 2016 FIT5120 &middot; <a href="{% url 'about_us' %}">Spiderweb</a> &middot; <a href="#">Terms and
+                Conditions</a></p>
+        </footer>
+
+    </div><!-- /.container -->
+
+
+{% endblock content %}
+
+
+{% block js %}
+    <script src="{% static 'scripts/jquery.bcSwipe.min.js' %}"></script>
+    <script>
+        $('.carousel').bcSwipe({threshold: 50});
+    </script>
+{% endblock js %}

@@ -1,0 +1,72 @@
+{
+  "name": "Crime Rate",
+  "children": [
+    {
+      "name": "Low",
+      "children": [
+        {
+          "name": "3163",
+          "size": 0.16
+        },
+        {
+          "name": "3162",
+          "size": 0.07
+        },
+        {
+          "name": "3168",
+          "size": 0.12
+        },
+        {
+          "name": "3000",
+          "size": 0.10
+        }
+      ]
+    },
+    {
+      "name": "Medium",
+      "children": [
+        {
+          "name": "BetweennessCentrality",
+          "size": 0.13
+        },
+        {
+          "name": "LinkDistance",
+          "size": 0.06
+        },
+        {
+          "name": "MaxFlowMinCut",
+          "size": 0.19
+        },
+        {
+          "name": "ShortestPaths",
+          "size": 0.1
+        },
+        {
+          "name": "SpanningTree",
+          "size": 0.05
+        }
+      ]
+    },
+    {
+      "name": "high",
+      "children": [
+        {
+          "name": "First",
+          "size": 0.05
+        },
+        {
+          "name": "Second",
+          "size": 0.11
+        }
+      ]
+    },
+    {
+      "name": "sepcial",
+      "size": 0.03
+    },
+    {
+      "name": "sepcial2",
+      "size": 0.07
+    }
+  ]
+}

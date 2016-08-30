@@ -1,0 +1,89 @@
+/* base */
+.btn {
+    padding: 14px 24px;
+    border: 0 none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
+}
+
+.btn-primary {
+    background: #0099cc;
+    color: #ffffff;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+    background: #33a6cc;
+}
+
+.btn-primary:active, .btn-primary.active {
+    background: #007299;
+    box-shadow: none;
+}
+
+/*outline button*/
+.btn.outline { /* remove background, reduce padding */
+    background: none;
+    padding: 12px 22px;
+}
+
+.btn-primary.outline { /* increase outline */
+    /*border: 2px solid #0099cc;*/
+    /*color: #0099cc;*/
+    border: 2px solid #DDDDDD;
+    border-radius: 30px;
+    color: #DDDDDD;
+    text-shadow: 1px 1px 1px #000000;
+    transition: background-color 0.3s, color 0.3s, text-shadow 0.3s;
+}
+
+/* hover effect */
+.btn-primary.outline:hover, .btn-primary.outline:focus, .btn-primary.outline:active, .btn-primary.outline.active, .open > .dropdown-toggle.btn-primary {
+    /*color: #33a6cc;*/
+    /*border-color: #33a6cc;*/
+
+    border-color: white;
+    /*transition*/
+    color: #555555;
+    background-color: white;
+    text-shadow: none;
+}
+
+/* hover effect */
+.btn-primary.outline:active, .btn-primary.outline.active {
+    /*border-color: #007299;*/
+    /*color: #007299;*/
+    color: #555555;
+    border-color: #555555;
+    box-shadow: none;
+}
+
+#getting-started {
+    border: 2px solid #0099cc;
+    color: #0099cc;
+}
+
+#getting-started:hover, #getting-started:focus, #getting-started:active {
+    border-color: #007299;
+    color: #007299;
+}
+
+a.btn.btn-primary.outline.btn-blue {
+    border: 2px solid deepskyblue;
+    color: deepskyblue;
+}
+
+a.btn.btn-primary.outline.btn-blue:hover, a.btn.btn-primary.outline.btn-blue:focus, a.btn.btn-primary.outline.btn-blue:active {
+    border-color: #007299;
+    color: #007299;
+}
+
+@media (min-width: 768px) {
+    .top-padding-btn {
+        padding-top: 160px;
+    }
+}

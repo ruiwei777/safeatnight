@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block head %}
+
+{% endblock head %}
+
+{% block content %}
+
+
+    <div class="container add-padding">
+
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2 text-center">
+                <h1 class="logo-heading ">Team 24A-Spiderweb</h1>
+                <hr class="featurette-divider">
+            </div>
+        </div>
+
+        <!-- START THE FEATURETTES -->
+
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading">Pranil <span
+                        class="text-muted">Professional IT manager.</span></h2>
+                <p class="lead">IT professional with technical and management skills, over 9 years work
+                    experience in the IT field. Used to manage 12 countries for DHL Express, Fiji &
+                    Pacific Islands. Strong skills in project management, analysis and business process
+                    automation.
+                </p>
+            </div>
+            <div class="col-md-5">
+                <img class="featurette-image img-circle" src="{% static 'images/team_member/pranil.jpg' %}" width="170"
+                     height="170"
+                     alt="Pranil">
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7 col-md-push-5">
+                <h2 class="featurette-heading">Evan <span
+                        class="text-muted">MBIS student interested in UI design.</span></h2>
+                <p class="lead">Having business background, had been working as an accountant for 1 year. Now learning
+                    IT,
+                    business analyst and user experience testing.</p>
+            </div>
+            <div class="col-md-5 col-md-pull-7">
+                <img class="featurette-image img-circle center-block" src="{% static 'images/team_member/evan.jpg' %}"
+                     alt="Evan" width="170" height="170">
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading">Sherry <span
+                        class="text-muted">IT student major in network & security.</span></h2>
+                <p class="lead">An IT student who is interested in designing and managing networks, ensuring network
+                    security
+                    and defensing malicious attacks; familiar with different network monitor devices; good at software
+                    security testing.</p>
+            </div>
+            <div class="col-md-5">
+                <img class="featurette-image img-circle center-block" src="{% static 'images/team_member/sherry.jpg' %}"
+                     alt="Sherry" width="170" height="170">
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7 col-md-push-5">
+                <h2 class="featurette-heading">Ruiwei <span
+                        class="text-muted">A dedicated full-stack web developer.</span></h2>
+                <p class="lead">Experienced in Python Django web development with strong database knowledge. Solid
+                    front-end
+                    HTML, CSS, javascript and jQuery skill. A hungry learner for new technology.</p>
+            </div>
+            <div class="col-md-5 col-md-pull-7">
+                <img class="featurette-image img-circle" src="{% static 'images/team_member/tom.jpg' %}" width="170"
+                     height="170"
+                     alt="Tom">
+            </div>
+        </div>
+        <!-- /END THE FEATURETTES -->
+
+
+    </div>
+
+
+
+{% endblock content %}
+
+
+
+{% block js %}
+    <script src="{% static 'scripts/navbar-bg.js' %}"></script>
+{% endblock js %}
