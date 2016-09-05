@@ -22,12 +22,68 @@
 .node--leaf {
     pointer-events: none;
 }
+/*END of d3*/
 
-#data-container{
-    text-align:center;
-
+/*Selected-area-block*/
+@media (min-width: 1268px) {
+    #selected-area-block {
+        min-height: 150px;
+        padding-top: 15%;
+    }
 }
 
-.no-margin{
-    margin:0px;
+#data-container {
+    text-align: center;
+    border: 2px solid transparent;
+    border-radius: 30px;
+}
+
+svg{
+    border: 2px solid transparent;
+    border-radius: 30px;
+}
+
+.margin-bottom {
+    margin-bottom: 15px;
+}
+
+#average {
+    /*text-shadow: 1px 1px 1px black;*/
+}
+
+#lowest {
+    color: lightgreen;
+    /*text-shadow: 1px 1px 1px white;*/
+}
+
+#highest {
+    color: lightcoral;
+    /*text-shadow: 1px 1px 1px white;*/
+}
+
+body {
+    background-color: #122b40;
+}
+
+
+
+#dashboard-wrapper{
+    color:white;
+    padding:15px;
+
+    border: 2px solid #DDDDDD;
+    border-radius: 30px;
+}
+
+#selected-area-block-wrapper {
+    clear: left;
+    border: 2px solid white;
+    border-radius: 15px;
+    margin-top: 15px;
+    /*background-color: #46b8da*/
+    background-color: #005c85;
+}
+
+#comment{
+    display:none;
 }

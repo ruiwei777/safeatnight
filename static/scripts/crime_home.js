@@ -1,151 +1,259 @@
-/**
- * Created by user on 29/08/16.
- */
+/* Reset #data-container width */
+function adjustDataContanierSize() {
+    var new_width = $("svg").width();
+    var new_height = $("svg").height();
+    $("#data-container").width(new_width);
+    $("#data-container").height(new_height);
+    $("#data-container").css("margin-right", "0px")
+}
+// $(window).resize(adjustDataContanierSize)
+// $(adjustDataContanierSize())
 
-// getting window width and height
-var window_width = $(window).width() * 0.45;
-var window_height = $(window).height() * 0.45;
-
-var svg_diameter = window_height > window_width ? window_width : window_width;
-
-// main program
-var margin = 20,
-    diameter = svg_diameter;
-
-var color = d3.scale.linear()
-    .domain([-1, 5])
-    .range(["hsl(152,80%,80%)", "hsl(228,30%,40%)"])
-    .interpolate(d3.interpolateHcl);
-
-var pack = d3.layout.pack()
-    .padding(2)
-    .size([diameter - margin, diameter - margin])
-    .value(function (d) {
-        return d.size;
-    })
-
-var svg = d3.select("#data-container")
-
-    .append("svg")
-    .attr("width", diameter)
-    .attr("height", diameter)
-    .append("g")
-    .attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
-
-d3.json("{% static 'data/structure_crime_1.json' %}", function (error, root) {
-    if (error) throw error;
-
-    var focus = root,
-        nodes = pack.nodes(root),
-        view;
-
-    var circle = svg.selectAll("circle")
-        .data(nodes)
-        .enter().append("circle")
-        .attr("class", function (d) {
-            return d.parent ? d.children ? "node" : "node node--leaf" : "node node--root";
-        })
-        .attr("id", function (d) {
-            return d.name;
-        })
-        .style("fill", function (d) {
-            return d.children ? color(d.depth) : null;
-        })
-        .on("click", function (d) {
-            if (focus !== d) zoom(d), d3.event.stopPropagation();
+function clickToId() {
+    jQuery.fn.d3Click = function () {
+        this.each(function (i, e) {
+            var evt = new MouseEvent("click");
+            e.dispatchEvent(evt);
         });
+    };
+}
+$(clickToId())
 
-    var text = svg.selectAll("text")
-            .data(nodes)
-            .enter().append("text")
-            .attr("class", "label")
-            .style("fill-opacity", function (d) {
-                return d.parent === root ? 1 : 0;
-            })
-            .style("display", function (d) {
-                return d.parent === root ? "inline" : "none";
-            })
-            .text(function (d) {
-                return d.name;
-            })
-        ;
+// Reset button
+$("#reset-2").click(function () {
 
-    // add content to text
-    text.append("tspan")
-        .attr("dy", 0)
-        .attr("x", 0)
-        .text(function (d) {
-            return d.name;
+    if ($("#comment").not(":hidden")) $("#comment").slideUp();
+    $("#data-container").d3Click()
+    displayDashboardData("none", "0 ")
+})
+
+
+// Current-location button
+$("#current-location-2").click(function () {
+
+    if (navigator.userAgent.indexOf("Firefox") > 0) {
+        // alert("Firefox browser dot not support getting current location.")
+        // return;
+    }
+    var ua = navigator.userAgent;
+
+
+    // if (navigator.userAgent.match('CriOS')) {
+    //
+    //     //get current latitude and longitude using API
+    //     $.get("https://freegeoip.net/json/", null, function (data) {
+    //         var url = "https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyCNSq5fvWuyqJ1UIJjEcSLzX7T5BqfSYtI&latlng="
+    //             + data.latitude + "," + data.longitude;
+    //         $.get(url, null, function (data) {
+    //             if (data.status === "OK") {
+    //                 var detail_array = data.results[0].address_components;
+    //                 detail_array.forEach(function (e) {
+    //                     if (e.types[0] === "postal_code") {
+    //                         var postcode = e.short_name;
+    //                         var target = $("#" + postcode);
+    //                         if (target.length > 0) {
+    //                             $("#" + postcode).d3Click();
+    //                             displayDashboardData(postcode, getTextData(postcode))
+    //                             setComment(getTextData(postcode))
+    //                             showText();
+    //
+    //                         }
+    //                         else {
+    //                             alert("Your post code is" + e.short_name + ". Not supported area.")
+    //                         }
+    //                     }
+    //                 })
+    //             } else {
+    //                 alert("Sorry, your location is not supported. Only Victoria, Australia is supported")
+    //             }
+    //         }, "json")
+    //     })
+    // }
+
+
+    $("#data-container").d3Click();
+    var lat, lng;
+
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position, error) {
+            lat = position.coords.latitude;
+            lng = position.coords.longitude;
+            var url = "https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyCNSq5fvWuyqJ1UIJjEcSLzX7T5BqfSYtI&latlng=" + lat + "," + lng;
+            $.get(url, null, function (data) {
+                if (data.status === "OK") {
+                    var detail_array = data.results[0].address_components;
+                    detail_array.forEach(function (e) {
+                        if (e.types[0] === "postal_code") {
+                            var postcode = e.short_name;
+                            var target = $("#" + postcode);
+                            if (target.length > 0) {
+
+                                displayDashboardData(getSuburb(postcode), getTextData(postcode))
+                                setComment(getTextData(postcode), getSuburb(postcode))
+                                $("#" + postcode).d3Click();
+                                showText();
+
+                            }
+                            else {
+                                alert("Not supported area.")
+                            }
+                        }
+                    })
+                } else {
+                    alert("Sorry, your location is not supported. Only Victoria, Australia is supported")
+                }
+            }, "json")
         });
-
-    text.append("tspan")
-        .attr("dy", "1.2em") // offest by 1.2 em
-        .attr("x", 0)
-        .text(function (d) {
-            return d.size;
-        });
-
-
-    var node = svg.selectAll("circle,text");
-
-    d3.select("body")
-    // .style("background", color(-1))
-        .on("click", function () {
-            zoom(root);
-        });
-    d3.select("#data-container").style("background", color(-1));
-
-    zoomTo([root.x, root.y, root.r * 2 + margin]);
-
-    function zoom(d) {
-        var focus0 = focus;
-        focus = d;
-
-        var transition = d3.transition()
-            .duration(d3.event.altKey ? 7500 : 750)
-            .tween("zoom", function (d) {
-                var i = d3.interpolateZoom(view, [focus.x, focus.y, focus.r * 2 + margin]);
-                return function (t) {
-                    zoomTo(i(t));
-                };
-            });
-
-        transition.selectAll("text")
-            .filter(function (d) {
-                return d.parent === focus || this.style.display === "inline";
-            })
-            .style("fill-opacity", function (d) {
-                return d.parent === focus ? 1 : 0;
-            })
-            .each("start", function (d) {
-                if (d.parent === focus) this.style.display = "inline";
-            })
-            .each("end", function (d) {
-                if (d.parent !== focus) this.style.display = "none";
-            });
+    } else {
+        alert("Your browser does not support geolocation API")
     }
 
-    function zoomTo(v) {
-        var k = diameter / v[2];
-        view = v;
-        node.attr("transform", function (d) {
-            return "translate(" + (d.x - v[0]) * k + "," + (d.y - v[1]) * k + ")";
-        });
-        circle.attr("r", function (d) {
-            return d.r * k;
-        });
-    }
-});
-
-d3.select(self.frameElement).style("height", diameter + "px");
-
-jQuery.fn.d3Click = function () {
-    this.each(function (i, e) {
-        var evt = new MouseEvent("click");
-        e.dispatchEvent(evt);
-    });
-};
-
-$(window).resize(function () {
 
 })
+
+// Search button
+$("#search-2").click(function () {
+    $("#data-container").d3Click();
+    var input = $("#search-text").val();
+    var isnum = /^\d+$/.test(input);
+    if (isnum) {
+        var target = $("#" + input);
+        if (target.length > 0) {
+            displayDashboardData(getSuburb(input), getTextData(input))
+            setComment(getTextData(input), getSuburb(input))
+            target.d3Click();
+            showText();
+
+        } else {
+            alert("This area is not supported.")
+        }
+    } else {
+        // when input is text, make Geocoding request
+        var url = "https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyCNSq5fvWuyqJ1UIJjEcSLzX7T5BqfSYtI&address=australia,"
+            + input;
+        $.get(url, null, function (data) {
+            if (data.status === "OK") {
+                var detail_array = data.results[0].address_components;
+                detail_array.forEach(function (e) {
+                    if (e.types[0] === "postal_code") {
+                        var postcode = e.short_name;
+                        var target = $("#" + postcode);
+                        if (target.length > 0) {
+                            displayDashboardData(getSuburb(postcode), getTextData(postcode))
+                            setComment(getTextData(postcode), getSuburb(postcode))
+                            $("#" + postcode).d3Click();
+
+                            showText();
+                        }
+                        else {
+                            alert("Not supported area.")
+                        }
+                    }
+                })
+            } else {
+                alert("The entered location is not supported. Only Victoria, Australia is supported.")
+            }
+        }, "json")
+    }
+
+
+})
+
+// fix button width
+$('.crime-btn-group').width(
+    Math.max.apply(
+        Math,
+        $('.crime-btn-group').map(function () {
+
+            return $(this).outerWidth();
+        }).get()
+    )
+);
+
+function showText() {
+    setTimeout(function () {
+        var d3text = d3.selectAll("text.label")
+        d3text.style("display", "inline")
+        d3text.style("fill-opacity", 1)
+    }, 800)
+
+}
+
+function displayDashboardData(selectedAreaText, crimeRateText) {
+    $("#selected-area-text").text(selectedAreaText)
+    $("#crime-rate-text").text(crimeRateText + "%")
+}
+
+function getTextData(id) {
+    var selection = d3.selectAll("text").filter(function (d) {
+        return d.name == id
+    }).datum()
+    return Math.round(selection.size * 1000) / 1000;
+}
+
+function getSuburb(id){
+    var selection = d3.selectAll("text").filter(function (d) {
+        return d.name == id
+    }).datum()
+    return selection.suburb;
+}
+
+function setComment(size, suburb) {
+    var comment = $("#comment");
+    if (size <= 0.05) {
+        // low crime rate
+        if (comment.is(":hidden")) {
+            comment.css("color", "lightgreen")
+            comment.text("Congratulations! " + suburb + " has a low crime rate.");
+            comment.slideDown();
+        } else {
+            comment.slideUp(function () {
+                comment.css("color", "lightgreen")
+                comment.text("Congratulations! " + suburb + " has a low crime rate.");
+                comment.slideDown()
+            })
+        }
+
+    } else if (size > 0.05 && size < 0.1) {
+        // medium crime rate
+        if (comment.is(":hidden")) {
+            comment.text("Not bad. " + suburb + " has a medium crime rate.");
+            comment.css("color", "#5bc0de")
+            comment.slideDown();
+        } else {
+            comment.slideUp(function () {
+                comment.text("Not bad. " + suburb + " has a medium crime rate.");
+                comment.css("color", "#5bc0de")
+                comment.slideDown()
+            })
+        }
+
+    } else {
+        if (comment.is(":hidden")) {
+            comment.text("Oops. " + suburb + " has a high crime rate.");
+            comment.css("color", "lightcoral")
+            comment.slideDown();
+
+        } else {
+            comment.slideUp(function () {
+                comment.text("Oops. This area has a high crime rate.");
+                comment.css("color", "lightcoral")
+                comment.slideDown()
+            })
+        }
+        // high crime rate
+    }
+
+}
+
+// change the height of #selected-area-block
+// $("#selected-area-block").height($("#selected-area-block").width()* 0.80)
+
+// Geolocation API
+// https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyCNSq5fvWuyqJ1UIJjEcSLzX7T5BqfSYtI
+
+// Google Maps APIs
+// https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyCNSq5fvWuyqJ1UIJjEcSLzX7T5BqfSYtI&address=caulfield
+
+

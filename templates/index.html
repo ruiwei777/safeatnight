@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+
+{% block head %}
+    <link href="{% static 'css/button-override-base.css' %}" rel="stylesheet">
+{% endblock head %}
 {% block content %}
 
 
@@ -13,7 +17,7 @@
         <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
             <li data-target="#myCarousel" data-slide-to="1"></li>
-                        <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
             {#            <li data-target="#myCarousel" data-slide-to="3"></li>#}
         </ol>
         <div class="carousel-inner" role="listbox">
@@ -28,7 +32,8 @@
                         </h1>
                         <p>Provide safety information for people working at night.</p>
                         <p class="top-padding-btn"></p>
-                        <p class="btn-line"><a class="btn btn-primary outline width-group" href="{% url 'crime:crime_home' %}"
+                        <p class="btn-line"><a class="btn btn-primary outline width-group"
+                                               href="{% url 'crime:crime_home' %}"
                                                role="button">Crime Stats</a></p>
                         {#                        <p class="btn-line"><a class="btn btn-primary outline width-group" href="{% url 'map:map_home' %}"#}
                         {#                                               role="button">Police Station</a></p>#}
@@ -74,16 +79,17 @@
                 </div>
             </div>
             <div class="item item4">
-{#                <img class="third-slide"#}
-{#                     src="{% static 'images_raw/phone.jpg' %}"#}
-{#                     alt="Third slide">#}
+                {#                <img class="third-slide"#}
+                {#                     src="{% static 'images_raw/phone.jpg' %}"#}
+                {#                     alt="Third slide">#}
                 <div class="container">
                     <div class="carousel-caption">
                         <h1>Safety Around You</h1>
                         <p>Showing <a href="{% url 'crime:crime_home' %}">crime rate</a> around your working area.</p>
 
 
-                        <p><a class="btn btn-primary outline width-group" href="{% url 'crime:crime_home' %}" role="button">Getting
+                        <p><a class="btn btn-primary outline width-group" href="{% url 'crime:crime_home' %}"
+                              role="button">Getting
                             Started</a></p>
                     </div>
                 </div>
@@ -118,7 +124,7 @@
                 <p>Collecting data from <a href="http://www.crimestatistics.vic.gov.au">Crime Statistics Agency
                     Victoria</a> and
                     show you the crime statistics around your working area. </p>
-{#                <p><a class="btn btn-default" href="{% url 'crime:crime_home' %}" role="button">View details &raquo;</a></p>#}
+                {#                <p><a class="btn btn-default" href="{% url 'crime:crime_home' %}" role="button">View details &raquo;</a></p>#}
             </div><!-- /.col-lg-4 -->
             <div class="col-lg-4">
                 {#                <a href="{% url 'map:map_home' %}">#}
