@@ -39,9 +39,9 @@ body {
 
 
 /*Override link color*/
-a, a:active {
-    color: deepskyblue;
-}
+/*a, a:active {*/
+    /*color: deepskyblue;*/
+/*}*/
 
 /* deleting #myCarousel botton margin */
 #myCarousel {

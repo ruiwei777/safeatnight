@@ -8,7 +8,7 @@ from twilio.rest import TwilioRestClient
 # Create your views here.
 
 def index(request):
-    return render(request, "home.html", {"title": "home"})
+    return render(request, "base_2.html", {"title": "home"})
 
 def about_us(request):
     return render(request, "about_us.html", {"title": "about us"})
