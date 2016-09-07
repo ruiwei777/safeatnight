@@ -17,13 +17,16 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from sms import views
 
+from account.views import login_view
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^sms/', include('sms.urls', namespace='sms')),
     url(r'^map/', include('map.urls', namespace='map')),
     url(r'^crime/', include('crimestats.urls', namespace='crime')),
-    url(r'^$', views.index, name="index"),
+    url(r'^login/', login_view, name='login'),
     url(r'^about/us/$', views.about_us, name="about_us"),
     url(r'^about/safeatnight/$', views.about_safeatnight, name="about_safeatnight"),
+    url(r'^$', views.index, name="index"),
 
 ]

@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from .forms import SMSForm
 
@@ -7,16 +8,20 @@ from twilio.rest import TwilioRestClient
 
 # Create your views here.
 
+@login_required()
 def index(request):
     return render(request, "base_2.html", {"title": "home"})
 
+@login_required()
 def about_us(request):
     return render(request, "about_us.html", {"title": "about us"})
 
+@login_required()
 def about_safeatnight(request):
     return render(request, "about_safeatnight.html", {"title": "about safe@night"})
 
 
+@login_required()
 def sms_home(request):
     context = {}
     is_sent = None
