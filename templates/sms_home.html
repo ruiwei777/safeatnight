@@ -1,42 +1,97 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% load crispy_forms_tags %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/sms_home.css' %}">
+    {{ form.media }}
+{% endblock head %}
+
 {% block content %}
 
 
     <div class="container-fluid">
-        <div class="row add-padding" style="background-color: #F5F5F5"></div>
+
         {% if is_sent %}
             <div class="row bg-success">
-                <div class="col-md-6 col-md-offset-3">
-                <p class="text-lg">Your message has been successfully sent to {{ receiver }}</p>
+                <div class="col-lg-6 col-lg-offset-3">
+                    <p class="text-lg">
+                        Your message to {{ receiver }} has been recorded in server and will be sent at the set time.
+                    </p>
                 </div>
             </div>
         {% elif is_error %}
             <div class="row bg-danger">
-                <div class="col-md-6 col-md-offset-3">
-                <p class="text-lg">{{ is_error }}</p>
+                <div class="col-lg-6 col-lg-offset-3">
+                    <p class="text-lg">{{ is_error }}</p>
+                </div>
+            </div>
+        {% elif cancel_message %}
+            <div class="row bg-info">
+                <div class="col-lg-6 col-lg-offset-3">
+                    <p class="text-lg">{{ cancel_message }}</p>
                 </div>
             </div>
         {% endif %}
-        <div class="row" style="background-color: #F5F5F5">
-            <div class="col-md-3 col-md-offset-3">
-                <h2 class="text-center">Safety Switch</h2>
-                <p class="text-lg text-center">Entering your phone number and time to send, text message will be sent at
-                    the setting time.</p>
-                <img id="dms-img" class="img-circle" width="300" height="300" src="{% static 'images_raw/text_message.png' %}"/>
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-2">
+                <h1 class="text-center heading">Safety Switch</h1>
+
+                <ul class="text-18px description-list">
+                    <li>
+                        Enter the phone numbers and time to send, text message will be sent at
+                        the set time.
+                    </li>
+                    <li>The estimated time of arrival is based on <span class="text-bold">Victoria, Australia</span>
+                        local time; i.e. AEST (UTC+10) or AEDT (UTC+11) depending on daylight savings.
+                    </li>
+                    <li>
+                        As long as a message is submitted, you will receive a text message of the record with the cancellation code.
+                    </li>
+                    <li>
+                        Preserve the cancellation code for cancelling the message.
+                    </li>
+                    <li>
+                        Sending message to the past is not supported for the moment.
+                    </li>
+                </ul>
+
+                <img id="dms-img" class="img-circle center-block" width="300" height="300"
+                     src="{% static 'images_raw/text_message.png' %}"/>
 
             </div>
 
-            <div class="col-md-3">
+            <div class="col-lg-3">
+
+                <div class="div-form-selection">
+                    <div class="item">
+                        <button class="btn btn-info" id="send_button">Send Message</button>
+                    </div>
+                    <div class="item">
+                        <button class="btn btn-danger" id="cancel_button">Cancel Message</button>
+                    </div>
+                </div>
+                <p id="sms_info">You are sending message.</p>
+
+                <div id="sms_form">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        {{ form | crispy }}
 
 
-                <form action="" method="post">
-                    {% csrf_token %}
-                    {{ form | crispy }}
+                        <input id="submit-btn" type="submit" value="Submit" class="btn btn-info"/>
+                    </form>
+                </div>
 
-                    <input type="submit" value="Submit" class="btn btn-info"/>
-                </form>
+                <div id="cancel_form">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        {{ cancel_form | crispy }}
+
+
+                        <input type="submit" value="Confirm" class="btn btn-info"/>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -49,4 +104,10 @@
 
 {% block js %}
     <script src="{% static 'scripts/navbar-bg.js' %}"></script>
+    <script src="{% static 'scripts/sms_home.js' %}"></script>
+    {% if is_sent or is_error or cancel_message %}
+        <script>
+            $(".navbar").css("margin-bottom", "0")
+        </script>
+    {% endif %}
 {% endblock js %}

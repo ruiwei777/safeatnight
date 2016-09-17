@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^sms/', include('sms.urls', namespace='sms')),
     url(r'^map/', include('map.urls', namespace='map')),
     url(r'^crime/', include('crimestats.urls', namespace='crime')),
+    url(r'^info/', include('safety_info.urls', namespace='safety_info')),
     url(r'^login/', login_view, name='login'),
     url(r'^about/us/$', views.about_us, name="about_us"),
     url(r'^about/safeatnight/$', views.about_safeatnight, name="about_safeatnight"),

@@ -5,7 +5,7 @@
 {% block head %}
     <link rel="stylesheet" href="{% static 'css/crime_home.css' %}">
     <script src="//d3js.org/d3.v3.min.js"></script>
-    <script src="{% static 'scripts/jquery.min.js' %}"></script>
+    <script src="{% static 'scripts/libs/jquery.min.js' %}"></script>
 
 
 {% endblock head %}
@@ -13,69 +13,111 @@
 
 {% block content %}
     <div class="container-fluid">
-        <div class="add-padding"></div>
+
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 text-center">
-                <h1 style="color:white" class="margin-bottom">Crime Statistics Victoria</h1>
+                <h1 class="margin-bottom heading">Crime Statistics Victoria</h1>
             </div>
 
 
         </div>
 
-        <div class="row some-padding">
-            <div class="col-lg-3 col-lg-offset-2">
+        <div class="row">
+            <div class="col-lg-3 col-lg-offset-2 dashboard-col">
 
-                <div class="row margin-bottom" style="background-color:#122b40; " id="dashboard-wrapper">
+                <div class="row margin-bottom" id="dashboard-wrapper">
 
-                    <h1 class="margin-5">Dashboard</h1>
-                    <p class="text-lg">Hit the button or enter postcode/suburb name of interest to get the crime
+                    <h2>Dashboard</h2>
+                    <p class="lead dashboard-description">Enter postcode <span class="or">OR</span> suburb name of
+                        interest to get the crime
                         rate.
                     </p>
+                    <p id="information-paragraph" hidden="true"><i class="fa fa-exclamation fa-lg "
+                                                                   aria-hidden="true"></i> <span
+                            id="information-text"></span></p>
+                    <div id="information-wrapper">
+                        <div class="item">
+                            <p class="heading">Postcode: </p>
+                            <input id="postcode-text" type="text" placeholder="e.g. 3162" class="editable"/>
+                        </div>
 
-                    <div class="row">
-                        <div class="col-lg-6 custom-button-wrapper">
-                            <div id="current-location-2" class="custom-button" role="button">Near Me</div>
+                        <div class="item">
+                            <p class="heading">Suburb: </p>
+                            <textarea id="suburb-text" placeholder="e.g. Clayton" class="editable"></textarea>
                         </div>
-                        <div class="col-lg-6 custom-button-wrapper">
-                            <div id="reset-2" class="custom-button" role="button">Reset</div>
+
+                        <div class="item">
+                            <p class="heading">Crime rate: </p>
+                            <p id="crime-rate-text" class="heading result">None</p>
                         </div>
+
+                        <div class="item">
+                            <p class="heading">Vic Average: </p>
+                            <p class="heading result">0.103%</p>
+                        </div>
+
+                        <div class="item">
+                            <p class="heading">Lowest: </p>
+                            <p class="heading result" id="lowest">0.011%</p>
+                        </div>
+
+                        <div class="item">
+                            <p class="heading">Highest: </p>
+                            <p class="heading result" id="highest">3.911%</p>
+                        </div>
+
+
                     </div>
+                    <div id="button-wrapper">
 
-                    <div class="row">
-                        <div class="col-lg-6 custom-button-wrapper">
-                            <input type="text" id="search-text" placeholder='e.g. "clayton", "3163"'>
-                        </div>
-                        <div class="col-lg-6 custom-button-wrapper">
-                            <div id="search-2" class="custom-button" role="button">Search</div>
-                        </div>
-
+                        <button id="search" type="submit" class="item btn btn-info">Search</button>
+                        <button id="current-location" type="submit" class="item btn btn-info">Near Me</button>
+                        <button id="reset" type="submit" class="item btn btn-success">Reset</button>
                     </div>
+                    {#                    <div class="row">#}
+                    {#                        <div class="col-lg-6 custom-button-wrapper">#}
+                    {#                            <div id="current-location-2" class="custom-button" role="button">Near Me</div>#}
+                    {#                        </div>#}
+                    {#                        <div class="col-lg-6 custom-button-wrapper">#}
+                    {#                            <div id="reset-2" class="custom-button" role="button">Reset</div>#}
+                    {#                        </div>#}
+                    {#                    </div>#}
+                    {##}
+                    {#                    <div class="row">#}
+                    {#                        <div class="col-lg-6 custom-button-wrapper">#}
+                    {#                            <input type="text" id="search-text" placeholder='e.g. "clayton", "3163"'>#}
+                    {#                        </div>#}
+                    {#                        <div class="col-lg-6 custom-button-wrapper">#}
+                    {#                            <div id="search-2" class="custom-button" role="button">Search</div>#}
+                    {#                        </div>#}
+                    {##}
+                    {#                    </div>#}
+                    {##}
+                    {#                    <div class="row">#}
+                    {#                        <div class="col-lg-12" style="padding: 0px 5px;">#}
+                    {#                            <div class="custom-banner" id="comment"></div>#}
+                    {#                        </div>#}
+                    {#                    </div>#}
 
-                    <div class="row">
-                        <div class="col-lg-12" style="padding: 0px 5px;">
-                            <div class="custom-banner" id="comment"></div>
-                        </div>
-                    </div>
-
-                    <div id="selected-area-block-wrapper">
-
-                        <div id="selected-area-block" class="text-center">
-                            <h3 class="margin-0">Area:
-                                <sapn id="selected-area-text">none</sapn>
-                            </h3>
-                            <h3 class="margin-0">Crime Rate:
-                                <span id="crime-rate-text">none</span>
-                            </h3>
-                            {#                            <p class="leading" id="comment">lkjlj</p>#}
-                        </div>
-                        <div id="status-block">
-                            <p class="leading" style="font-size: 13px"><span id="average">Vic. average: 1.96%</span>
-                                <span id="lowest">Lowest: 0.011%; </span>
-                                <span id="highest">Highest: 3.911%</span>
-                            </p>
-
-                        </div>
-                    </div>
+                    {#                    <div id="selected-area-block-wrapper">#}
+                    {##}
+                    {#                        <div id="selected-area-block" class="text-center">#}
+                    {#                            <h3 class="margin-0">Area:#}
+                    {#                                <sapn id="selected-area-text">none</sapn>#}
+                    {#                            </h3>#}
+                    {#                            <h3 class="margin-0">Crime Rate:#}
+                    {#                                <span id="crime-rate-text">none</span>#}
+                    {#                            </h3>#}
+                    {#                            <p class="leading" id="comment">lkjlj</p>#}
+                    {#                        </div>#}
+                    {#                        <div id="status-block">#}
+                    {#                            <p class="leading" style="font-size: 13px"><span id="average">Vic. average: 1.96%</span>#}
+                    {#                                <span id="lowest">Lowest: 0.011%; </span>#}
+                    {#                                <span id="highest">Highest: 3.911%</span>#}
+                    {#                            </p>#}
+                    {##}
+                    {#                        </div>#}
+                    {#                    </div>#}
                 </div>
                 {#                <div class="row margin-bottom">#}
                 {#                    <div class="col-lg-6 no-padding">#}
@@ -114,9 +156,10 @@
     {#    BEGIN of D3#}
     <script>
         function drawBubbleChart() {
-            $("#data-container").empty()
+            var data_container = $("#data-container");
+            data_container.empty()
 
-            var svg_diameter = $("#data-container").width() * 1;
+            var svg_diameter = data_container.width() * 1;
 
             // main program
             var margin = 20,
@@ -161,6 +204,7 @@
                         .style("fill", function (d) {
                             return d.children ? color(d.depth) : null;
                         })
+
                         .on("click", function (d) {
                             if (focus !== d) zoom(d), d3.event.stopPropagation();
                         });
@@ -176,58 +220,104 @@
                                 .style("display", function (d) {
                                     return d.parent === root ? "inline" : "none";
                                 })
-{#                                .style("fill-opacity", function (d) {#}
-{##}
-{#                                    return d.children  ? 1 : 0;#}
-{#                                })#}
-{#                                .style("display", function (d) {#}
-{#                                    #}
-{#                                    return d.children ? "inline" : "none";#}
-{#                                })#}
-                                .text(function (d) {
-                                    var parent_text = d.name;
-                                    var child_text = d.suburb + ": " + Math.round(d.size * 100) / 100 + "%";
-                                    return d.children ? parent_text : child_text;
+                                .style("fill-opacity", function (d) {
+                                    if (!d.children && d.parent === root) {
+                                        return 1;
+
+                                    }
+
+                                    return d.children ? 1 : 0;
                                 })
-                                .style("fill", function (d) {
-                                    if (d.size < 0.05) return "green"
-                                    else if (d.size >= 0.05 && d.size < 0.1) return "blue"
-                                    else if (d.size >= 0.1) return "red"
+                                .style("display", function (d) {
+                                    if (!d.children && d.parent === root) {
+                                        return "inline";
+
+                                    }
+
+                                    return d.children ? "inline" : "none";
                                 })
-                                .style("font-size", "11px")
+{#                                .text(function (d) {#}
+{#                                    var parent_text = d.name;#}
+{#                                    var child_text = d.suburb + ": " + Math.round(d.size * 100) / 100 + "%";#}
+{#                                    return d.children ? parent_text : child_text;#}
+{#                                })#}
+{#                                .style("fill", function (d) {#}
+{#                                    if (d.size < 0.05) return "green"#}
+{#                                    else if (d.size >= 0.05 && d.size < 0.1) return "blue"#}
+{#                                    else if (d.size >= 0.1) return "red"#}
+{#                                })#}
+{#                                .style("font-size", "11px")#}
                         ;
 
                 // add content to circle
+
+
+                text.each(function (d) {
+                    {#                    console.log(d.suburb)#}
+                    var yoffset = 0;
+                    var suburb_str = "" + d.suburb;
+                    var text_element = d3.select(this);
+                    if (suburb_str.indexOf(",") == -1) {
+                        text_element.append("tspan")
+                                .attr("dy", 0)
+                                .attr("x", 0)
+                                .style("font-size", "14px")
+                                .text(function (d) {
+                                    return d.suburb;
+                                });
+
+
+                    } else {
+                        var suburb_array = suburb_str.split(",");
+                        for (var i = 0; i < suburb_array.length && i < 3; i++) {
+                            text_element.attr("y", "-30")
+                            {#                                    .attr("transform", "translate(100)");#}
+                            text_element.append("tspan")
+                                    .attr("dy", "1.3em")
+                                    .attr("x", 0)
+                                    .attr("text-anchor", "middle")
+                                    .style("font-size", "12px")
+                                    .text(suburb_array[i]);
+                        }
+
+                        {% comment %}suburb_array.forEach(function (suburb) {
+
+
+                        }){% endcomment %}
+                    }
+                })
+
+
                 {#                text.append("tspan")#}
                 {#                        .attr("dy", 0)#}
                 {#                        .attr("x", 0)#}
-                {#                        .style("font-size", "16px")#}
+                {#                        .style("font-size", "12px")#}
                 {#                        .text(function (d) {#}
-                {#                            return d.name;#}
+                {#                            return d.suburb;#}
                 {#                        });#}
-                {##}
-                {#                text.append("tspan")#}
-                {#                        .attr("dy", "1.2em") // offest by 1.2 em#}
-                {#                        .attr("x", 0)#}
-                {#                        .style("font-size", "15px")#}
-                {##}
-                {#                        .text(function (d) {#}
-                {#                            return d.size ? Math.round(d.size * 1000) / 1000 : null;#}
-                {#                        })#}
-                {#                        .style("fill", function (d) {#}
-                {#                            if (d.size < 0.05) return "green"#}
-                {#                            else if (d.size >= 0.05 && d.size < 0.1) return "blue"#}
-                {#                            else if (d.size >= 0.1) return "red"#}
-                {#                        });#}
+
+                text.append("tspan")
+                        .attr("dy", "1.2em") // offest by 1.2 em
+                        .attr("x", 0)
+                        .style("font-size", "13px")
+
+                        .text(function (d) {
+                            return d.size ? Math.round(d.size * 100) / 100 + "%" : null;
+                        })
+                        .style("fill", function (d) {
+                            if (d.size < 0.05) return "green"
+                            else if (d.size >= 0.05 && d.size < 0.1) return "blue"
+                            else if (d.size >= 0.1) return "red"
+                        });
 
                 var node = svg.selectAll("circle,text");
 
                 d3.select("#data-container")
-                // .style("background", color(-1))
+                        .style("background", color(-1))
                         .on("click", function () {
                             zoom(root);
                         });
-                d3.select("#data-container").style("background", color(-1));
+
 
                 zoomTo([root.x, root.y, root.r * 2 + margin]);
 
@@ -278,7 +368,7 @@
         }
 
         $(drawBubbleChart())
-        {#        $(window).resize(drawBubbleChart)#}
+        $(window).resize(drawBubbleChart)
 
 
     </script>

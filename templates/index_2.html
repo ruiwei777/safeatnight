@@ -1,11 +1,67 @@
+{% extends 'base.html' %}
 {% load staticfiles %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
 
-</body>
-</html>
+{% block head %}
+
+    <link href="{% static 'css/index_2.css' %}" rel="stylesheet">
+
+{% endblock head %}
+{% block content %}
+    <div id="jumbotron" class="positioner">
+        <h1>The <span id="/*safety-service*/">safety service</span> for <span class="stress">Night-Shift Workers.</span>
+        </h1>
+    </div>
+
+    <div id="description" class="positioner">
+        <div class="item">
+            <div class="flex-wrapper-center">
+                <a href="{% url 'sms:sms_home' %}"><h1>Safety Switch</h1></a>
+            </div>
+            <p class="lead description-text"><i class="fa fa-mobile fa-lg" aria-hidden="true"></i> Send text message at
+                a set time.</p>
+            <p class="lead"><a href="{% url 'sms:sms_home' %}" class="width-group index-btn">Set Up</a></p>
+        </div>
+
+
+        <div class="item">
+            <div class="flex-wrapper-center">
+                <a href="{% url 'crime:crime_home' %}"><h1>Crime Rate</h1></a>
+            </div>
+            <p class="lead description-text"><i class="fa fa-bar-chart" aria-hidden="true"></i> Look up crime rate by
+                area.</p>
+            <p class="lead"><a href="{% url 'crime:crime_home' %}" class="width-group index-btn">View</a></p>
+        </div>
+
+        <div class="item">
+            <div class="flex-wrapper-center">
+                <a href="{% url 'safety_info:safety_info_home' %}"><h1>Safety Tips</h1></a>
+            </div>
+            <p class="lead description-text"><i class="fa fa-smile-o" aria-hidden="true"></i>
+            Useful tips everyone in Australia should know.</p>
+            <p class="lead"><a href="{% url 'safety_info:safety_info_home' %}" class="width-group index-btn">What's that?</a></p>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+{% endblock content %}
+
+
+{% block js %}
+    <script src="{% static 'scripts/libs/jquery.bgswitcher.js' %}"></script>
+    <script>
+        $("body").bgswitcher({
+            images: ["{% static 'images/index_bg/crime_home_2.jpg' %}", "{% static 'images/index_bg/moon-65957.jpg' %}"],
+            effect: "fade",
+            interval: 7000
+        });
+
+    </script>
+{% endblock js %}

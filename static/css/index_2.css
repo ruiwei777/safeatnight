@@ -1,0 +1,258 @@
+/*index page body only*/
+body {
+    background: url("../images/index_bg/crime_home_2.jpg");
+    background-size: cover; /* <------ */
+    background-repeat: no-repeat;
+    background-position: center center;
+    text-shadow: 1px 1px 5px black;
+    color: white;
+    box-shadow: inset 0px 0px 300px black;
+
+}
+
+
+
+/*body*/
+#jumbotron {
+    height: 24vh;
+    display: flex;
+    align-items: flex-end;
+
+}
+
+#jumbotron h1 {
+    margin: 5px 0;
+}
+
+#jumbotron h1 #safety-service {
+    font-weight: bolder;
+    text-shadow: 1px 1px 1px deepskyblue;
+}
+
+#jumbotron h1 .stress {
+    /*font-size: 38px;*/
+    text-shadow: 1px 1px 0px dodgerblue;
+}
+
+#description {
+    display: flex;
+    justify-content: space-between;
+    max-height: 55vh;
+    /*align-items: center;*/
+    /*height: auto;*/
+}
+
+#description .item {
+    text-align: center;
+    width: 26%;
+    color: #EEEEEE;
+}
+
+#description .item .fa {
+    color: deepskyblue;
+}
+
+.flex-wrapper-center {
+    display: flex;
+    justify-content: space-around;
+
+}
+
+#description .item a:hover, #description .item a:focus {
+    text-decoration: none;
+    color: inherit;
+}
+
+#description .item h1 {
+    font-size: 38px;
+    margin: 0;
+    padding: 10px 20px;
+    text-shadow: 1px 1px 0 dodgerblue;
+    font-family: Cabin, sans-serif;
+    color: white;
+    transition: background-color .3s, color .3s, padding .3s;
+}
+
+#description .item h1:hover {
+    background-color: dodgerblue;
+
+    color: white;
+}
+
+#description .description-text {
+
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+#description .index-btn {
+    /*padding: 10px 14px;*/
+    padding: 10px;
+    font-weight: bold;
+    text-shadow: none;
+    background-color: dodgerblue;
+    border: 1px solid;
+    border-color: dodgerblue;
+    color: white;
+    border-radius: 0;
+    transition: background-color .3s, border-color .3s, color .3s;
+    font-size: 18px;
+    line-height: 1.3333333;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+#description .index-btn:hover {
+
+    background-color: #000050;
+    border-color: dodgerblue;
+    color: white;
+}
+
+/*Resolution Compatibility*/
+@media (max-width: 1400px) {
+    #jumbotron h1 {
+        font-size: 32px;
+    }
+
+    #jumbotron h1 .stress {
+        font-size: 36px;
+    }
+
+    #description .item h1 {
+        font-size: 31px;
+        margin: 0;
+        padding: 7px 14px;
+    }
+
+    #description .description-text {
+        font-size: 22px;
+        line-height: 1.1;
+    }
+
+    #description .index-btn {
+        padding: 7px 14px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .navbar {
+        padding: 10px;
+        margin-bottom: 0;
+    }
+
+    #jumbotron {
+        height: 37vh;
+        align-items: center;
+
+    }
+
+    #jumbotron h1 {
+        font-size: 30px;
+    }
+
+    #jumbotron h1 .stress {
+        font-size: 32px;
+
+    }
+
+    #description {
+        padding-top: 0;
+        max-width: 90vw;
+    }
+
+    #description .item h1 {
+        font-size: 30px;
+        margin: 0;
+    }
+
+    #description .description-text {
+        font-size: 19px;
+        line-height: 1.1;
+        margin: 5px 0;
+    }
+
+    #description .index-btn {
+        padding: 5px 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        background-size: auto;
+    }
+
+    #jumbotron {
+        height: 15vh;
+    }
+
+    #jumbotron h1 {
+
+        font-size: 28px;
+        margin: 0;
+    }
+
+    #jumbotron h1 .stress {
+        font-size: 28px;
+    }
+
+    #description {
+        /*flex-direction: column;*/
+        /*justify-content: flex-start;*/
+        /*align-items: center;*/
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    #description .item {
+        width: auto;
+        margin: 15px 0 15px 0;
+    }
+
+    #description .item h1 {
+        font-size: 33px;
+    }
+
+    #description .item .description-text {
+        font-size: 22px;
+    }
+
+    #description .item .index-btn {
+        padding: 3px 10px;
+    }
+
+    .lead {
+        margin: 5px 0;
+    }
+}
+
+/*iPhone 5*/
+@media (max-width: 370px) {
+    #logo {
+        font-size: 23px;
+    }
+
+    #logo .safety {
+        font-size: 28px;
+    }
+
+    .navbar ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #jumbotron {
+        height: 12vh;
+    }
+
+    #description .item h1 {
+        font-size: 28px;
+    }
+
+    #description .item .description-text {
+        font-size: 20px;
+    }
+
+}

@@ -3,18 +3,24 @@
 {% load crispy_forms_tags %}
 
 {% block head %}
-
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
 {% endblock head %}
 
 {% block content %}
 
 
-    <div class="container add-padding">
+    <div class="container">
 
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2 text-center">
-                <h1 class="logo-heading ">Team 24A-Spiderweb</h1>
+                <h1 class="logo-heading heading">Team 24A-Spiderweb</h1>
                 <hr class="featurette-divider">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2 text-center">
+                <p class="email"><i class="fa fa-envelope-o"></i> Email: 24a-spiderweb@googlegroups.com</p>
+
             </div>
         </div>
 
@@ -22,8 +28,8 @@
 
         <div class="row featurette">
             <div class="col-md-7">
-                <h2 class="featurette-heading">Pranil <span
-                        class="text-muted">Professional IT manager.</span></h2>
+                <h1 class="featurette-heading">Pranil <span
+                        class="text-muted">Professional IT manager.</span></h1>
                 <p class="lead">IT professional with technical and management skills, over 9 years work
                     experience in the IT field. Used to manage 12 countries for DHL Express, Fiji &
                     Pacific Islands. Strong skills in project management, analysis and business process
@@ -31,7 +37,7 @@
                 </p>
             </div>
             <div class="col-md-5">
-                <img class="featurette-image img-circle" src="{% static 'images/team_member/pranil.jpg' %}" width="170"
+                <img class="featurette-image img-circle center-block" src="{% static 'images/team_member/pranil.jpg' %}" width="170"
                      height="170"
                      alt="Pranil">
             </div>
@@ -41,8 +47,8 @@
 
         <div class="row featurette">
             <div class="col-md-7 col-md-push-5">
-                <h2 class="featurette-heading">Evan <span
-                        class="text-muted">MBIS student interested in UI design.</span></h2>
+                <h1 class="featurette-heading">Evan <span
+                        class="text-muted">MBIS student interested in UI design.</span></h1>
                 <p class="lead">Having business background, had been working as an accountant for 1 year. Now learning
                     IT,
                     business analyst and user experience testing.</p>
@@ -57,8 +63,8 @@
 
         <div class="row featurette">
             <div class="col-md-7">
-                <h2 class="featurette-heading">Sherry <span
-                        class="text-muted">IT student major in network & security.</span></h2>
+                <h1 class="featurette-heading">Sherry <span
+                        class="text-muted">IT student major in network & security.</span></h1>
                 <p class="lead">An IT student who is interested in designing and managing networks, ensuring network
                     security
                     and defensing malicious attacks; familiar with different network monitor devices; good at software
@@ -74,14 +80,14 @@
 
         <div class="row featurette">
             <div class="col-md-7 col-md-push-5">
-                <h2 class="featurette-heading">Ruiwei <span
-                        class="text-muted">A dedicated full-stack web developer.</span></h2>
+                <h1 class="featurette-heading">Ruiwei <span
+                        class="text-muted">A dedicated full-stack web developer.</span></h1>
                 <p class="lead">Experienced in Python Django web development with strong database knowledge. Solid
                     front-end
                     HTML, CSS, javascript and jQuery skill. A hungry learner for new technology.</p>
             </div>
             <div class="col-md-5 col-md-pull-7">
-                <img class="featurette-image img-circle" src="{% static 'images/team_member/tom.jpg' %}" width="170"
+                <img class="featurette-image img-circle center-block" src="{% static 'images/team_member/tom.jpg' %}" width="170"
                      height="170"
                      alt="Tom">
             </div>

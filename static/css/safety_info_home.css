@@ -1,0 +1,16 @@
+body{
+    background:#fff;
+}
+
+.navbar{
+    margin: 0;
+}
+
+.panel-title{
+    font-size: 24px;
+}
+
+.panel-body p{
+    font-size: 18px;
+}
+

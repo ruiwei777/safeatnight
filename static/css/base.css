@@ -1,191 +1,172 @@
+/*-------------------------
+    General Settings
+-------------------------*/
+html, p, h1, h2, h3, a, ul, li{
+    font-family: "Open Sans", Arial, sans-serif;
+}
+
+.heading{
+    font-family: Cabin, sans-serif;
+}
+
+h1{
+    margin: 5px 0;
+}
+
+h2{
+    margin:0;
+}
+
 body {
+    height: 100vh;
+    width: 100%;
+    padding-bottom: 0;
     background-color: #F5F5F5;
+    color: #444;
 }
 
-/*Override Carousel Control background*/
-.carousel-control.left {
-    background-image: none;
-}
-
-.carousel-control.right {
-    background-image: none;
-}
-
-@media (min-width: 768px) {
-    .btn-view {
-        margin-top: 200px;
-    }
-}
-
-.btn-line {
-    display: inline-block;
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
-.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:focus, .navbar-inverse .navbar-nav > .active > a:hover {
-    background-color: initial;
-}
-
-/* avoid overlapping with navbar */
-.add-padding {
-    padding-top: 70px;
-}
-
-.some-padding{
+.some-padding {
     padding: 5px;
 }
 
-
-
-/*Override link color*/
-/*a, a:active {*/
-    /*color: deepskyblue;*/
-/*}*/
-
-/* deleting #myCarousel botton margin */
-#myCarousel {
-    margin-bottom: 10px;
+.text-bold {
+    font-weight: bold;
 }
 
-/* index page h3 margin-top adjusting */
-.h3-margin-top {
-    margin-top: 5px;
-}
-
-/*make text larger*/
-.text-lg {
-    font-size: larger;
-}
-
-/* make image align center */
-.img-circle {
+/*-------------------
+    Header
+-------------------*/
+.positioner {
+    max-width: 80vw;
     margin: 0 auto;
-    display: block;
 }
 
-/*Override AboutUs side-heading*/
+.navbar {
+    /*margin-bottom: 0;*/
+    padding: 20px 0 30px;
+}
+
+.navbar a:hover, .navbar a:focus {
+    text-decoration: none;
+}
+
+.navbar-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.navbar-box ul {
+    text-align: center;
+}
+
+#logo {
+    font-size: 31px;
+    color: white;
+}
+
+#logo .safety {
+    font-size: 40px;
+    font-weight: bolder;
+    color: deepskyblue;
+}
+
+.navbar-item ul.navbar-ul {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.navbar-item ul li {
+    margin-left: 15px;
+    color: transparent;
+}
+
+.navbar-item ul li a {
+    font-size: 20px;
+    /*color: #DDDDDD;*/
+    color: rgba(255, 255, 255, .75);
+    font-weight: bold;
+    padding-bottom: 10px; /* for stylising border-bottom */
+    border-bottom: 3px solid transparent;
+    transition: color .5s, border-bottom-color .5s;
+}
+
+.navbar-item ul li a.active, .navbar-item ul li a:hover {
+
+    color: dodgerblue;
+
+    border-bottom-color: deepskyblue;
+}
+
+
+/*----------------------
+        About Us
+----------------------*/
+.email {
+    margin: 0 0 5px;
+    font-size: 2rem;
+}
+
+/* side-heading */
 .text-muted {
     font-size: 20px;
 }
 
-/*Override AboutUs side-heading*/
+/* side-heading */
 @media (min-width: 768px) {
     .text-muted {
         font-size: 30px;
     }
 }
 
+/*  Team name   */
+.logo-heading {
+    font-size: 45px;
+    color: black;
+}
+
 hr.featurette-divider {
+    margin: 10px 0;
     border-top: 1px solid #c5c5c5;
 }
 
-/*Override <p> margin*/
-p {
-    margin: 5px 5px;
-}
 
-/*text align center*/
+/*-----------------------
+    Custom Class
+------------------------*/
+
 .text-center {
     text-align: center;
 }
 
-/*text align right*/
 .text-right {
     text-align: right;
 }
 
-/*Team name in About page*/
-.logo-heading {
-    margin: 5px 5px;
-    font-weight: 300;
-    font-size: 60px;
-    line-height: 1;
-    letter-spacing: -1px;
-    font-family: "Century Schoolbook L";
-    color: black;
-}
-
-/*BEGIN of dropdown menu*/
-/*.dropdown:hover .dropdown-menu {*/
-/*display: block;*/
-/*background: #fff;*/
-
-/*}*/
-
-/*.dropdown:hover .dropdown-menu li a{*/
-/*color: black;*/
-/*}*/
-
-/*.dropdown.open ul.dropdown-menu{*/
-/*background: transparent;*/
-/*}*/
-
-/*.dropdown-menu>li>a{*/
-/*color: #9d9d9d;*/
-/*}*/
-/*END of dropdown menu*/
-
-/*BEGIN of DMS layout*/
-
-.same-line-widget {
-    width: 32.4%;
-    display: inline-block;
-
-}
-
-.inline-div {
-    width: 49.3%;
-    display: inline-block;
-}
-
-.area-code {
-    width: 30%;
-    display: inline-block;
-}
-
-.phone-number {
-    width: 68%;
-    display: inline-block;
-}
-
-/*END of DMS layout*/
-
-/*test*/
 #data-container {
     text-align: center
 }
 
 .no-padding {
-    padding: 0px;
+    padding: 0;
 }
-
-/*vertical alignment center*/
 
 .margin-5 {
     margin: 5px
 }
 
-.margin-0{
-    margin: 0px;
-}
-
-
-
-
-
-#status-block {
-
+.margin-0 {
+    margin: 0;
 }
 
 .custom-button-wrapper {
-    padding: 0px 5px;
+    padding: 0 5px;
 }
 
 .custom-button {
     width: 100%;
     background: none;
-    /*padding: 12px 22px;*/
     padding: 10px 10px;
 
     font-weight: 700;
@@ -258,4 +239,98 @@ p {
     margin-right: 0;
     margin-left: 0;
     margin-bottom: 10px;
+}
+
+/*-------------------------------
+    Mobile Compatibility
+--------------------------------*/
+@media (min-width: 1400px) {
+    .navbar {
+        padding-top: 65px;
+    }
+}
+
+@media (min-width: 1000px) {
+    .navbar-item ul li {
+        margin-left: 20px;
+    }
+}
+
+@media (min-width: 768px) {
+    /*.navbar {*/
+    /*padding-top: 65px;*/
+    /*}*/
+    #description {
+        padding-top: 10vh;
+    }
+}
+
+@media (max-width: 1400px) {
+    .navbar-box {
+
+        align-items: center;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 1200px) {
+    .positioner {
+        max-width: 95vw;
+    }
+
+    #jumbotron {
+        height: 13vh;
+        text-align: center;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 1000px) {
+    .navbar {
+        margin-bottom: 0;
+        padding: 0;
+    }
+
+    .navbar-box {
+
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .navbar-item ul {
+        padding: 0;
+    }
+
+    .navbar-box h3 {
+        margin: 5px;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .navbar-item ul li {
+        margin-left: 7px;
+    }
+
+    .navbar-item ul li a {
+        font-size: 17px;
+        border-bottom: none;
+    }
+
+}
+
+@media (max-width: 415px) {
+    /*iPhone 6*/
+    #logo {
+        font-size: 28px;
+    }
+
+    #logo .safety {
+        font-size: 33px;
+    }
+
+    .navbar-item ul li a {
+        font-size: 16px;
+    }
 }

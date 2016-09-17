@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
@@ -25,8 +24,7 @@ SECRET_KEY = 'ah^392(7tm@c5@9j08csv0(-bezbxy4uzzy4tx&&6h%f=1!fch'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['www.safeatnight.cf', 'safeatnight.cf']
-
+ALLOWED_HOSTS = ['www.safeatnight.cf', 'safeatnight.cf', 'www.safeatnight.tk', 'safeatnight.tk']
 
 # Application definition
 
@@ -40,8 +38,10 @@ INSTALLED_APPS = [
     # my app
     'sms',
     'map',
+    'crimestats',
     # third party
     'crispy_forms',
+    'datetimewidget',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -53,6 +53,8 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # for django-datetime-widget
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'nightshiftworker.urls'
@@ -76,7 +78,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'nightshiftworker.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
@@ -86,7 +87,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
@@ -106,15 +106,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-au'
 
 LOGIN_URL = '/login/'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Australia/Melbourne'
 
 USE_I18N = True
 
@@ -125,7 +125,6 @@ USE_TZ = True
 # Crispy forms style
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
@@ -135,3 +134,18 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 
 ]
+
+# django-compressor
+
+COMPRESS_ENABLED = True
+
+COMPRESS_JS_FILTERS = [
+    'compressor.filters.template.TemplateFilter',
+]
+
+# Celery Settings
+CELERY_TIMEZONE = 'Australia/Melbourne'
+CELERY_ENABLE_UTC = False
+CELERY_ACCEPT_CONTENT = ['pickle', 'json', 'msgpack', 'yaml']
+
+# django-datetime-widget

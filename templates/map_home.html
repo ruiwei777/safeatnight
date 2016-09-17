@@ -1,20 +1,23 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% load crispy_forms_tags %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/map_home.css' %}">
+{% endblock head %}
+
+
 {% block content %}
-
-
-    <div class="container-fluid add-padding">
-        <div class="row">
-            <div class="col-sm-6">
-                Hello world!
-            </div>
-
-            <div class="col-sm-6">
-                Hello world!
-            </div>
+    <div class="flex">
+        <div class="item col-1">
+            Hello world!
+        </div>
+        <div class="item col-2">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis dolore neque provident sed tempora ut voluptate. Dicta dolor ea enim error laudantium maiores mollitia quos. Cumque dolorem nulla quis vitae!
         </div>
     </div>
+
+
 
 
 

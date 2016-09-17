@@ -1,0 +1,63 @@
+.text-18px{
+    font-size: 18px;
+}
+
+ul.description-list li{
+    margin-bottom: 10px;
+}
+
+.error{
+    color: lightcoral;
+}
+
+.correct{
+    color: #00b80d;
+}
+
+/*DMS layout*/
+.same-line-widget {
+    width: 32.4%;
+    display: inline-block;
+
+}
+
+.inline-div {
+    width: 49.3%;
+    display: inline-block;
+}
+
+.area-code {
+    width: 30%;
+    display: inline-block;
+}
+
+.phone-number {
+    width: 68%;
+    display: inline-block;
+}
+
+/*END of DMS layout*/
+
+
+.flex{
+    display:flex;
+}
+
+.flex-1{
+    flex:1;
+}
+
+
+.div-form-selection{
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.div-form-selection .item button{
+    width: 160px;
+    margin: 5px 0;
+
+}
+
