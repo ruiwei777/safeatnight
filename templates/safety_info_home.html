@@ -6,96 +6,124 @@
 {% endblock head %}
 
 {% block content %}
-    <div class="container">
+    <div class="main positioner">
+
         <div class="page-header">
             <h1 class="heading">Safety Tips</h1>
         </div>
 
-{#        <div class="well">#}
-{#            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit#}
-{#                amet#}
-{#                non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel#}
-{#                scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non#}
-{#                .#}
-{#            </p>#}
-{#        </div>#}
+        <div class="content positioner">
+            <div class="flex">
 
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="panel panel-success">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Emergency Phone Numbers - CLICK to call if you need!</h3>
-                    </div>
-                    <div class="panel-body">
-                        <p><a href="tel:000">000</a> - The most common emergency number in Australia, but it is not the only one.</p>
-                        <p><a href="tel:131126">131 126</a> - Poisons Information Centre [24 hours]</p>
-                        <p><a href="tel:131114">131 114</a> - Life Line : 24 hour service.</p>
-                        <p><a href="tel:131638">131 638</a> - Public transport & timetables.</p>
-                        <p><a href="tel:131176">131 176</a> - Accident Towing</p>
-                    </div>
-                </div>
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Stay Helathy When Working Night Shifts</h3>
-                    </div>
-                    <div class="panel-body">
-                        <p>Worrying your health? Check <a target="_blank" href="http://www.kaylaitsines.com/blogs/news/18685223-staying-healthy-when-working-night-shifts">here</a> for tips.</p>
-                        <a target="_blank" href="http://www.kaylaitsines.com/blogs/news/18685223-staying-healthy-when-working-night-shifts"><img class="img-responsive" src="{% static 'images/safety_info_home/stay_healthy.png' %}"></a>
-                    </div>
-                </div>
-            </div><!-- /.col-sm-4 -->
+                <div class="col col-1">
 
-            <div class="col-sm-4">
-{#                <div class="panel panel-default">#}
-{#                    <div class="panel-heading">#}
-{#                        <h3 class="panel-title">Panel title</h3>#}
-{#                    </div>#}
-{#                    <div class="panel-body">#}
-{#                        Panel content#}
-{#                    </div>#}
-{#                </div>#}
-                <div class="panel panel-warning">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Public Transport Timetable</h3>
-                    </div>
-                    <div class="panel-body">
-                        <p>You can look up the Victoria public transport timetable <a target="_blank" href="https://www.ptv.vic.gov.au/">here</a>.</p>
-                        <a target="_blank" href="https://www.ptv.vic.gov.au/"><img class="img-responsive" src="{% static 'images/safety_info_home/ptv.png' %}"></a>
-                    </div>
-                </div>
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Others' thoughts about Melbourne</h3>
-                    </div>
-                    <div class="panel-body">
-                        <p>Tourists' <a target="_blank" href="https://www.virtualtourist.com/travel/Australia_and_Oceania/Australia/State_of_Victoria/Melbourne-1873103/Warnings_or_Dangers-Melbourne-TG-C-1.html">warning and suggestion</a> on living in Melbourne.</p>
-                        <a target="_blank" href="https://www.virtualtourist.com/travel/Australia_and_Oceania/Australia/State_of_Victoria/Melbourne-1873103/Warnings_or_Dangers-Melbourne-TG-C-1.html"><img class="img-responsive" src="{% static 'images/safety_info_home/others_thoughts.png' %}"></a>
-                    </div>
-                </div>
-            </div><!-- /.col-sm-4 -->
+                    <h2>Handy Information</h2>
 
-            <div class="col-sm-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Top 10 Tips on Surviving Nightshift</h3>
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Emergency Phone Numbers</h3>
+                        </div>
+                        <div class="panel-body">
+                            <p><a href="tel:000"><i class="fa fa-phone"></i></a> 000 - The most common emergency number in Australia, but it is not
+                                the
+                                only one.</p>
+                            <p><a href="tel:131126"><i class="fa fa-phone"></i></a> 131 126 - Poisons Information Centre [24 hours]</p>
+                            <p><a href="tel:131114"><i class="fa fa-phone"></i></a> 131 114 - Life Line : 24 hour service.</p>
+                            <p><a href="tel:131638"><i class="fa fa-phone"></i></a> 131 638 - Public transport & timetables.</p>
+                            <p><a href="tel:131176"><i class="fa fa-phone"></i></a> 131 176 - Accident Towing</p>
+                        </div>
                     </div>
-                    <div class="panel-body">
-                        <p></p>
-                        <a target="_blank" href="http://lifeinthefastlane.com/top-10-tips-surviving-nightshift/"><img class="img-responsive" src="{% static 'images/safety_info_home/top_10_tips.png' %}"></a>
+
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Public Transport Timetable</h3>
+                        </div>
+                        <div class="panel-body">
+                            <p>You can look up the Victoria public transport timetable <a target="_blank"
+                                                                                          href="https://www.ptv.vic.gov.au/">here</a>.
+                            </p>
+                            <a target="_blank" href="https://www.ptv.vic.gov.au/"><img class="img-responsive"
+                                                                                       src="{% static 'images/safety_info_home/ptv.png' %}"></a>
+                        </div>
                     </div>
+
+
                 </div>
-                <div class="panel panel-danger">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">How to Feel Safe When Bad Things Happen</h3>
+
+                <div class="col col-2">
+
+                    <h2>Health Tips</h2>
+
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Stay Healthy When Working Night Shifts</h3>
+                        </div>
+                        <div class="panel-body">
+                            <p>Worrying about your health? Check <a target="_blank"
+                                                                    href="http://www.kaylaitsines.com/blogs/news/18685223-staying-healthy-when-working-night-shifts">here</a>
+                                for tips.</p>
+                            <a target="_blank"
+                               href="http://www.kaylaitsines.com/blogs/news/18685223-staying-healthy-when-working-night-shifts"><img
+                                    class="img-responsive"
+                                    src="{% static 'images/safety_info_home/stay_healthy.png' %}"></a>
+                        </div>
                     </div>
-                    <div class="panel-body">
-                        <p></p>
-                        <a target="_blank" href="https://www.psychologytoday.com/blog/women-s-mental-health-matters/201511/how-feel-safe-when-bad-things-happen"><img class="img-responsive" src="{% static 'images/safety_info_home/bad_things_happen.png' %}"></a>
+
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Top 10 Tips on Surviving Nightshift</h3>
+                        </div>
+                        <div class="panel-body">
+                            <p></p>
+                            <a target="_blank"
+                               href="http://lifeinthefastlane.com/top-10-tips-surviving-nightshift/"><img
+                                    class="img-responsive" src="{% static 'images/safety_info_home/top_10_tips.png' %}"></a>
+                        </div>
                     </div>
+
+
                 </div>
-            </div><!-- /.col-sm-4 -->
+
+                <div class="col col-3">
+
+                    <h2>Travellers' Views</h2>
+
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Others' thoughts about Melbourne</h3>
+                        </div>
+                        <div class="panel-body">
+                            <p>Tourists' <a target="_blank"
+                                            href="https://www.virtualtourist.com/travel/Australia_and_Oceania/Australia/State_of_Victoria/Melbourne-1873103/Warnings_or_Dangers-Melbourne-TG-C-1.html">warning
+                                and suggestion</a> on living in Melbourne.</p>
+                            <a target="_blank"
+                               href="https://www.virtualtourist.com/travel/Australia_and_Oceania/Australia/State_of_Victoria/Melbourne-1873103/Warnings_or_Dangers-Melbourne-TG-C-1.html"><img
+                                    class="img-responsive"
+                                    src="{% static 'images/safety_info_home/others_thoughts.png' %}"></a>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">How to Feel Safe When Bad Things Happen</h3>
+                        </div>
+                        <div class="panel-body">
+                            <p></p>
+                            <a target="_blank"
+                               href="https://www.psychologytoday.com/blog/women-s-mental-health-matters/201511/how-feel-safe-when-bad-things-happen"><img
+                                    class="img-responsive"
+                                    src="{% static 'images/safety_info_home/bad_things_happen.png' %}"></a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
         </div>
+
     </div>
+
 
 
 

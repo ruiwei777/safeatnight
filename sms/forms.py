@@ -5,6 +5,8 @@ from django import forms
 from .models import SMS
 from datetimewidget.widgets import DateTimeWidget
 
+import os,binascii
+
 
 
 
@@ -29,6 +31,8 @@ from datetimewidget.widgets import DateTimeWidget
 
 
 class SMSForm(forms.ModelForm):
+    remember_me = forms.BooleanField(required=False)
+
     class Meta:
         model = SMS
         fields = '__all__'
@@ -36,16 +40,21 @@ class SMSForm(forms.ModelForm):
             # Use localization and bootstrap 3
             'scheduled_time': DateTimeWidget(attrs={'id': "id_scheduled_time"}, usel10n=True, bootstrap_version=3),
             'active': forms.HiddenInput(),
+            'cancellation_code': forms.HiddenInput(),
             # 'scheduled_time': DateTimeWidget(usel10n=True, bootstrap_version=3)
         }
         labels={
             "receiver_areacode": "Areacode",
             "sender_areacode": "Areacode",
             "cancellation_code": "Cancellation code (Case Sensitive)",
+            "sender_number": "Your number",
         }
 
 class CancelForm(forms.Form):
 
-    phone_number = forms.IntegerField()
-    cancellation_code = forms.CharField(required=True, max_length=5)
+
+    phone_number = forms.IntegerField(label="Your number")
+    cancellation_code = forms.CharField(required=True,
+                                        max_length=10,
+                                        )
 

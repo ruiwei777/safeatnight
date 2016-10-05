@@ -3,6 +3,8 @@ from django.shortcuts import render
 from .forms import SMSForm, CancelForm
 from .models import SMS
 
+import os, binascii
+
 from twilio import TwilioRestException
 from twilio.rest import TwilioRestClient
 
@@ -17,7 +19,6 @@ import datetime
 
 @login_required()
 def index(request):
-
     return render(request, "index_2.html", {"title": "Home"})
 
 
@@ -40,50 +41,47 @@ def sms_home(request):
     receiver = None
     title = "Safety Switch"
 
-    form = SMSForm(request.POST or None)
-    if form.is_valid():
-        # if form.cleaned_data["invitation_code"].lower() != "fit5120":
-        #     is_error = "Invalid invitation code"
-        #     context = {
-        #         "form": form,
-        #         "is_sent": is_sent,
-        #         "is_error": is_error,
-        #         "receiver": receiver,
-        #         "title": title,
-        #     }
-        #     return render(request, "sms_home.html", context)
+    #random_code = binascii.b2a_hex(os.urandom(3)).decode("utf-8")
+    #print(random_code)
+    cancel_form = CancelForm()
 
-        # After data validation
-        receiver = form.cleaned_data.get("receiver_number")
-        sender = form.cleaned_data.get("sender_number")
-        content = form.cleaned_data.get("content")
-        scheduled_time = form.cleaned_data.get("scheduled_time")
+    form = SMSForm(request.POST or None)
+    print(request.POST.get("cancellation_code"))
+    print(request.POST.get("sender_number"))
+    if form.is_valid():
 
         sms_object = form.save()
-        print(sms_object.id)
-        print(sms_object.content)
-        # send_message.delay(sms_object.id)
+        # print(sms_object.id)
+        print(sms_object.sender_number)
+
         send_message.apply_async([sms_object.id], eta=sms_object.scheduled_time)
-        to = sms_object.receiver_areacode + str(sms_object.receiver_number)
+        to = sms_object.sender_areacode + str(sms_object.sender_number)
+        # Immediately send a copy
         send_message_immediately.delay(to, sms_object.scheduled_time, sms_object.cancellation_code)
         is_sent = True
         receiver = sms_object.receiver_number
         form = SMSForm(None)
-        cancel_form = CancelForm(None)
+        # cancel_form = CancelForm(None)
 
-    cancel_form = CancelForm(request.POST or None)
-    if cancel_form.is_valid():
-        phone_number = cancel_form.cleaned_data.get("phone_number")
-        cancellation_code = cancel_form.cleaned_data.get("cancellation_code")
-        messages = SMS.objects.all().filter(sender_number=phone_number, cancellation_code=cancellation_code)
-        for m in messages:
-            m.active = False
-            m.save()
-        cancel_message = "Message(s) of phone number " + str(phone_number) + " with cancellation code " + cancellation_code + " have been cancelled."
-        cancel_form = CancelForm(None)
-        form = SMSForm(None)
+    elif request.POST.get("cancellation_code"):
+        cancel_form = CancelForm(request.POST)
+        if cancel_form.is_valid():
+            phone_number = cancel_form.cleaned_data.get("phone_number")
+            cancellation_code = cancel_form.cleaned_data.get("cancellation_code")
+            messages = SMS.objects.all().filter(sender_number=phone_number, cancellation_code=cancellation_code)
+            if messages.exists():
+                for m in messages:
+                    m.active = False
+                    m.save()
+                cancel_message = "Message(s) of phone number " + str(
+                    phone_number) + " with cancellation code " + cancellation_code + " have been cancelled."
+            else:
+                is_error = "Invalid phone number of cancellation code."
+            cancel_form = CancelForm(None)
+            form = SMSForm(None)
 
-
+    else:
+        print(form.errors)
 
     context = {
         "form": form,

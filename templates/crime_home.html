@@ -16,11 +16,28 @@
 
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 text-center">
-                <h1 class="margin-bottom heading">Crime Statistics Victoria</h1>
+                <h1 class="margin-bottom heading">Number of Offences Recorded in Victoria</h1>
             </div>
-
-
         </div>
+
+
+        <div class="row">
+            <div class="col-lo-7 col-lg-offset-2">
+                <ul class="main-text">
+{#                    <li>#}
+{#                        Following shows the <span class="stress">amount of offences</span> recorded, from#}
+{#                        April 2015 to March 2016#}
+{#                    </li>#}
+
+                    <li>
+                        Areas are organised by <span class="stress">postcode</span>, <span
+                            class="stress">click</span> to check.
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
 
         <div class="row">
             <div class="col-lg-3 col-lg-offset-2 dashboard-col">
@@ -28,9 +45,8 @@
                 <div class="row margin-bottom" id="dashboard-wrapper">
 
                     <h2>Dashboard</h2>
-                    <p class="lead dashboard-description">Enter postcode <span class="or">OR</span> suburb name of
-                        interest to get the crime
-                        rate.
+                    <p class="lead dashboard-description">Enter postcode <span class="or">OR</span> suburb name to
+                        search.
                     </p>
                     <p id="information-paragraph" hidden="true"><i class="fa fa-exclamation fa-lg "
                                                                    aria-hidden="true"></i> <span
@@ -47,23 +63,29 @@
                         </div>
 
                         <div class="item">
-                            <p class="heading">Crime rate: </p>
+                            <p class="heading">Chosen area: </p>
                             <p id="crime-rate-text" class="heading result">None</p>
                         </div>
 
-                        <div class="item">
-                            <p class="heading">Vic Average: </p>
-                            <p class="heading result">0.103%</p>
-                        </div>
 
                         <div class="item">
-                            <p class="heading">Lowest: </p>
-                            <p class="heading result" id="lowest">0.011%</p>
+                            <p class="heading">Victoria average: </p>
+                            <p class="heading result">747</p>
                         </div>
 
+{#                        <div class="item">#}
+{#                            <p class="heading">Lowest: </p>#}
+{#                            <p class="heading result" id="lowest">0</p>#}
+{#                        </div>#}
+{##}
+{#                        <div class="item">#}
+{#                            <p class="heading">Highest: </p>#}
+{#                            <p class="heading result" id="highest">22,337</p>#}
+{#                        </div>#}
+
                         <div class="item">
-                            <p class="heading">Highest: </p>
-                            <p class="heading result" id="highest">3.911%</p>
+                            <p class="heading">Victoria total: </p>
+                            <p class="heading result">519,130</p>
                         </div>
 
 
@@ -74,74 +96,16 @@
                         <button id="current-location" type="submit" class="item btn btn-info">Near Me</button>
                         <button id="reset" type="submit" class="item btn btn-success">Reset</button>
                     </div>
-                    {#                    <div class="row">#}
-                    {#                        <div class="col-lg-6 custom-button-wrapper">#}
-                    {#                            <div id="current-location-2" class="custom-button" role="button">Near Me</div>#}
-                    {#                        </div>#}
-                    {#                        <div class="col-lg-6 custom-button-wrapper">#}
-                    {#                            <div id="reset-2" class="custom-button" role="button">Reset</div>#}
-                    {#                        </div>#}
-                    {#                    </div>#}
-                    {##}
-                    {#                    <div class="row">#}
-                    {#                        <div class="col-lg-6 custom-button-wrapper">#}
-                    {#                            <input type="text" id="search-text" placeholder='e.g. "clayton", "3163"'>#}
-                    {#                        </div>#}
-                    {#                        <div class="col-lg-6 custom-button-wrapper">#}
-                    {#                            <div id="search-2" class="custom-button" role="button">Search</div>#}
-                    {#                        </div>#}
-                    {##}
-                    {#                    </div>#}
-                    {##}
-                    {#                    <div class="row">#}
-                    {#                        <div class="col-lg-12" style="padding: 0px 5px;">#}
-                    {#                            <div class="custom-banner" id="comment"></div>#}
-                    {#                        </div>#}
-                    {#                    </div>#}
 
-                    {#                    <div id="selected-area-block-wrapper">#}
-                    {##}
-                    {#                        <div id="selected-area-block" class="text-center">#}
-                    {#                            <h3 class="margin-0">Area:#}
-                    {#                                <sapn id="selected-area-text">none</sapn>#}
-                    {#                            </h3>#}
-                    {#                            <h3 class="margin-0">Crime Rate:#}
-                    {#                                <span id="crime-rate-text">none</span>#}
-                    {#                            </h3>#}
-                    {#                            <p class="leading" id="comment">lkjlj</p>#}
-                    {#                        </div>#}
-                    {#                        <div id="status-block">#}
-                    {#                            <p class="leading" style="font-size: 13px"><span id="average">Vic. average: 1.96%</span>#}
-                    {#                                <span id="lowest">Lowest: 0.011%; </span>#}
-                    {#                                <span id="highest">Highest: 3.911%</span>#}
-                    {#                            </p>#}
-                    {##}
-                    {#                        </div>#}
-                    {#                    </div>#}
                 </div>
-                {#                <div class="row margin-bottom">#}
-                {#                    <div class="col-lg-6 no-padding">#}
-                {#                        <button class="btn btn-info crime-btn-group" id="current-location">Current Location</button>#}
-                {#                    </div>#}
-                {#                    <div class="col-lg-5 no-padding col-lg-push-2">#}
-                {#                        <button class="btn btn-info crime-btn-group" id="reset">Reset</button>#}
-                {#                    </div>#}
-                {#                </div>#}
-                {##}
-                {#                <div class="row margin-bottom">#}
-                {#                    <div class="col-lg-12 no-padding">#}
-                {#                        <div class="input-group">#}
-                {#                            <span class="input-group-btn">#}
-                {#                                <button class="btn btn-info crime-btn-group" type="button"#}
-                {#                                        id="search">Search</button>#}
-                {#                            </span>#}
-                {#                            <input type="text" placeholder="postcode or area name"#}
-                {#                                   class="form-control" id="search-text">#}
-                {##}
-                {#                        </div>#}
-                {#                    </div>#}
-                {##}
-                {#                </div>#}
+                <div class="row">
+                    <div class="col-lg-12">
+                        Source data is downloaded from <a target="_blank" rel="noreferrer"
+                                                          href="https://www.crimestatistics.vic.gov.au/crime-statistics/latest-crime-data/recorded-offences">Crime
+                        Statistics
+                        Agency Victoria</a>, including data from Apr 2015 to Mar 2016.
+                    </div>
+                </div>
 
 
             </div>
@@ -184,7 +148,7 @@
                     .append("g")
                     .attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
 
-            d3.json("{% static 'data/crime_rate/crime_rate_1.json' %}", function (error, root) {
+            d3.json("{% static 'data/crime_rate/crimedata_new_work.json' %}", function (error, root) {
                 if (error) throw error;
 
                 var focus = root,
@@ -221,39 +185,43 @@
                                     return d.parent === root ? "inline" : "none";
                                 })
                                 .style("fill-opacity", function (d) {
-                                    if (!d.children && d.parent === root) {
-                                        return 1;
-
-                                    }
-
-                                    return d.children ? 1 : 0;
+                                    {#                                    if (!d.children && d.parent === root) {#}
+                                    {#                                        return 1;#}
+                                    {##}
+                                    {#                                    }#}
+                                    {##}
+                                    {#                                    return d.children ? 1 : 0;#}
+                                    return d.parent === root ? 1 : 0;
                                 })
                                 .style("display", function (d) {
-                                    if (!d.children && d.parent === root) {
-                                        return "inline";
-
-                                    }
-
-                                    return d.children ? "inline" : "none";
+                                    {#                                    if (!d.children && d.parent === root) {#}
+                                    {#                                        return "inline";#}
+                                    {##}
+                                    {#                                    }#}
+                                    {##}
+                                    {#                                    return d.children ? "inline" : "none";#}
+                                    return d.parent === root ? "inline" : "none";
                                 })
-{#                                .text(function (d) {#}
-{#                                    var parent_text = d.name;#}
-{#                                    var child_text = d.suburb + ": " + Math.round(d.size * 100) / 100 + "%";#}
-{#                                    return d.children ? parent_text : child_text;#}
-{#                                })#}
-{#                                .style("fill", function (d) {#}
-{#                                    if (d.size < 0.05) return "green"#}
-{#                                    else if (d.size >= 0.05 && d.size < 0.1) return "blue"#}
-{#                                    else if (d.size >= 0.1) return "red"#}
-{#                                })#}
-{#                                .style("font-size", "11px")#}
+                                .text(function (d) {
+                                    {#                                    var parent_text = d.name;#}
+                                    {#                                    var child_text = d.suburb + ": " + Math.round(d.size * 100) / 100 + "%";#}
+                                    {#                                    return d.children ? parent_text : child_text;#}
+                                    if (d.children)
+                                        return d.name;
+                                })
+                                .style("font-size", "16px")
+                        {#                                .style("fill", function (d) {#}
+                        {#                                    if (d.size < 0.05) return "green"#}
+                        {#                                    else if (d.size >= 0.05 && d.size < 0.1) return "blue"#}
+                        {#                                    else if (d.size >= 0.1) return "red"#}
+                        {#                                })#}
+                        {#                                .style("font-size", "11px")#}
                         ;
 
                 // add content to circle
 
 
                 text.each(function (d) {
-                    {#                    console.log(d.suburb)#}
                     var yoffset = 0;
                     var suburb_str = "" + d.suburb;
                     var text_element = d3.select(this);
@@ -265,7 +233,12 @@
                                 .text(function (d) {
                                     return d.suburb;
                                 });
-
+                        {#                                .style("fill-opacity", function (d) {#}
+                        {#                                    return d.children ? 1 : 0;#}
+                        {#                                })#}
+                        {#                                .style("display", function (d) {#}
+                        {#                                    return d.children ? "inline" : "none";#}
+                        {#                                })#}
 
                     } else {
                         var suburb_array = suburb_str.split(",");
@@ -279,13 +252,8 @@
                                     .style("font-size", "12px")
                                     .text(suburb_array[i]);
                         }
-
-                        {% comment %}suburb_array.forEach(function (suburb) {
-
-
-                        }){% endcomment %}
                     }
-                })
+                });
 
 
                 {#                text.append("tspan")#}
@@ -302,14 +270,18 @@
                         .style("font-size", "13px")
 
                         .text(function (d) {
-                            return d.size ? Math.round(d.size * 100) / 100 + "%" : null;
+                            return d.size ? d.size : null;
                         })
                         .style("fill", function (d) {
-                            if (d.size < 0.05) return "green"
-                            else if (d.size >= 0.05 && d.size < 0.1) return "blue"
-                            else if (d.size >= 0.1) return "red"
+                            if (d.size < 100) return "green"
+                            else if (d.size < 641) return "blue"
+                            else if (d.size >= 641) return "red"
                         });
 
+
+                /***********************************
+                 * Transition
+                 */
                 var node = svg.selectAll("circle,text");
 
                 d3.select("#data-container")
@@ -346,7 +318,7 @@
                                 if (d.parent === focus) this.style.display = "inline";
                             })
                             .each("end", function (d) {
-                                if (d.parent !== focus) this.style.display = "none";  // should be "none"
+                                if (d.parent !== focus) this.style.display = "none";
                             });
                 }
 
@@ -358,7 +330,9 @@
                     });
                     circle.attr("r", function (d) {
                         return d.r * k;
-                    });
+                    })
+
+                    ;
                 }
             });
 

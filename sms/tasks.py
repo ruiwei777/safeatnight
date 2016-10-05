@@ -57,6 +57,8 @@ def send_message(id):
             message = client.messages.create(body=body,
                                              to=to,  # Replace with your phone number
                                              from_="+61437148573")  # Replace with your Twilio number
+            sms_object.active = False
+            sms_object.save()
             print("Message has been sent.")
         except TwilioRestException as e:
             print(e)

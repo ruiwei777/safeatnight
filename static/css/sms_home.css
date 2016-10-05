@@ -1,3 +1,6 @@
+/*------------------------
+    Custome Class
+------------------------*/
 .text-18px{
     font-size: 18px;
 }
@@ -10,35 +13,25 @@ ul.description-list li{
     color: lightcoral;
 }
 
+.message{
+    color: #00980d;
+    display: none;
+}
+
 .correct{
     color: #00b80d;
 }
 
-/*DMS layout*/
-.same-line-widget {
-    width: 32.4%;
-    display: inline-block;
-
+.text-lg{
+    font-size:17px;
+    margin: 0;
+    padding: 5px 0;
 }
 
-.inline-div {
-    width: 49.3%;
-    display: inline-block;
-}
 
-.area-code {
-    width: 30%;
-    display: inline-block;
-}
-
-.phone-number {
-    width: 68%;
-    display: inline-block;
-}
-
-/*END of DMS layout*/
-
-
+/*----------------------------
+    Form Display
+----------------------------*/
 .flex{
     display:flex;
 }

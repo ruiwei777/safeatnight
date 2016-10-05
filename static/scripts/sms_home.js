@@ -2,12 +2,6 @@
  * Created by user on 13/09/16.
  */
 
-// Add Placeholder for DMS form
-function addPlaceHolderDMS() {
-    $("#id_hour").attr("placeholder", "0 to 23");
-    $("#id_minute").attr("placeholder", "0 to 59")
-}
-$(addPlaceHolderDMS());
 
 /**
  * Adjust Image Size
@@ -22,27 +16,8 @@ function adjustDMSImage() {
 $(adjustDMSImage());
 $(window).resize(adjustDMSImage);
 
+
 // BEGIN of DMS layout
-function makeWidgetSameLine() {
-    $(".selectdatewidget.form-control").addClass('same-line-widget')
-}
-
-function makeMinuteAndHourSameLine() {
-    $("#div_id_hour").addClass('inline-div');
-    $("#div_id_minute").addClass('inline-div')
-}
-
-function makeAreaCodeAndNumberSameLine() {
-    $("#div_id_receiver_area_code").addClass('area-code');
-    $("#div_id_sender_area_code").addClass('area-code');
-    $("#div_id_receiver").addClass('phone-number');
-    $("#div_id_sender").addClass('phone-number');
-}
-
-
-// $(makeWidgetSameLine());
-// $(makeMinuteAndHourSameLine());
-// $(makeAreaCodeAndNumberSameLine());
 
 
 /**
@@ -73,7 +48,7 @@ $(wrap)
 function validatePhoneNumber(item) {
 
     if (item[0].value.length == 10) {
-        console.log(item[0].value.charAt(0) == "0" && $.isNumeric(item[0].value))
+        //console.log(item[0].value.charAt(0) == "0" && $.isNumeric(item[0].value))
         return item[0].value.charAt(0) == "0" && $.isNumeric(item[0].value)
     } else if (item[0].value.charAt(0) != "0" && item[0].value.length == 9) {
 
@@ -110,7 +85,9 @@ $("#id_receiver_number").on("keyup", receiverKeyPressHandler)
 $("#id_sender_number").on("keyup", senderKeyPressHandler)
 
 
-// Submit Button
+/*----------------------------------------------
+ Submit Button Validation
+ ---------------------------------------------*/
 function validatePhoneNumberBeforeSubmit() {
     var receiver = $("#id_receiver_number");
     var sender = $("#id_sender_number");
@@ -121,42 +98,50 @@ function validatePhoneNumberBeforeSubmit() {
     return true;
 }
 
-// function validateDate() {
-//     var now = new Date();
-//     var year = $("#id_date_year").val();
-//     var month = $("#id_date_month").val() - 1;
-//     var day = $("#id_date_day").val();
-//     var hour = $("#id_hour").val();
-//     var minute = $("#id_minute").val();
-//
-//
-//     var d = new Date(year, month, day, hour, minute, 0, 0);
-//     if (d < now) {
-//         return false;
-//     } else {
-//         return true
-//     }
-//
-// }
+function validateDate() {
+    var now = new Date();
+    var date_str = $("input[id=id_scheduled_time]").val();
+    var submit_date = new Date(date_str);
+
+
+    if (submit_date < now) {
+        return false;
+    } else {
+        return true
+    }
+
+}
 
 
 function validateFormSubmit() {
+    if (!validateDate()) {
+        alert("Invalid date.");
+        return false;
+    }
+
     if (!validatePhoneNumberBeforeSubmit()) {
         alert("Incorrect Phone number.");
         return false;
     }
 
-    if (!validateDate()) {
-        alert("Sorry, sending message to the past is not supported for the moment.");
-        return false;
-    }
+    rememberMeCookies();
+
+    return true;
+
+
 }
 
 $("#submit-btn").click(validateFormSubmit);
 
-// Add Placeholder to #id_scheduled_time
+/*----------------------------------------------
+ Add Placeholder to id_scheduled_time
+ ---------------------------------------------*/
 $("input[id=id_scheduled_time]").attr("placeholder", "Click the calendar to set time");
 
+
+/*----------------------------------------------
+ Swap between Send / Cancel message
+ ---------------------------------------------*/
 function swapForm() {
     var cancel_form = $("#cancel_form");
     var sms_form = $("#sms_form");
@@ -189,3 +174,71 @@ function swapForm() {
 }
 
 $(swapForm);
+
+
+/*------------------------------------
+ Cookies to remember phone number
+ -----------------------------------*/
+function rememberMeCookies() {
+    var confirm = $("input[id=id_remember_me]").val();
+    if (confirm) {
+        var input_reciever_number = $("input[id=id_receiver_number]").val();
+        var input_sender_number = $("input[id=id_sender_number]").val();
+        Cookies.set("phone_number", {
+            receiver_number: input_reciever_number,
+            sender_number: input_sender_number
+        });
+    }
+}
+
+$("#div_id_remember_me").after("<div class='message'>Browser will remember your phone numbers using cookies.</div>");
+
+function rememberMeOnValueChanged() {
+    var remember_me_input = $("input[id=id_remember_me]");
+
+    var confirm = remember_me_input.is(":checked");
+
+
+    if (confirm) {
+        $(".message")
+            .slideDown("fast");
+    } else {
+        $(".message").slideUp("fast");
+    }
+}
+$("input[id=id_remember_me]").change(rememberMeOnValueChanged);
+
+function displayCookiesOnPageLoad() {
+    var cookies = Cookies.getJSON("phone_number");
+
+    var receiver_number_input = $("input[id=id_receiver_number]");
+    var sender_number_input = $("input[id=id_sender_number]");
+
+
+
+    if(cookies){
+        receiver_number_input.css("background-color","rgb(250,255,189)").val(cookies.receiver_number);
+        sender_number_input.css("background-color","rgb(250,255,189)").val(cookies.sender_number);
+
+        receiver_number_input.keyup(function(){
+            if(receiver_number_input.val() == parseInt(cookies.receiver_number)){
+                receiver_number_input.css("background-color", "rgb(250,255,189)");
+            } else {
+                receiver_number_input.css("background-color", "inherit");
+            }
+        });
+
+        sender_number_input.keyup(function(){
+            if(sender_number_input.val() == parseInt(cookies.sender_number)){
+                sender_number_input.css("background-color", "rgb(250,255,189)");
+            } else {
+                sender_number_input.css("background-color", "inherit");
+            }
+        });
+    }
+
+}
+
+
+$(displayCookiesOnPageLoad);
+

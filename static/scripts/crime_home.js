@@ -11,8 +11,9 @@ $(clickToId())
 
 // Reset button
 $("#reset").click(function () {
+    var comment = $("#comment");
 
-    if ($("#comment").not(":hidden")) $("#comment").slideUp();
+    if (comment.not(":hidden")) comment.slideUp();
     $("#data-container").d3Click();
     $("#postcode-text").val("");
     $("#suburb-text").val("");
@@ -110,7 +111,7 @@ function searchOnClick() {
     $("#information-paragraph").slideUp("fast");
 
 
-    var url_raw = "https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyCNSq5fvWuyqJ1UIJjEcSLzX7T5BqfSYtI&address=australia,";
+    var url_raw = "https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyCNSq5fvWuyqJ1UIJjEcSLzX7T5BqfSYtI&address=australia,victoria,";
     var url;
 
     if (postcode_text != "") {
@@ -148,6 +149,8 @@ function searchOnClick() {
                     if (e.types[0] === "postal_code") {
                         var postcode = e.short_name;
                         clickToPostcode(postcode)
+                    } else {
+                        displayInformationParagraph();
                     }
                 })
             } else {
@@ -159,7 +162,7 @@ function searchOnClick() {
 
 
 /**
- * dfsdf
+ * After simulating d3 click, show the text on bubbles
  */
 function showText() {
     setTimeout(function () {
@@ -172,7 +175,7 @@ function showText() {
 
 function displayDashboardData(postcode, postcode_localities, crimeRateText) {
     $("#postcode-text").val(postcode);
-    $("#crime-rate-text").text(crimeRateText + "%");
+    $("#crime-rate-text").text(crimeRateText);
     if (postcode_localities) {
         $("#suburb-text").val(postcode_localities.join(", "))
     } else {
@@ -187,14 +190,14 @@ function displayInformationParagraph(crime_rate) {
     var color = "goldenrod";
 
     if (crime_rate) {
-        if (crime_rate <= 0.048) {
+        if (crime_rate <= 99) {
             p.text("Congratulation! This area has a very LOW crime rate.");
             color = "#5cb85c";
-        } else if (crime_rate <= 0.08) {
-            p.text("Not bad. This area has an ACCEPTABLE crime rate.");
+        } else if (crime_rate <= 640) {
+            p.text("Not bad. This area has a MEDIUM crime rate.");
             color = "dodgerblue";
-        } else {
-            p.text("Warning: this area has a top 30% crime rate in Victoria.");
+        } else if (crime_rate >= 641) {
+            p.text("Warning: this area has a top 30% amount of recorded offense in Victoria.");
             color = "lightcoral";
         }
 
@@ -226,61 +229,11 @@ function getSuburb(id) {
     return selection.suburb;
 }
 
-function setComment(size, suburb) {
-    var comment = $("#comment");
-    if (size <= 0.05) {
-        // low crime rate
-        if (comment.is(":hidden")) {
-            comment.css("color", "lightgreen")
-            comment.text("Congratulations! " + suburb + " has a low crime rate.");
-            comment.slideDown();
-        } else {
-            comment.slideUp(function () {
-                comment.css("color", "lightgreen")
-                comment.text("Congratulations! " + suburb + " has a low crime rate.");
-                comment.slideDown()
-            })
-        }
-
-    } else if (size > 0.05 && size < 0.1) {
-        // medium crime rate
-        if (comment.is(":hidden")) {
-            comment.text("Not bad. " + suburb + " has a medium crime rate.");
-            comment.css("color", "#5bc0de")
-            comment.slideDown();
-        } else {
-            comment.slideUp(function () {
-                comment.text("Not bad. " + suburb + " has a medium crime rate.");
-                comment.css("color", "#5bc0de")
-                comment.slideDown()
-            })
-        }
-
-    } else {
-        if (comment.is(":hidden")) {
-            comment.text("Oops. " + suburb + " has a high crime rate.");
-            comment.css("color", "lightcoral")
-            comment.slideDown();
-
-        } else {
-            comment.slideUp(function () {
-                comment.text("Oops. This area has a high crime rate.");
-                comment.css("color", "lightcoral")
-                comment.slideDown()
-            })
-        }
-        // high crime rate
-    }
-
-}
-
-// function alertNorSupportedArea() {
-//     alert("Not supported area.")
-// }
 
 /**
  * Click to the d3 element and display information
  * @param postcode
+ * @param postcode_localities
  */
 function clickToPostcode(postcode, postcode_localities) {
 
@@ -319,6 +272,27 @@ $.fn.enterKey = function (fnc) {
 
 $("#postcode-text").enterKey(searchOnClick);
 $("#suburb-text").enterKey(searchOnClick);
+
+
+/**
+ * Browser warning
+ */
+function detectBrowser() {
+    var header = $("header");
+    if (navigator.userAgent.indexOf("Firefox") != -1) {
+        header.css("margin-bottom", "0")
+            .after("<div class='bg-info text-center' style='font-size: 16px'>Firefox Browser might not get your location. Please Switch to" +
+                " Chrome to get better experience.</div>")
+
+    }
+    else if (navigator.userAgent.indexOf("Chrome") == -1) {
+        $("header").css("margin-bottom", "0")
+            .after("<div class='bg-info text-center' style='font-size: 16px'>Browsers other than Chrome might cause display issues.</div>")
+            .css("background", "deepskyblue")
+    }
+}
+
+$(detectBrowser)
 
 
 // Geolocation API

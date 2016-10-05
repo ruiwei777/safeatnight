@@ -3,9 +3,14 @@
 {% load crispy_forms_tags %}
 
 {% block head %}
+
     <link rel="stylesheet" href="{% static 'css/sms_home.css' %}">
     {{ form.media }}
+    <script src="{% static 'scripts/js.cookie.js' %}"></script>
+
 {% endblock head %}
+
+
 
 {% block content %}
 
@@ -33,27 +38,38 @@
                 </div>
             </div>
         {% endif %}
+
+
+{#        {% if form.errors %}#}
+{#            {% for field in form %}#}
+{#                {% for error in field.errors %}#}
+{#                    <div class="alert alert-danger">#}
+{#                        <strong>{{ error|escape }}</strong>#}
+{#                    </div>#}
+{#                {% endfor %}#}
+{#            {% endfor %}#}
+{#            {% for error in form.non_field_errors %}#}
+{#                <div class="alert alert-danger">#}
+{#                    <strong>{{ error|escape }}</strong>#}
+{#                </div>#}
+{#            {% endfor %}#}
+{#        {% endif %}#}
+
+
         <div class="row">
             <div class="col-lg-4 col-lg-offset-2">
                 <h1 class="text-center heading">Safety Switch</h1>
 
                 <ul class="text-18px description-list">
+
                     <li>
-                        Enter the phone numbers and time to send, text message will be sent at
-                        the set time.
-                    </li>
-                    <li>The estimated time of arrival is based on <span class="text-bold">Victoria, Australia</span>
-                        local time; i.e. AEST (UTC+10) or AEDT (UTC+11) depending on daylight savings.
+                        Enter alert message.
                     </li>
                     <li>
-                        As long as a message is submitted, you will receive a text message of the record with the cancellation code.
+                        Get a message with cancellation code of your submission.
                     </li>
-                    <li>
-                        Preserve the cancellation code for cancelling the message.
-                    </li>
-                    <li>
-                        Sending message to the past is not supported for the moment.
-                    </li>
+
+
                 </ul>
 
                 <img id="dms-img" class="img-circle center-block" width="300" height="300"

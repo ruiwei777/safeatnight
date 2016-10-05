@@ -1,24 +1,29 @@
 /*-------------------------
     General Settings
 -------------------------*/
-html, p, h1, h2, h3, a, ul, li{
+html, p, h1, h2, h3, a, ul, li {
     font-family: "Open Sans", Arial, sans-serif;
 }
 
-.heading{
+html, body{
+    font-size: 100%;
+}
+
+.heading {
     font-family: Cabin, sans-serif;
 }
 
-h1{
+h1 {
     margin: 5px 0;
 }
 
-h2{
-    margin:0;
+h2 {
+    margin: 0;
 }
 
 body {
     height: 100vh;
+    /*height:auto;*/
     width: 100%;
     padding-bottom: 0;
     background-color: #F5F5F5;
@@ -31,6 +36,10 @@ body {
 
 .text-bold {
     font-weight: bold;
+}
+
+.flex{
+    display: flex;
 }
 
 /*-------------------
@@ -99,7 +108,6 @@ body {
     border-bottom-color: deepskyblue;
 }
 
-
 /*----------------------
         About Us
 ----------------------*/
@@ -130,7 +138,6 @@ hr.featurette-divider {
     margin: 10px 0;
     border-top: 1px solid #c5c5c5;
 }
-
 
 /*-----------------------
     Custom Class
@@ -261,7 +268,7 @@ hr.featurette-divider {
     /*padding-top: 65px;*/
     /*}*/
     #description {
-        padding-top: 10vh;
+        /*padding-top: 10vh;*/
     }
 }
 
@@ -286,6 +293,14 @@ hr.featurette-divider {
 }
 
 @media (max-width: 1000px) {
+    #logo{
+        font-size: 23px;
+    }
+
+    #logo .safety{
+        font-size: 27px;
+    }
+
     .navbar {
         margin-bottom: 0;
         padding: 0;
@@ -305,9 +320,21 @@ hr.featurette-divider {
         margin: 5px;
     }
 
+    .navbar-item ul li a {
+        font-size: 15px;
+    }
+
 }
 
 @media (max-width: 768px) {
+
+    #logo{
+        font-size: 26px;
+    }
+
+    #logo .safety{
+        font-size: 30px;
+    }
 
     .navbar-item ul li {
         margin-left: 7px;
@@ -320,14 +347,18 @@ hr.featurette-divider {
 
 }
 
-@media (max-width: 415px) {
+/*------------------
+    iPhone 6: 375px
+    iPhone 5: 320px
+------------------*/
+@media (max-width: 410px) {
     /*iPhone 6*/
     #logo {
-        font-size: 28px;
+        font-size: 20px;
     }
 
     #logo .safety {
-        font-size: 33px;
+        font-size: 23px;
     }
 
     .navbar-item ul li a {
