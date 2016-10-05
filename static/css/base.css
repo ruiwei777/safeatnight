@@ -1,13 +1,23 @@
 /*-------------------------
     General Settings
 -------------------------*/
-html, p, h1, h2, h3, a, ul, li {
-    font-family: "Open Sans", Arial, sans-serif;
+@font-face {
+    font-family: "Open Sans";
+    src: url("../fonts/Open_Sans/OpenSans-Regular.ttf");
 }
 
-html, body{
+* {
+    font-family: "Open Sans", Roboto, Arial, sans-serif;
+}
+
+html{
     font-size: 100%;
 }
+
+body{
+    font-size: 1rem;
+}
+
 
 .heading {
     font-family: Cabin, sans-serif;
@@ -38,10 +48,18 @@ body {
     font-weight: bold;
 }
 
-.flex{
+.flex {
     display: flex;
 }
 
+button{
+    border: none;
+}
+
+button:focus{
+    border: none;
+    outline: none;
+}
 /*-------------------
     Header
 -------------------*/
@@ -87,25 +105,76 @@ body {
 }
 
 .navbar-item ul li {
-    margin-left: 15px;
-    color: transparent;
+    font-size: 1em;
+    list-style: none;
+    padding: 9px 18px;
+    margin: 0;
+}
+
+@media (max-width: 1430px){
+    .navbar-item ul li {
+    padding: 2px 14px;
+}
 }
 
 .navbar-item ul li a {
-    font-size: 20px;
-    /*color: #DDDDDD;*/
     color: rgba(255, 255, 255, .75);
     font-weight: bold;
-    padding-bottom: 10px; /* for stylising border-bottom */
-    border-bottom: 3px solid transparent;
-    transition: color .5s, border-bottom-color .5s;
+    transition: color .5s;
+}
+
+ul.drop-menu > li:hover > a {
+    color: dodgerblue;
 }
 
 .navbar-item ul li a.active, .navbar-item ul li a:hover {
-
     color: dodgerblue;
+}
 
-    border-bottom-color: deepskyblue;
+/*----------------------
+    Header - Dropdown
+----------------------*/
+.navbar-ul > li {
+    position: relative;
+}
+
+ul.drop-menu {
+    position: absolute;
+    top: 100%;
+    left: 0%;
+    width: 100%;
+    padding: 0;
+    list-style: none;
+}
+
+ul.drop-menu li {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    font-size: 1em;
+    text-align: center;
+}
+
+ul.drop-menu li:hover {
+    /*background: #606060;*/
+}
+
+ul.drop-menu li:last-child {
+    border-radius: 0px 0px 5px 5px;
+}
+
+ul.drop-menu li {
+    display: none;
+}
+
+li:hover > ul.drop-menu li, a:active ~ ul.drop-menu li, a:focus ~ ul.drop-menu li {
+    display: block;
+    animation: list-in 500ms ease-in-out forwards;
+    opacity: 0;
+}
+
+li:hover >ul.drop-menu li:last-child{
+    animation-delay: 250ms;
 }
 
 /*----------------------
@@ -113,7 +182,7 @@ body {
 ----------------------*/
 .email {
     margin: 0 0 5px;
-    font-size: 2rem;
+    font-size: 1em;
 }
 
 /* side-heading */
@@ -257,12 +326,6 @@ hr.featurette-divider {
     }
 }
 
-@media (min-width: 1000px) {
-    .navbar-item ul li {
-        margin-left: 20px;
-    }
-}
-
 @media (min-width: 768px) {
     /*.navbar {*/
     /*padding-top: 65px;*/
@@ -293,11 +356,11 @@ hr.featurette-divider {
 }
 
 @media (max-width: 1000px) {
-    #logo{
+    #logo {
         font-size: 23px;
     }
 
-    #logo .safety{
+    #logo .safety {
         font-size: 27px;
     }
 
@@ -328,16 +391,12 @@ hr.featurette-divider {
 
 @media (max-width: 768px) {
 
-    #logo{
+    #logo {
         font-size: 26px;
     }
 
-    #logo .safety{
+    #logo .safety {
         font-size: 30px;
-    }
-
-    .navbar-item ul li {
-        margin-left: 7px;
     }
 
     .navbar-item ul li a {
@@ -363,5 +422,25 @@ hr.featurette-divider {
 
     .navbar-item ul li a {
         font-size: 16px;
+    }
+}
+
+/*--------------------
+    Animation
+--------------------*/
+@Keyframes list-in {
+    0% {
+        transform: translateX(-50%);
+            opacity: 0;
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+
     }
 }

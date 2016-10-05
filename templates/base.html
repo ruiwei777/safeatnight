@@ -6,28 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Safety Information for Night-Shift Workers">
+    <meta name="author" content="Ruiwei Liang">
     <link rel="icon" href="{% static 'images/logo.png' %}">
     <title>{{ title }} - NightShift Worker Safety</title>
-    <!-- Bootstrap core CSS -->
 
+    <!-- Bootstrap core CSS -->
     <link href="{% static 'css/libs/bootstrap.min.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/libs/bootstrap-theme.min.css' %}">
-
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="{% static 'css/libs/ie10-viewport-bug-workaround.css' %}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    {#    <link href="{% static 'css/carousel.css' %}" rel="stylesheet">#}
-
     <link href="{% static 'css/base.css' %}" rel="stylesheet">
     <link href="{% static 'css/libs/font-awesome.min.css' %}" rel="stylesheet">
+
     <!-- javascript -->
     <script src="{% static 'scripts/libs/jquery.min.js' %}"></script>
     <script src="{% static 'scripts/libs/bootstrap.min.js' %}"></script>
-{#    <link href="https://fonts.googleapis.com/css?family=Cabin|Open+Sans:400,600,700" rel="stylesheet">#}
 
     {% block head %}
     {% endblock head %}
@@ -44,6 +41,19 @@
                 <li><a id="sms-a" href="{% url 'sms:sms_home' %}">Safety Switch</a></li>
                 <li><a id="cs-a" href="{% url 'crime:crime_home' %}">Crime Stats</a></li>
                 <li><a id="info-a" href="{% url 'safety_info:safety_info_home' %}">Safety Tips</a></li>
+{#                <li><a id="us-a" href="#">About</a>#}
+{#                    <ul class="drop-menu">#}
+{#                        <li>#}
+{#                            <a href="{% url 'about_us' %}">Us</a>#}
+{#                        </li>#}
+{#                        <li>#}
+{#                            <a href="{% url 'about_safeatnight' %}">Website</a>#}
+{#                        </li>#}
+{#                    </ul>#}
+{##}
+{##}
+{##}
+{#                </li>#}
                 <li><a id="us-a" href="{% url 'about_us' %}">Our Team</a></li>
                 <li><a id="about-a" href="{% url 'about_safeatnight' %}">About</a></li>
 
