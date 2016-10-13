@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+{#    <meta name="viewport" content="width=device-width">#}
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="Safety Information for Night-Shift Workers">
     <meta name="author" content="Ruiwei Liang">
@@ -41,19 +42,16 @@
                 <li><a id="sms-a" href="{% url 'sms:sms_home' %}">Safety Switch</a></li>
                 <li><a id="cs-a" href="{% url 'crime:crime_home' %}">Crime Stats</a></li>
                 <li><a id="info-a" href="{% url 'safety_info:safety_info_home' %}">Safety Tips</a></li>
-{#                <li><a id="us-a" href="#">About</a>#}
-{#                    <ul class="drop-menu">#}
-{#                        <li>#}
-{#                            <a href="{% url 'about_us' %}">Us</a>#}
-{#                        </li>#}
-{#                        <li>#}
-{#                            <a href="{% url 'about_safeatnight' %}">Website</a>#}
-{#                        </li>#}
-{#                    </ul>#}
-{##}
-{##}
-{##}
-{#                </li>#}
+                {#                <li><a id="us-a" href="#">About</a>#}
+                {#                    <ul class="drop-menu">#}
+                {#                        <li>#}
+                {#                            <a href="{% url 'about_us' %}">Us</a>#}
+                {#                        </li>#}
+                {#                        <li>#}
+                {#                            <a href="{% url 'about_safeatnight' %}">Website</a>#}
+                {#                        </li>#}
+                {#                    </ul>#}
+                {#                </li>#}
                 <li><a id="us-a" href="{% url 'about_us' %}">Our Team</a></li>
                 <li><a id="about-a" href="{% url 'about_safeatnight' %}">About</a></li>
 
@@ -62,55 +60,6 @@
     </div>
 </header>
 
-
-{#<div class="navbar-wrapper">#}
-{#    <div class="container-fluid">#}
-{#        <nav class="navbar navbar-inverse navbar-static-top">#}
-{#            <div class="container">#}
-{#                <div class="navbar-header">#}
-{#                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"#}
-{#                            data-target="#navbar" aria-expanded="false" aria-controls="navbar">#}
-{#                        <span class="sr-only">Toggle navigation</span>#}
-{#                        <span class="icon-bar"></span>#}
-{#                        <span class="icon-bar"></span>#}
-{#                        <span class="icon-bar"></span>#}
-{#                    </button>#}
-{#                    <a class="navbar-brand" href=""><h3>Night-Shift Worker <span class="safety">Safety</span></h3></a>#}
-{#                </div>#}
-{#                <div id="navbar" class="navbar-collapse collapse">#}
-{#                    <ul class="nav navbar-nav">#}
-{#                        <li class="active" id="home-li"><a href="{% url 'index' %}"><i class="fa fa-home fa-lg"#}
-{#                                                                                       aria-hidden="true"></i>&nbsp;Home</a>#}
-{#                        </li>#}
-{#                        <li id="cs-li"><a href="{% url 'crime:crime_home' %}"><i class="fa fa-bar-chart fa-lg" aria-hidden="true"></i>&nbsp;Crime#}
-{#                            Stats</a></li>#}
-{#                        <li id="map-li"><a href="{% url 'map:map_home' %}"><i class="fa fa-cab fa-lg" aria-hidden="true"></i>&nbsp;Police Station</a></li>#}
-{#                        <li id="sms-li">#}
-{#                            <a href="{% url 'sms:sms_home' %}"><i class="fa fa-clock-o fa-lg" aria-hidden="true"></i>&nbsp;Safety#}
-{#                                Switch</a>#}
-{#                        </li>#}
-{##}
-{#                        <li class="dropdown" id="about-li">#}
-{#                            <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button"#}
-{#                               aria-haspopup="true" aria-expanded="false"><i class="fa fa-info-circle fa-lg"#}
-{#                                                                             aria-hidden="true"></i> About<span#}
-{#                                    class="caret"></span></a>#}
-{#                            <ul class="dropdown-menu">#}
-{#                                <li><a href="{% url 'about_safeatnight' %}">safe@night</a></li>#}
-{#                                <li><a href="{% url 'about_us' %}">Us</a></li>#}
-{#                                <li><a href="#">Something else here</a></li>#}
-{#                                <li role="separator" class="divider"></li>#}
-{#                                <li class="dropdown-header">Nav header</li>#}
-{#                                <li><a href="#">Separated link</a></li>#}
-{#                                <li><a href="#">One more separated link</a></li>#}
-{#                            </ul>#}
-{#                        </li>#}
-{#                    </ul>#}
-{#                </div>#}
-{#            </div>#}
-{#        </nav>#}
-{#    </div>#}
-{#</div>#}
 
 
 

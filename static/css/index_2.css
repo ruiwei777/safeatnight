@@ -1,6 +1,7 @@
 /*index page body only*/
 body {
-    background: url("../images/index_bg/crime_home_2.jpg");
+    background: radial-gradient(#1c3d7a, #1d4589);
+    /*background-image: url("../images/index_bg/crime_home_2.jpg");*/
     background-size: cover; /* <------ */
     background-repeat: no-repeat;
     background-position: center center;
@@ -14,6 +15,9 @@ body {
 
 .purpose-text {
     color: rgba(255, 255, 255, .85);
+    font-family: "Ropa Sans", Roboto, "Open Sans", Arial;
+    font-size:2em;
+    text-align: center;
 }
 
 @media (max-width: 1200px) {
@@ -65,9 +69,10 @@ body {
 -------------------------*/
 #question {
     height: 35vh;
-    /*display: flex;*/
-    /*justify-content: center;*/
-    /*align-items: center;*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
 }
 
@@ -87,15 +92,99 @@ body {
     text-decoration: underline;
 }
 
+.start{
+    text-shadow: none;
+}
+
+/*------------------------
+    Question - Search
+------------------------*/
+.search-wrap {
+    width: 35vw;
+    display: flex;
+    height: 7vh;
+}
+
+@media (max-width: 1100px) {
+    .search-wrap {
+        width: 75vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .search-wrap {
+        width: 75vw;
+    }
+}
+
+@media (max-width: 450px) {
+    .search-wrap {
+        width: 95vw;
+    }
+}
+
+.search-text {
+    color: white;
+    padding: 5px 5%;
+    border-radius: 15px 0 0 15px;
+    outline: none;
+    border: none;
+    flex: 4 1 85%;
+    background-color: rgba(255, 255, 255, .15);
+}
+
+@media (max-width: 400px) {
+    .search-text {
+        padding: 0;
+        font-size: 14px;
+    }
+}
+
+/*#search-text {*/
+/*width: 100%;*/
+/*height: 95%;*/
+/*background: #d5d5d5;*/
+/*padding: 13px;*/
+
+/*font-weight: 700;*/
+
+/*border: 2px solid white;*/
+/*border-radius: 1px;*/
+/*color: black;*/
+
+/*transition: background-color 0.3s, color 0.3s, text-shadow 0.3s;*/
+
+/*margin-top: 10px;*/
+/*}*/
+
+.search-button {
+    padding: 5px 10px;
+    border-radius: 0 15px 15px 0;
+    background: #dedede;
+    color: black;
+    border: none;
+    outline: none;
+    flex: 0 0 auto;
+    width: 3.5em;
+    text-shadow: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: FontAwesome;
+}
+
+.search-button:hover {
+    text-decoration: none;
+    color: inherit;
+    background: grey;
+}
+
 /*------------------------
     Description
 -------------------------*/
 #description {
     display: flex;
     justify-content: space-between;
-    max-height: 55vh;
-    /*align-items: center;*/
-    /*height: auto;*/
 }
 
 #description .item {
@@ -112,10 +201,10 @@ body {
 }
 
 #description .item.highlight .index-btn, #description .index-btn:hover {
-    color: honeydew;
-    border-color: #FF8F00;
-    transform:scale(1.1);
-    box-shadow: 0 0 10px 0 rgba(255,255,255, .6);
+    /*color: honeydew;*/
+    /*border-color: #FF8F00;*/
+    transform: scale(1.05);
+    box-shadow: 0 0 10px 0 rgba(255, 255, 255, .6);
 }
 
 #description .item .fa {
@@ -137,9 +226,8 @@ body {
     font-size: 38px;
     margin: 0;
     padding: 10px 20px;
-    text-shadow: 1px 1px 0 dodgerblue;
-    font-family: Cabin, sans-serif;
-    color: white;
+    font-family: Arial, "Open Sans", sans-serif;
+    color: honeydew;
     transition: all .3s;
 }
 
@@ -156,13 +244,11 @@ body {
 
 #description .index-btn {
     padding: 10px 20px;
-    /*padding: 10px;*/
     font-weight: bold;
     text-shadow: none;
-    /*background-color: dodgerblue;*/
-    border: 3px solid dodgerblue;
+    border: 3px solid #FF8F00;
     border-radius: 10px;
-    color: dodgerblue;
+    color: honeydew;
     transition: all .5s;
     font-size: 18px;
     line-height: 1.3333333;
@@ -170,7 +256,6 @@ body {
 
     display: inline-block;
 }
-
 
 /*---------------------------
     Step Form
@@ -204,8 +289,8 @@ body {
     align-items: center;
     padding: 0;
     border-radius: 10px 10px 0 0;
-    background: #e6f5e6;
-
+    background: honeydew;
+    /*background-color: lightyellow;*/
 }
 
 .modal-header > span {
@@ -234,6 +319,7 @@ body {
     top: 0;
     transform-origin: top center;
     background: honeydew;
+    /*background-color: lightyellow;*/
     display: none;
     width: 100%;
     /* padding here will block text? */
@@ -287,32 +373,33 @@ body {
     transition: all 300ms ease-in-out;
 }
 
-@media(max-width: 1000px){
-    .modal-wrap{
+@media (max-width: 1000px) {
+    .modal-wrap {
         transform: translateY(20px);
     }
+
     .button-wrap > .button {
         font-size: 0.5em;
     }
 }
 
-@media(max-width: 768px){
-    #question{
+@media (max-width: 768px) {
+    #question {
         height: 20vh;
     }
 
-    .modal-wrap{
+    .modal-wrap {
         transform: translateY(20px);
         width: 70vw;
     }
 }
 
-@media(max-width: 500px){
-    .description{
+@media (max-width: 500px) {
+    .description {
         margin: 5px;
     }
 
-    .button-wrap .button{
+    .button-wrap .button {
         margin: 5px 15px;
         width: 5em;
     }
@@ -322,7 +409,7 @@ body {
     background-color: #FF8F00;
 }
 
-.button-wrap > .button:hover, .button-wrap > .button:focus , .button-wrap > .button:target {
+.button-wrap > .button:hover, .button-wrap > .button:focus, .button-wrap > .button:target {
     transform: scale(1.1);
     box-shadow: 0 0 20px 0 grey;
 }
@@ -488,8 +575,6 @@ footer .info a:hover {
         margin: 0 auto;
     }
 
-
-
     #question .item {
         font-size: 17px;
     }
@@ -522,9 +607,8 @@ footer .info a:hover {
 -----------------------*/
 @media (max-width: 340px) {
     /*body {*/
-        /*height: 130vh;*/
+    /*height: 130vh;*/
     /*}*/
-
     #question .item {
         font-size: 15px;
     }

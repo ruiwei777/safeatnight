@@ -14,78 +14,87 @@
 
     <div class="purpose positioner">
         <h2 class="purpose-text">
-            Provides safety information and an alerter system for night-shift workers.
+            The safety information and alerter system for night-shift workers.
         </h2>
     </div>
 
     <div id="question" class="positioner">
+    <p class="start"><i class="fa fa-angle-double-down"></i>&nbsp;Start here</p>
+    <form class="search-wrap" method="GET" action="{% url 'crime:crime_home' %}">
+        {% csrf_token %}
+        <input type="text" name="area" class="search-text" placeholder="postcode or suburb to look up crime rate">
+        <input type="submit" class="search-button" value="&#xf002;">
+{#        <button class="search-button">#}
 
-        <div class="modal-wrap">
-            <div class="modal-header">
-                <span class="is-active"></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+{#        </button>#}
+    </form>
 
-            <div class="modal-bodies">
-                <!-- Page 1 -->
-                <div class="modal-body modal-body-step-1 is-showing">
+{#        <div class="modal-wrap">#}
+{#            <div class="modal-header">#}
+{#                <span class="is-active"></span>#}
+{#                <span></span>#}
+{#                <span></span>#}
+{#                <span></span>#}
+{#            </div>#}
+{##}
+{#            <div class="modal-bodies">#}
+{#                <!-- Page 1 -->#}
+{#                <div class="modal-body modal-body-step-1 is-showing">#}
                     {#                <div class="title">#}
                     {#                    Are You A Night-Shift Worker?#}
                     {#                </div>#}
-                    <div class="description">
-                        Are You A Night-Shift Worker?
-                    </div>
-
-                    <div class="button-wrap">
-                        <button class="button button-left" role="button">Yes</button>
-                        <button class="button button-right" role="button">No</button>
-                    </div>
-                </div>
-
-
-                <!-- Page 2 -->
-                <div class="modal-body modal-body-step-2">
-                    <div class="description">
-                        Want to know how safe your workplace area is?
-                    </div>
-
-                    <div class="button-wrap">
-                        <button class="button button-left" role="button">Yes</button>
-                        <button class="button button-right" role="button">Next</button>
-                    </div>
-                </div>
-
-
-                <!-- Page 3 -->
-                <div class="modal-body modal-body-step-3">
-                    <div class="description">
-                        Need to set up an SMS alert for your family in advance?
-                    </div>
-
-
-                    <div class="button-wrap">
-                        <button class="button button-left" role="button">Yes</button>
-                        <button class="button button-right" role="button">Next</button>
-                    </div>
-                </div>
-
-                <!-- Page 4 -->
-                <div class="modal-body modal-body-step-4">
-                    <div class="description">
-                        Find out more on health and safety!
-                    </div>
-
-
+{#                    <div class="description">#}
+{#                        Are You or Your Family A Night-Shift Worker?#}
+{#                    </div>#}
+{##}
+{#                    <div class="button-wrap">#}
+{#                        <button class="button button-left" role="button">Yes</button>#}
+{#                        <button class="button button-right" role="button">No</button>#}
+{#                    </div>#}
+{#                </div>#}
+{##}
+{##}
+{#                <!-- Page 2 -->#}
+{#                <div class="modal-body modal-body-step-2">#}
+{#                    <div class="description">#}
+{#                        Want to know how safe your workplace area is?#}
+{#                    </div>#}
+{##}
+{#                    <div class="button-wrap">#}
+{#                        <button class="button button-left" role="button">Yes</button>#}
+{#                        <button class="button button-right" role="button">Next</button>#}
+{#                    </div>#}
+{#                </div>#}
+{##}
+{##}
+{#                <!-- Page 3 -->#}
+{#                <div class="modal-body modal-body-step-3">#}
+{#                    <div class="description">#}
+{#                        Need to set up an SMS alert for your family in advance?#}
+{#                    </div>#}
+{##}
+{##}
+{#                    <div class="button-wrap">#}
+{#                        <button class="button button-left" role="button">Yes</button>#}
+{#                        <button class="button button-right" role="button">Next</button>#}
+{#                    </div>#}
+{#                </div>#}
+{##}
+{#                <!-- Page 4 -->#}
+{#                <div class="modal-body modal-body-step-4">#}
+{#                    <div class="description">#}
+{#                        Find out more on health and safety!#}
+{#                    </div>#}
+{##}
+{##}
 {#                    <div class="button-wrap">#}
 {#                        <div class="button rerun" role="button">Got it!</div>#}
 {##}
 {#                    </div>#}
-                </div>
-            </div>
-
-        </div>
+{#                </div>#}
+{#            </div>#}
+{##}
+{#        </div>#}
 
 
         {#        <div class="item">#}

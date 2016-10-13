@@ -13,81 +13,94 @@
 
 
 {% block content %}
+    <div class="overlay">
+        <div class="notification">
+            <div class="banner">Message</div>
+            <div class="body">
+                <div class="icon">
+
+                    <i class="fa fa-envelope-o fa-2x"></i>
+
+                </div>
+                <div class="text">
+                    {% if is_sent %}
+                        {{ is_sent }}
+                    {% elif is_error %}
+                        {{ is_error }}
+                    {% elif cancel_message %}
+                        {{ cancel_message }}
+                    {% endif %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+
 
 
     <div class="container-fluid">
 
-        {% if is_sent %}
-            <div class="row bg-success">
-                <div class="col-lg-6 col-lg-offset-3">
-                    <p class="text-lg">
-                        Your message to {{ receiver }} has been recorded in server and will be sent at the set time.
-                    </p>
-                </div>
-            </div>
-        {% elif is_error %}
-            <div class="row bg-danger">
-                <div class="col-lg-6 col-lg-offset-3">
-                    <p class="text-lg">{{ is_error }}</p>
-                </div>
-            </div>
-        {% elif cancel_message %}
-            <div class="row bg-info">
-                <div class="col-lg-6 col-lg-offset-3">
-                    <p class="text-lg">{{ cancel_message }}</p>
-                </div>
-            </div>
-        {% endif %}
-
-
-{#        {% if form.errors %}#}
-{#            {% for field in form %}#}
-{#                {% for error in field.errors %}#}
-{#                    <div class="alert alert-danger">#}
-{#                        <strong>{{ error|escape }}</strong>#}
-{#                    </div>#}
-{#                {% endfor %}#}
-{#            {% endfor %}#}
-{#            {% for error in form.non_field_errors %}#}
-{#                <div class="alert alert-danger">#}
-{#                    <strong>{{ error|escape }}</strong>#}
-{#                </div>#}
-{#            {% endfor %}#}
-{#        {% endif %}#}
-
 
         <div class="row">
-            <div class="col-lg-4 col-lg-offset-2">
+            <div class="col-sm-4 col-sm-offset-2">
                 <h1 class="text-center heading">Safety Switch</h1>
 
-                <ul class="text-18px description-list">
+                <div class="description">
+                    <div class="icon">
+                        <i class="fa fa-lightbulb-o fa-3x"></i>
+                    </div>
+                    <div class="text">
+                        Set up an alert SMS to your family at a scheduled time for <span class="blue">FREE</span>!
+                    </div>
+                </div>
 
-                    <li>
-                        Enter alert message.
-                    </li>
-                    <li>
-                        Get a message with cancellation code of your submission.
-                    </li>
+                <div class="img-thinking">
 
+                </div>
+                <div class="instruction">
+                    <div class="instruction-row row-1">
+                        <div class="title">1</div>
+                        <div class="content">Set up an alert SMS.</div>
+                    </div>
+                    <div class="instruction-row row-2">
+                        <div class="title">2</div>
+                        <div class="content">Get a message with cancellation code.</div>
+                    </div>
+                    <div class="instruction-row row-3">
+                        <div class="title">3</div>
+                        <div class="content">To cancel a message, replay SMS with cancellation code or
+                        submit code in this page.</div>
+                    </div>
+                </div>
 
-                </ul>
-
-                <img id="dms-img" class="img-circle center-block" width="300" height="300"
-                     src="{% static 'images_raw/text_message.png' %}"/>
+                {#                <ul class="text-18px description-list">#}
+                {##}
+                {#                    <li>#}
+                {#                        Enter alert message.#}
+                {#                    </li>#}
+                {#                    <li>#}
+                {#                        Get a message with cancellation code of your submission.#}
+                {#                    </li>#}
+                {##}
+                {##}
+                {#                </ul>#}
+                {##}
+                {#                <img id="dms-img" class="img-circle center-block" width="300" height="300"#}
+                {#                     src="{% static 'images_raw/text_message.png' %}"/>#}
 
             </div>
 
-            <div class="col-lg-3">
+            <div class="col-sm-4 col-form">
 
                 <div class="div-form-selection">
-                    <div class="item">
-                        <button class="btn btn-info" id="send_button">Send Message</button>
+                    {#                    <p id="sms_info">You are sending message.</p>#}
+
+                    <div class="button is-active" role="button" id="send_button"><i class="fa fa-send-o"></i>&nbsp;Send
                     </div>
-                    <div class="item">
-                        <button class="btn btn-danger" id="cancel_button">Cancel Message</button>
-                    </div>
+                    <div class="button" role="button" id="cancel_button"><i class="fa fa-close"></i>&nbsp;Cancel</div>
+
                 </div>
-                <p id="sms_info">You are sending message.</p>
+
 
                 <div id="sms_form">
                     <form action="" method="post">
@@ -113,6 +126,8 @@
     </div>
 
 
+
+    {% include "sms_home_message.html" %}
 
 {% endblock content %}
 

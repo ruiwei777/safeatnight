@@ -1,0 +1,21 @@
+{#{% if is_sent %}#}
+<script>
+    {% if is_sent or is_error or cancel_message %}
+        $(".overlay").addClass("is-showing fade-in");
+        $(".notification").addClass("is-showing animate-in");
+
+        var absolute_elements = $('*').filter(function () {
+            var position = $(this).css('position');
+            return position === 'relative';
+        }).css("position", "static");
+
+
+
+        setTimeout(function () {
+            $(".overlay").removeClass("is-showing fade-in");
+            $(".notification").removeClass("is-showing animate-in");
+            absolute_elements.css("position", "relative");
+        }, 6000)
+    {% endif %}
+</script>
+{#{% endif %}#}

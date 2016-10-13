@@ -15,8 +15,9 @@ $("#reset").click(function () {
 
     if (comment.not(":hidden")) comment.slideUp();
     $("#data-container").d3Click();
-    $("#postcode-text").val("");
-    $("#suburb-text").val("");
+    $("#search-text").val("");
+    $("#postcode-text").text("None");
+    $("#suburb-text").text("None");
     $("#crime-rate-text").text("None");
     var information_paragraph = $("#information-paragraph");
     if (information_paragraph.not(":hidden")) {
@@ -27,8 +28,6 @@ $("#reset").click(function () {
 
 // Current-location button
 $("#current-location").click(function () {
-
-
     $("#information-paragraph").slideUp("fast");
 
     if (navigator.userAgent.indexOf("Firefox") > 0) {
@@ -37,11 +36,6 @@ $("#current-location").click(function () {
     }
 
     $("#data-container").d3Click();
-
-    if (!navigator.geolocation) {
-        alert("Sorry, your browser does not support geolocation API.");
-        return;
-    }
 
     setTimeout(function () {
         var lat, lng;
@@ -68,19 +62,9 @@ $("#current-location").click(function () {
                     })
 
                     clickToPostcode(postcode, postcode_localities);
-
-
-                    // var detail_array = data.results[0].address_components;
-                    //
-                    // detail_array.forEach(function (e) {
-                    //     if (e.types[0] === "postal_code") {
-                    //         var postcode = e.short_name;
-                    //         var postcode_localities = e.postcode_localities;
-                    //         clickToPostcode(postcode, postcode_localities);
-                    //     }
-                    // })
+                    setTimeout(displaySafetySwitch, 2500);
                 } else {
-                    alert("Failed to fetch location from Google.")
+                    displayInformationParagraph();
                 }
             }, "json")
         });
@@ -96,63 +80,44 @@ function searchOnClick() {
 
     $("#data-container").d3Click();
 
-    var postcode_text = $("#postcode-text").val();
-    var suburb_text = $("#suburb-text").val();
+    var search_text = $("#search-text").val();
+    var suburb_text = $("#suburb-text").text();
 
-    if (postcode_text == "" && suburb_text == "") {
+    if (search_text == "") {
         var p = $("#information-paragraph");
         p.text("Please enter postcode or suburb name.");
         p.css("color", "goldenrod");
-        p.css("border-color", "goldenrod");
+
         p.slideDown("fast");
-        return;
-    }
-
-    $("#information-paragraph").slideUp("fast");
-
-
-    var url_raw = "https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyCNSq5fvWuyqJ1UIJjEcSLzX7T5BqfSYtI&address=australia,victoria,";
-    var url;
-
-    if (postcode_text != "") {
-        url = url_raw + postcode_text;
+    } else {
+        $("#information-paragraph").slideUp("fast");
+        var url_raw = "https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyCNSq5fvWuyqJ1UIJjEcSLzX7T5BqfSYtI&address=australia,victoria,";
+        var url;
+        url = url_raw + search_text;
         $.get(url, null, function (data) {
             if (data.status === "OK") {
-                var postcode_localities = data.results[0].postcode_localities; // can be none
-
                 var detail_array = data.results[0].address_components;
+                // Check if it in Victoria
+                for (var i = 0; i < detail_array.length; i++) {
+                    var item = detail_array[i];
+                    //got result but it's not Victoria
+                    if (item.types[0] == "administrative_area_level_1" && item.short_name != "VIC") {
+                        displayInformationParagraph();
+                        return;
+                    }
+                }
+                // display data
+                var postcode_localities = data.results[0].postcode_localities; // can be none
                 for (var i = 0; i < detail_array.length; i++) {
                     if (detail_array[i].types[0] === "postal_code") {
                         var postcode = detail_array[i].short_name;
-                        clickToPostcode(postcode, postcode_localities)
+                        clickToPostcode(postcode, postcode_localities);
                         break;
                     } else {
                         displayInformationParagraph();
                     }
-
                 }
-
-
-            } else {
-                alert("Failed to fetch location from Google.")
-            }
-        }, "json")
-
-    } else if (suburb_text != "") {
-        // when input is text, make Geocoding request
-        // alert("Using suburb");
-        url = url_raw + suburb_text;
-        $.get(url, null, function (data) {
-            if (data.status === "OK") {
-                var detail_array = data.results[0].address_components;
-                detail_array.forEach(function (e) {
-                    if (e.types[0] === "postal_code") {
-                        var postcode = e.short_name;
-                        clickToPostcode(postcode)
-                    } else {
-                        displayInformationParagraph();
-                    }
-                })
+                setTimeout(displaySafetySwitch, 1500);
             } else {
                 alert("Failed to fetch location from Google.")
             }
@@ -174,36 +139,40 @@ function showText() {
 }
 
 function displayDashboardData(postcode, postcode_localities, crimeRateText) {
-    $("#postcode-text").val(postcode);
+    $("#postcode-text").text(postcode);
     $("#crime-rate-text").text(crimeRateText);
     if (postcode_localities) {
-        $("#suburb-text").val(postcode_localities.join(", "))
+        $("#suburb-text").text(postcode_localities.join(", "))
     } else {
-        $("#suburb-text").val(getSuburb(postcode))
+        $("#suburb-text").text(getSuburb(postcode))
     }
 
 
 }
 
+/**
+ * Pass no parameters to show not support message;
+ * @param crime_rate
+ */
 function displayInformationParagraph(crime_rate) {
     var p = $("#information-paragraph");
     var color = "goldenrod";
 
     if (crime_rate) {
-        if (crime_rate <= 99) {
-            p.text("Congratulation! This area has a very LOW crime rate.");
-            color = "#5cb85c";
-        } else if (crime_rate <= 640) {
-            p.text("Not bad. This area has a MEDIUM crime rate.");
-            color = "dodgerblue";
-        } else if (crime_rate >= 641) {
-            p.text("Warning: this area has a top 30% amount of recorded offense in Victoria.");
+        if (crime_rate <= 747) {
+            // color = "inherit";
+            p.text(crime_rate + " offences are recorded from Apr.2015 to Mar.2016, lower than average");
+            return;
+        }
+
+        else if (crime_rate > 747) {
+            p.text(crime_rate + " offences are recorded from Apr.2015 to Mar.2016, above average.");
             color = "lightcoral";
         }
 
 
     } else {
-        p.text("Sorry, your area is not supported for the moment.");
+        p.text("Your area is not supported for the moment.");
     }
 
 
@@ -218,14 +187,14 @@ function displayInformationParagraph(crime_rate) {
 function getCrimeRate(id) {
     var selection = d3.selectAll("text").filter(function (d) {
         return d.name == id
-    }).datum()
+    }).datum();
     return Math.round(selection.size * 1000) / 1000;
 }
 
 function getSuburb(id) {
     var selection = d3.selectAll("text").filter(function (d) {
         return d.name == id
-    }).datum()
+    }).datum();
     return selection.suburb;
 }
 
@@ -240,7 +209,7 @@ function clickToPostcode(postcode, postcode_localities) {
     var d3_circle = $("#" + postcode);
     if (d3_circle.length > 0) {
         displayDashboardData(postcode, postcode_localities, getCrimeRate(postcode))
-        //setComment(getCrimeRate(postcode_text), getSuburb(postcode_text))
+        //setComment(getCrimeRate(search_text), getSuburb(search_text))
         displayInformationParagraph(getCrimeRate(postcode));
         d3_circle.d3Click();
         showText();
@@ -251,7 +220,7 @@ function clickToPostcode(postcode, postcode_localities) {
 }
 
 
-// Bind Enter to on click
+// Bind Enter to onClick
 $.fn.enterKey = function (fnc) {
     return this.each(function () {
         $(this).keypress(function (ev) {
@@ -270,7 +239,7 @@ $.fn.enterKey = function (fnc) {
  */
 
 
-$("#postcode-text").enterKey(searchOnClick);
+$("#search-text").enterKey(searchOnClick);
 $("#suburb-text").enterKey(searchOnClick);
 
 
@@ -279,17 +248,18 @@ $("#suburb-text").enterKey(searchOnClick);
  */
 function detectBrowser() {
     var header = $("header");
-    if (navigator.userAgent.indexOf("Firefox") != -1) {
-        header.css("margin-bottom", "0")
-            .after("<div class='bg-info text-center' style='font-size: 16px'>Firefox Browser might not get your location. Please Switch to" +
-                " Chrome to get better experience.</div>")
-
-    }
-    else if (navigator.userAgent.indexOf("Chrome") == -1) {
-        $("header").css("margin-bottom", "0")
-            .after("<div class='bg-info text-center' style='font-size: 16px'>Browsers other than Chrome might cause display issues.</div>")
-            .css("background", "deepskyblue")
-    }
+    // if (navigator.userAgent.indexOf("Firefox") != -1) {
+    //     header.css("margin-bottom", "0")
+    //         .after("<div class='bg-info text-center' style='font-size: 16px'>Firefox Browser might not get your location. Please Switch to" +
+    //             " Chrome to get better experience.</div>")
+    //
+    // }
+    // else if (navigator.userAgent.indexOf("Chrome") == -1) {
+    //     $("header").css("margin-bottom", "0")
+    //         .after("<div class='bg-info text-center' style='font-size: 16px'>Browsers other than Chrome might cause display issues.</div>")
+    //         .css("background", "deepskyblue")
+    // }
+    // This will cause navbar background abnormal!s
 }
 
 $(detectBrowser)
@@ -301,4 +271,9 @@ $(detectBrowser)
 // Google Maps APIs
 // https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyCNSq5fvWuyqJ1UIJjEcSLzX7T5BqfSYtI&address=caulfield
 
-
+/**
+ * Show Safety Switch Tips
+ */
+function displaySafetySwitch() {
+    $(".modal-body").addClass("is-showing animate-in");
+}

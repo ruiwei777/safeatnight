@@ -1,6 +1,8 @@
 from django.db import models
 import os, binascii
 
+from .utils import encrypt, decrypt
+
 
 
 def generateRandomCode():
@@ -12,11 +14,16 @@ class SMS(models.Model):
 
 
     receiver_areacode = models.CharField(max_length=5, choices=(("+61", "+61"),), default="+61")
-    receiver_number = models.IntegerField()
+    receiver_number = models.CharField(max_length=20)
     sender_areacode = models.CharField(max_length=5, choices=(("+61", "+61"),), default="+61")
-    sender_number = models.IntegerField()
+    sender_number = models.CharField(max_length=20)
     scheduled_time = models.DateTimeField()
-    content = models.TextField(max_length=130)
+    content = models.TextField(max_length=255)
     cancellation_code = models.CharField(max_length=10, default=generateRandomCode)
     active = models.BooleanField(default=True)
-
+    #
+    # def save(self, *args, **kwargs):
+    #     if not self.pk:
+    #     # encrypt_field_value_here
+    #         receiver_number = encrypt(receiver_number)
+    #     super(SMS, self).save(*args, **kwargs)

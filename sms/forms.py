@@ -53,7 +53,7 @@ class SMSForm(forms.ModelForm):
 class CancelForm(forms.Form):
 
 
-    phone_number = forms.IntegerField(label="Your number")
+    phone_number = forms.CharField(label="Your number")
     cancellation_code = forms.CharField(required=True,
                                         max_length=10,
                                         )

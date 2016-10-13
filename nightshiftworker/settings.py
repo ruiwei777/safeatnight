@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # third party
     'crispy_forms',
     'datetimewidget',
+    'django_twilio',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -149,3 +150,9 @@ CELERY_ENABLE_UTC = False
 CELERY_ACCEPT_CONTENT = ['pickle', 'json', 'msgpack', 'yaml']
 
 # django-datetime-widget
+
+# django-twilio
+TWILIO_ACCOUNT_SID = "ACb61a1a7533233534787f9238a8c6cbe2"
+TWILIO_AUTH_TOKEN = "4b56b71e8e9a46560559f96bc86af8f5"
+DJANGO_TWILIO_FORGERY_PROTECTION = True
+#TWILIO_DEFAULT_CALLERID = 'NNNNNNNNNN'

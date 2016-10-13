@@ -68,8 +68,8 @@ def send_message(id):
 
 @shared_task
 def send_message_immediately(to, eta, cancellation_code):
-    body = "A message to " + str(to) + " scheduled at " + eta.strftime('%d-%m-%Y %H:%M') + " under your phone number has been set. If this is not done" \
-                                                                " by you, please contact the receiver ASAP. " \
+    body = "A message to " + str(to) + " scheduled at " + eta.strftime('%d-%m-%Y %H:%M') + " under your phone number has been set. Reply this message " \
+                                                                "with cancellation code or go to the website to cancel the message." \
                                                                 " Cancellation code: " + cancellation_code + " (www.safeatnight.cf)"
 
 

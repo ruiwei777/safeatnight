@@ -1,56 +1,327 @@
 /*------------------------
     Custome Class
 ------------------------*/
-.text-18px{
-    font-size: 18px;
-}
 
-ul.description-list li{
+.description-list li {
     margin-bottom: 10px;
 }
 
-.error{
+.error {
     color: lightcoral;
 }
 
-.message{
+.message {
     color: #00980d;
     display: none;
 }
 
-.correct{
+.correct {
     color: #00b80d;
 }
 
-.text-lg{
-    font-size:17px;
+.text-lg {
+    font-size: 17px;
     margin: 0;
     padding: 5px 0;
 }
 
+/*-----------------------
+    Purpose Description
+-----------------------*/
+.description {
+    width: 90%;
+    display: flex;
+    margin: 20px 0;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 2.3em;
+    border: 3px solid rgba(255, 255, 0, 0.31);
+    -webkit-box-shadow: 0 20px 30px -20px black;
+    -moz-box-shadow: 0 20px 30px -20px black;
+    box-shadow: 0 20px 40px -30px black;
+    transition: all 300ms;
+}
+
+.description:hover {
+    /*transform: scale(1.1);*/
+}
+
+.description > * {
+    padding: .5em 1em;
+}
+
+.description .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: orange;
+    flex: 1 1 20%;
+}
+
+.description .text {
+    font-size: 1em;
+    flex: 1 1 80%;
+    background: lightyellow;
+    border-radius: 0 3em 3em 0;
+    border-left: 2px solid orange;
+}
+
+@media (max-width: 1200px) {
+    .description .text {
+        font-size: .7em;
+    }
+}
+
+.img-thinking {
+    background-image: url("../images/sms_home_thinking.png");
+    background-size: contain;
+    background-position: top center;
+    height: 400px;
+    background-repeat: no-repeat;
+}
+
+
+@media (max-width: 1400px) {
+    .img-thinking {
+        height: 300px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .img-thinking {
+        height: 200px;
+    }
+}
+
+@media (max-width: 340px) {
+    .img-thinking {
+
+        height: 220px;
+    }
+}
+
+/* Instruction */
+.instruction {
+    margin-top: .5em;
+}
+
+.instruction-row {
+    display: flex;
+    height: 3em;
+    margin-bottom: .5em;
+}
+
+.instruction-row .title {
+    flex: 0 0 3em;
+    line-height: 2.7em;
+    border-radius: 50%;
+    border: 3px solid rgba(0, 0, 0, .6);
+    text-align: center;
+}
+
+.instruction-row .content {
+    padding-left: 1em;
+    flex: 1 1 70%;
+}
+
+@media (max-width: 1100px) {
+
+
+    .instruction-row .content {
+        font-size: .8em;
+    }
+}
+
+@media (max-width: 600px) {
+    .instruction-row {
+        height: 3em;
+        margin-bottom: .5em;
+    }
+
+    .instruction-row .title {
+        flex: 0 0 3em;
+        line-height: 2.7em;
+    }
+
+    .instruction-row .content {
+        padding-left: 1em;
+        flex: 1 1 70%;
+        font-size: .8em;
+    }
+}
+
+.blue {
+    color: dodgerblue;
+}
 
 /*----------------------------
     Form Display
 ----------------------------*/
-.flex{
-    display:flex;
+.flex {
+    display: flex;
 }
 
-.flex-1{
-    flex:1;
+.flex-1 {
+    flex: 1;
 }
 
-
-.div-form-selection{
-    display:flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin-bottom: 10px;
+.div-form-selection {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    border-radius: 2em;
 }
 
-.div-form-selection .item button{
-    width: 160px;
-    margin: 5px 0;
+@media (max-width: 1000px) {
+    .div-form-selection {
+        margin: 5px;
+    }
+}
+
+.div-form-selection p {
+    flex: 3 1 80%;
+}
+
+.div-form-selection .button {
+    flex: 1 1 10%;
+    background: #eeeeee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .2em 0;
 
 }
 
+@media (max-width: 1200px) {
+    .div-form-selection p {
+        flex: 3 1 70%;
+    }
+
+    .div-form-selection .button {
+        flex: 1 0 auto;
+    }
+}
+
+.div-form-selection .button:nth-child(1) {
+    border-radius: 5px 0 0 5px;
+}
+
+.div-form-selection .button:nth-child(2) {
+    border-radius: 0 5px 5px 0;
+}
+
+.div-form-selection .button.is-active {
+    background: #737373;
+    color: honeydew;
+}
+
+/*----------------------------
+    Notification
+----------------------------*/
+
+.overlay {
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: none;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+
+    /*display: flex;*/
+    /*!*justify-content: center;*!*/
+    /*align-items: center;*/
+}
+
+.notification {
+    position: fixed;
+    left: 5%;
+    top: 5%;
+    display: none;
+    background-color: white;
+    width: 25vw;
+    opacity: 0;
+
+}
+
+@media (max-width: 1100px) {
+    .notification {
+        width: 50vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .notification {
+        width: 70vw;
+    }
+}
+
+.banner {
+    background: deepskyblue;
+    text-align: center;
+    color: white;
+    padding: 5px 10px;
+
+}
+
+.body {
+    display: flex;
+    align-items: stretch;
+}
+
+.body .icon {
+    flex: 1 0 20%;
+    background: lightyellow;
+    color: orange;
+    padding: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.body .text {
+    flex: 3 1 80%;
+    padding: 5px 10px;
+
+}
+
+.is-showing {
+    display: block;
+}
+
+.animate-in {
+    animation: animate-in 6000ms ease-in-out forwards;
+}
+
+.fade-in {
+    animation: fade-in 6000ms ease-in-out forwards;
+}
+
+@keyframes animate-in {
+    0%, 100% {
+        opacity: 0;
+        transform: translateX(-200px);
+    }
+
+    15%, 85% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    15%, 85% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}

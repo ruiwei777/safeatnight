@@ -153,6 +153,9 @@ function swapForm() {
     send_button.css("font-weight", "bold");
 
     send_button.click(function () {
+        $(".div-form-selection .button").removeClass("is-active");
+        $(this).addClass("is-active");
+
         send_button.css("font-weight", "bold");
         cancel_button.css("font-weight", "lighter");
         sms_info.text("You are sending message.")
@@ -164,6 +167,9 @@ function swapForm() {
     });
 
     cancel_button.click(function () {
+        $(".div-form-selection .button").removeClass("is-active");
+        $(this).addClass("is-active");
+
         cancel_button.css("font-weight", "bold");
         send_button.css("font-weight", "lighter");
         sms_info.text("You are cancelling message.")

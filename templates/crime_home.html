@@ -15,55 +15,65 @@
     <div class="container-fluid">
 
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 text-center">
-                <h1 class="margin-bottom heading">Number of Offences Recorded in Victoria</h1>
+            <div class="col-sm-8 col-sm-offset-2 text-center">
+                <h1 class="margin-bottom heading">Crime Statistics in Victoria</h1>
             </div>
         </div>
 
 
         <div class="row">
-            <div class="col-lo-7 col-lg-offset-2">
-                <ul class="main-text">
-{#                    <li>#}
-{#                        Following shows the <span class="stress">amount of offences</span> recorded, from#}
-{#                        April 2015 to March 2016#}
-{#                    </li>#}
-
-                    <li>
-                        Areas are organised by <span class="stress">postcode</span>, <span
-                            class="stress">click</span> to check.
-                    </li>
-                </ul>
-
+            <div class="col-lo-7 col-sm-offset-2">
             </div>
         </div>
 
 
         <div class="row">
-            <div class="col-lg-3 col-lg-offset-2 dashboard-col">
+            <div class="col-sm-5 col-sm-offset-1 dashboard-col">
 
                 <div class="row margin-bottom" id="dashboard-wrapper">
 
-                    <h2>Dashboard</h2>
-                    <p class="lead dashboard-description">Enter postcode <span class="or">OR</span> suburb name to
-                        search.
-                    </p>
-                    <p id="information-paragraph" hidden="true"><i class="fa fa-exclamation fa-lg "
-                                                                   aria-hidden="true"></i> <span
-                            id="information-text"></span></p>
+                    <h3 class="title">
+                        Enter postcode OR suburb to look up number of offences recorded in Victoria,
+                        from April 2015 to March 2016.
+                    </h3>
+
+                    <p class="leading" id="information-paragraph"></p>
+
+
                     <div id="information-wrapper">
+
+                        <!-- Search Group -->
+                        <div class="item search-wrap">
+                            <input id="search-text" type="text" placeholder="postcode or suburb to search"/>
+
+                            <button id="search" type="submit" class="button-item" title="Search">
+                                <i class="fa fa-search"></i>
+                            </button>
+
+                            <button id="current-location" type="submit" class="button-item" title="Current Location">
+                                <i class="fa fa-map-marker"></i>
+                            </button>
+
+                            <button id="reset" type="submit" class="button-item" title="Reset">
+                                <i class="fa fa-close"></i>
+                            </button>
+                        </div>
+
+                        <!-- Information -->
                         <div class="item">
                             <p class="heading">Postcode: </p>
-                            <input id="postcode-text" type="text" placeholder="e.g. 3162" class="editable"/>
+                            <p class="heading result" id="postcode-text">None</p>
+
                         </div>
 
                         <div class="item">
                             <p class="heading">Suburb: </p>
-                            <textarea id="suburb-text" placeholder="e.g. Clayton" class="editable"></textarea>
+                            {#                            <textarea id="suburb-text" placeholder="e.g. Clayton" class="editable"></textarea>#}
+                            <p id="suburb-text" class="heading result">None</p>
                         </div>
 
                         <div class="item">
-                            <p class="heading">Chosen area: </p>
+                            <p class="heading">Offenses Recorded: </p>
                             <p id="crime-rate-text" class="heading result">None</p>
                         </div>
 
@@ -73,16 +83,6 @@
                             <p class="heading result">747</p>
                         </div>
 
-{#                        <div class="item">#}
-{#                            <p class="heading">Lowest: </p>#}
-{#                            <p class="heading result" id="lowest">0</p>#}
-{#                        </div>#}
-{##}
-{#                        <div class="item">#}
-{#                            <p class="heading">Highest: </p>#}
-{#                            <p class="heading result" id="highest">22,337</p>#}
-{#                        </div>#}
-
                         <div class="item">
                             <p class="heading">Victoria total: </p>
                             <p class="heading result">519,130</p>
@@ -90,26 +90,43 @@
 
 
                     </div>
-                    <div id="button-wrapper">
-
-                        <button id="search" type="submit" class="item btn btn-info">Search</button>
-                        <button id="current-location" type="submit" class="item btn btn-info">Near Me</button>
-                        <button id="reset" type="submit" class="item btn btn-success">Reset</button>
-                    </div>
+                    {#                    <div id="button-wrapper">#}
+                    {#                        <button id="search" type="submit" class="item btn btn-info">Search</button>#}
+                    {#                        <button id="current-location" type="submit" class="item btn btn-info">Near Me</button>#}
+                    {#                        <button id="reset" type="submit" class="item btn btn-success">Reset</button>#}
+                    {#                    </div>#}
 
                 </div>
+
                 <div class="row">
-                    <div class="col-lg-12">
-                        Source data is downloaded from <a target="_blank" rel="noreferrer"
-                                                          href="https://www.crimestatistics.vic.gov.au/crime-statistics/latest-crime-data/recorded-offences">Crime
-                        Statistics
-                        Agency Victoria</a>, including data from Apr 2015 to Mar 2016.
+                    <div class="col-sm-12 modal-origin">
+
+                        <div class="modal-body">
+                            <div class="header"></div>
+                            <p class="description"><i class="fa fa-lightbulb-o fa-lg"></i> Try
+                                <a rel="noreferrer nofollow" target="_blank" href="{% url 'sms:sms_home' %}">Safety Switch</a>
+                                to send alert messages to family.
+                            </p>
+                        </div>
+
+
+                        <p class="attribution">
+                            <a target="_blank" rel="noreferrer"
+                               href="{% url 'about_safeatnight' %}">
+                                &#9400; Attribution
+                            </a>
+                        </p>
+
                     </div>
                 </div>
+
+
 
 
             </div>
-            <div class="col-lg-5">
+
+            <!-- Data Container -->
+            <div class="col-sm-5">
                 <div id="data-container"></div>
             </div>
         </div>
@@ -148,7 +165,7 @@
                     .append("g")
                     .attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
 
-            d3.json("{% static 'data/crime_rate/crimedata_new_work.json' %}", function (error, root) {
+            d3.json("{% static 'data/crime_rate/crimedata_new_v2.json' %}", function (error, root) {
                 if (error) throw error;
 
                 var focus = root,
@@ -352,6 +369,6 @@
 {% block js %}
     <script src="{% static 'scripts/navbar-bg.js' %}"></script>
     <script src="{% static 'scripts/crime_home.js' %}"></script>
-
+    {% include "crime_home_direct.html" %}
 
 {% endblock js %}
