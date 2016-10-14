@@ -16,7 +16,7 @@ body {
 .purpose-text {
     color: rgba(255, 255, 255, .85);
     font-family: "Ropa Sans", Roboto, "Open Sans", Arial;
-    font-size:2em;
+    font-size: 2em;
     text-align: center;
 }
 
@@ -92,7 +92,7 @@ body {
     text-decoration: underline;
 }
 
-.start{
+.start {
     text-shadow: none;
 }
 
@@ -105,15 +105,19 @@ body {
     height: 7vh;
 }
 
+
+
 @media (max-width: 1100px) {
     .search-wrap {
         width: 75vw;
+        height: 5.5vh;
     }
 }
 
 @media (max-width: 768px) {
     .search-wrap {
         width: 75vw;
+        height: 4vh;
     }
 }
 
@@ -522,6 +526,11 @@ footer .info a:hover {
         background-size: auto;
     }
 
+    #question {
+        height: auto;
+        margin: 15px auto;
+    }
+
     #question .item {
         text-align: center;
         font-size: 20px;
@@ -570,10 +579,7 @@ footer .info a:hover {
         justify-content: center;
     }
 
-    #question {
-        height: 22vh;
-        margin: 0 auto;
-    }
+
 
     #question .item {
         font-size: 17px;

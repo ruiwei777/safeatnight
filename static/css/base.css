@@ -15,14 +15,13 @@
     font-family: "Open Sans", Roboto, Arial, sans-serif;
 }
 
-html{
+html {
     font-size: 100%;
 }
 
-body{
+body {
     font-size: 1rem;
 }
-
 
 h1 {
     margin: 5px 0;
@@ -56,14 +55,15 @@ body {
     display: flex;
 }
 
-button{
+button {
     border: none;
 }
 
-button:focus{
+button:focus {
     border: none;
     outline: none;
 }
+
 /*-------------------
     Header
 -------------------*/
@@ -75,6 +75,7 @@ button:focus{
 .navbar {
     /*margin-bottom: 0;*/
     padding: 20px 0 30px;
+    border-radius: 0;
 }
 
 .navbar a:hover, .navbar a:focus {
@@ -85,6 +86,7 @@ button:focus{
     display: flex;
     justify-content: space-between;
     align-items: baseline;
+    /*align-items: center;*/
 }
 
 .navbar-box ul {
@@ -115,10 +117,17 @@ button:focus{
     margin: 0;
 }
 
-@media (max-width: 1430px){
+@media (max-width: 1430px) {
     .navbar-item ul li {
-    padding: 2px 14px;
+        padding: 2px 12px;
+    }
 }
+
+@media (max-width: 768px) {
+    .navbar-item ul li {
+        padding: 2px 7px;
+        line-height: 1.1;
+    }
 }
 
 .navbar-item ul li a {
@@ -177,7 +186,7 @@ li:hover > ul.drop-menu li, a:active ~ ul.drop-menu li, a:focus ~ ul.drop-menu l
     opacity: 0;
 }
 
-li:hover >ul.drop-menu li:last-child{
+li:hover > ul.drop-menu li:last-child {
     animation-delay: 250ms;
 }
 
@@ -296,8 +305,6 @@ hr.featurette-divider {
     background-color: white;
     text-shadow: none;
 }
-
-
 
 .margin-bottom {
     margin-top: 0;
@@ -420,7 +427,7 @@ hr.featurette-divider {
 @Keyframes list-in {
     0% {
         transform: translateX(-50%);
-            opacity: 0;
+        opacity: 0;
     }
 
     70% {
