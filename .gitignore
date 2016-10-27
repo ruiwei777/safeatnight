@@ -179,3 +179,4 @@ run
 .idea/
 static_root/
 passwords.py
+settings_copy.py
