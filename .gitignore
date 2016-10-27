@@ -180,3 +180,7 @@ run
 static_root/
 passwords.py
 settings_copy.py
+#certbot
+w1.log
+w1.pid
+certbot-auto
