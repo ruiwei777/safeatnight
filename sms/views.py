@@ -57,14 +57,10 @@ def sms_home(request):
         sms_object = form.save()
 
         send_message.apply_async([sms_object.id], eta=sms_object.scheduled_time)
-        to = sms_object.sender_areacode + str(sms_object.sender_number)
+        sender_ = sms_object.sender_areacode + str(sms_object.sender_number)
+        receiver_ = sms_object.receiver_areacode + str(sms_object.receiver_number)
         # Immediately send a copy
-        send_message_immediately.delay(to, sms_object.scheduled_time, sms_object.cancellation_code)
-        # Encrypt and save
-        sms_object.receiver_number = sms_object.receiver_number
-        sms_object.sender_number = sms_object.sender_number
-
-        sms_object.save()
+        send_message_immediately.delay(sender_, receiver_,  sms_object.scheduled_time, sms_object.cancellation_code)
 
         is_sent = "Your message to " + str(
             sms_object.receiver_number) + " has been recorded in server and will be sent at the set time."

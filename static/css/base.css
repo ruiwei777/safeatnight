@@ -86,7 +86,7 @@ button:focus {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    /*align-items: center;*/
+    align-items: center;
 }
 
 .navbar-box ul {
@@ -108,6 +108,7 @@ button:focus {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+    /*justify-content:center;*/
 }
 
 .navbar-item ul li {

@@ -67,8 +67,8 @@ def send_message(id):
 
 
 @shared_task
-def send_message_immediately(to, eta, cancellation_code):
-    body = "A message to " + str(to) + " scheduled at " + eta.strftime('%d-%m-%Y %H:%M') + " under your phone number has been set. Reply this message " \
+def send_message_immediately(sender_, receiver_, eta, cancellation_code):
+    body = "A message to " + str(receiver_) + " scheduled at " + eta.strftime('%d-%m-%Y %H:%M') + " under your phone number has been set. Reply this message " \
                                                                 "with cancellation code or go to the website to cancel the message." \
                                                                 " Cancellation code: " + cancellation_code + " (www.safeatnight.cf)"
 
@@ -81,7 +81,7 @@ def send_message_immediately(to, eta, cancellation_code):
 
     try:
         message = client.messages.create(body=body,
-                                         to=to,  # Replace with your phone number
+                                         to=sender_,  # Replace with your phone number
                                          from_="+61437148573")  # Replace with your Twilio number
         print("Message has been sent.")
     except TwilioRestException as e:

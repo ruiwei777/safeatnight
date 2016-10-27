@@ -124,7 +124,8 @@ h2 {
 
 
 .division-block {
-    height: 25vh;
+    height: auto;
+    padding: 2em 0;
     background: linear-gradient(#323232, #282828);
     display: flex;
     justify-content: center;

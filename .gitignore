@@ -177,3 +177,5 @@ modules.xml
 ### Local Settings ###
 run
 .idea/
+static_root/
+passwords.py
