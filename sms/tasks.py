@@ -5,6 +5,7 @@ from celery import shared_task
 from twilio import TwilioRestException
 from twilio.rest import TwilioRestClient
 
+from django.conf import settings
 from .models import SMS
 
 
@@ -23,23 +24,6 @@ def xsum(numbers):
     return sum(numbers)
 
 
-# @shared_task
-# def send_message(to, from_, body):
-#     # twilio logic
-#     account_sid = "ACb61a1a7533233534787f9238a8c6cbe2"  # Your Account SID from www.twilio.com/console
-#     auth_token = "4b56b71e8e9a46560559f96bc86af8f5"  # Your Auth Token from www.twilio.com/console
-#
-#     client = TwilioRestClient(account_sid, auth_token)
-#
-#     try:
-#         message = client.messages.create(body=body,
-#                                          to=to,  # Replace with your phone number
-#                                          from_=from_)  # Replace with your Twilio number
-#         print("Message has been sent")
-#     except TwilioRestException as e:
-#         print(e)
-
-
 @shared_task
 def send_message(id):
     sms_object = SMS.objects.get(pk=id)
@@ -48,15 +32,15 @@ def send_message(id):
 
     if sms_object.active:
         # twilio logic
-        account_sid = "ACb61a1a7533233534787f9238a8c6cbe2"  # Your Account SID from www.twilio.com/console
-        auth_token = "4b56b71e8e9a46560559f96bc86af8f5"  # Your Auth Token from www.twilio.com/console
+        account_sid = settings.TWILIO_ACCOUNT_SID
+        auth_token = settings.TWILIO_AUTH_TOKEN
 
         client = TwilioRestClient(account_sid, auth_token)
 
         try:
             message = client.messages.create(body=body,
-                                             to=to,  # Replace with your phone number
-                                             from_="+61437148573")  # Replace with your Twilio number
+                                             to=to,
+                                             from_="+61437148573")
             sms_object.active = False
             sms_object.save()
             print("Message has been sent.")
@@ -68,21 +52,24 @@ def send_message(id):
 
 @shared_task
 def send_message_immediately(sender_, receiver_, eta, cancellation_code):
-    body = "A message to " + str(receiver_) + " scheduled at " + eta.strftime('%d-%m-%Y %H:%M') + " under your phone number has been set. Reply this message " \
-                                                                "with cancellation code or go to the website to cancel the message." \
-                                                                " Cancellation code: " + cancellation_code + " (www.safeatnight.cf)"
+    body = "A message to " + str(receiver_) \
+           + " scheduled at " \
+           + eta.strftime('%d-%m-%Y %H:%M') \
+           + " under your phone number has been set. Reply this message " \
+            "with cancellation code or go to the website to cancel the message." \
+            " Cancellation code: " + cancellation_code + " (www.safeatnight.cf)"
 
 
     # twilio logic
-    account_sid = "ACb61a1a7533233534787f9238a8c6cbe2"  # Your Account SID from www.twilio.com/console
-    auth_token = "4b56b71e8e9a46560559f96bc86af8f5"  # Your Auth Token from www.twilio.com/console
+    account_sid = settings.TWILIO_ACCOUNT_SID
+    auth_token = settings.TWILIO_AUTH_TOKEN
 
     client = TwilioRestClient(account_sid, auth_token)
 
     try:
         message = client.messages.create(body=body,
-                                         to=sender_,  # Replace with your phone number
-                                         from_="+61437148573")  # Replace with your Twilio number
+                                         to=sender_,
+                                         from_="+61437148573")
         print("Message has been sent.")
     except TwilioRestException as e:
         print(e)
