@@ -11,7 +11,14 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
-from .passwords import *
+import sys
+
+try:
+    from . import passwords
+except:
+    sys.stderr.write("Please create a passwords.py under 'settings' and specify your own"
+          " MY_SECRET_KEY, MY_TWILIO_ACCOUNT_SID and MY_TWILIO_AUTH_TOKEN\n")
+
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -21,7 +28,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = MY_SECRET_KEY
+SECRET_KEY = passwords.MY_SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -156,6 +163,6 @@ CELERY_ACCEPT_CONTENT = ['pickle', 'json', 'msgpack', 'yaml']
 # django-datetime-widget
 
 # django-twilio
-TWILIO_ACCOUNT_SID = MY_TWILIO_ACCOUNT_SID
-TWILIO_AUTH_TOKEN = MY_TWILIO_AUTH_TOKEN
+TWILIO_ACCOUNT_SID = passwords.MY_TWILIO_ACCOUNT_SID
+TWILIO_AUTH_TOKEN = passwords.MY_TWILIO_AUTH_TOKEN
 DJANGO_TWILIO_FORGERY_PROTECTION = True
