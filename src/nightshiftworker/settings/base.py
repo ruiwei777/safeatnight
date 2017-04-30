@@ -16,7 +16,7 @@ import sys
 try:
     from . import passwords
 except:
-    sys.stderr.write("Please create a passwords.py under 'settings' and specify your own"
+    sys.stderr.write("Create a passwords.py under 'src/nightshiftworker/settings/' and specify your own"
           " MY_SECRET_KEY, MY_TWILIO_ACCOUNT_SID and MY_TWILIO_AUTH_TOKEN\n")
 
 
@@ -145,7 +145,7 @@ STATICFILES_DIRS = [
 
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, "static_root")
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "StaticRoot")
 
 # django-compressor
 

@@ -186,3 +186,8 @@ w1.pid
 certbot-auto
 share/*
 README.md
+*.sublime-workspace
+*.sublime-project
+VENV/
+StaticRoot/*
+MediaRoot/*

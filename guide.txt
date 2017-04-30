@@ -1,0 +1,17 @@
+1. sudo apt-get install python pip    // install pip
+2. pip install virtualenv    // install virtualenv
+3. virtualenv -p python3 VENV    // create virtualenv under folder "VENV"
+4. source VENV/bin/activate    // activate virtualenv
+
+/* make sure vitualenv is avtivated before proceeding */
+
+5. pip install -r requirements.txt    // install Python dependencies from requirements.txt
+6. create "passwords.py" under src/nightshiftworker/settings/ , then assign values to MY_SECRET_KEY, MY_TWILIO_ACCOUNT_SID, MY_TWILIO_AUTH_TOKEN
+7. python src/manage.py collectstatic
+
+/* Configure database if necessary
+8. python src/manage.py makemigrations
+9. python src/manage.py migrate
+*/
+
+10. python src/manage.py runserver 
