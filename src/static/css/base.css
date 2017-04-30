@@ -86,7 +86,6 @@ button:focus {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    align-items: center;
 }
 
 .navbar-box ul {
@@ -99,7 +98,6 @@ button:focus {
 }
 
 #logo .safety {
-    font-size: 40px;
     font-weight: bolder;
     color: deepskyblue;
 }

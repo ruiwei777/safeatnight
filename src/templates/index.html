@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block head %}
+
+    <link href="{% static 'css/index.css' %}" rel="stylesheet">
+
+{% endblock head %}
+{% block content %}
+    <div class="purpose positioner">
+        <h2 class="purpose-text">
+            The safety information and alerter system for night-shift workers
+        </h2>
+    </div>
+
+    <div id="question" class="positioner">
+    <!-- <p class="start"><i class="fa fa-angle-double-down"></i>&nbsp;Start here</p> -->
+    <form class="search-wrap" method="GET" action="{% url 'crime:crime_home' %}">
+        {% csrf_token %}
+        <input type="text" name="area" class="search-text" placeholder="postcode or suburb to look up crime rate">
+        <input type="submit" class="search-button" value="&#xf002;">
+
+
+    </div>
+
+    <div id="description" class="positioner">
+        <div class="item description-1">
+            <div class="flex-wrapper-center">
+                <h1>Safety Switch</h1>
+            </div>
+            <p class="lead description-text"><i class="fa fa-mobile fa-lg" aria-hidden="true"></i> Alerter system for
+                your family</p>
+            <p class="lead"><a href="{% url 'sms:sms_home' %}" class="width-group index-btn">Set Up</a></p>
+        </div>
+
+
+        <div class="item description-2">
+            <div class="flex-wrapper-center">
+                <h1>Crime Stats</h1>
+            </div>
+            <p class="lead description-text"><i class="fa fa-bar-chart" aria-hidden="true"></i> Look up crime rate by
+                area</p>
+            <p class="lead"><a href="{% url 'crime:crime_home' %}" class="width-group index-btn">Dive In</a></p>
+        </div>
+
+        <div class="item description-3">
+            <div class="flex-wrapper-center">
+                <h1>Safety Tips</h1>
+            </div>
+            <p class="lead description-text"><i class="fa fa-smile-o" aria-hidden="true"></i>
+                Everyone in Australia should know</p>
+            <p class="lead"><a href="{% url 'safety_info:safety_info_home' %}" class="width-group index-btn">Explore</a>
+            </p>
+        </div>
+
+
+    </div>
+
+    <footer class="positioner">
+        <div class="info">
+            Monash University 2016 IE Project, by Team 24A <a href="{% url 'about_us' %}">@SpiderWeb</a>
+        </div>
+    </footer>
+
+
+
+
+
+
+
+
+
+{% endblock content %}
+
+
+{% block js %}
+    <script src="{% static 'scripts/index.js' %}"></script>
+{% endblock js %}

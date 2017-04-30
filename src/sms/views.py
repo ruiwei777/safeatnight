@@ -28,7 +28,7 @@ import datetime
 
 
 def index(request):
-    return render(request, "index_2.html", {"title": "Home"})
+    return render(request, "index.html", {"title": "Home"})
 
 
 def about_us(request):
