@@ -5,13 +5,14 @@
 {% block head %}
     <link rel="stylesheet" href="{% static 'css/crime_home.css' %}">
     <script src="//d3js.org/d3.v3.min.js"></script>
-    <script src="{% static 'scripts/libs/jquery.min.js' %}"></script>
 
 
 {% endblock head %}
 
 
 {% block content %}
+    <div class="separator"></div>
+
     <div class="container-fluid">
 
         <div class="row">
@@ -90,11 +91,6 @@
 
 
                     </div>
-                    {#                    <div id="button-wrapper">#}
-                    {#                        <button id="search" type="submit" class="item btn btn-info">Search</button>#}
-                    {#                        <button id="current-location" type="submit" class="item btn btn-info">Near Me</button>#}
-                    {#                        <button id="reset" type="submit" class="item btn btn-success">Reset</button>#}
-                    {#                    </div>#}
 
                 </div>
 

@@ -36,10 +36,14 @@
         </div>
     </div>
 
-
+    <div class="separator"></div>
 
     <div class="container-fluid">
-
+        <div class="row shutdown">
+            <div class="col-sm-6 col-sm-offset-3">
+                <p>This function is currently shutdown due to expired subscription.</p>
+            </div>
+        </div>
 
         <div class="row">
             <div class="col-sm-4 col-sm-offset-2">
@@ -73,27 +77,12 @@
                     </div>
                 </div>
 
-                {#                <ul class="text-18px description-list">#}
-                {##}
-                {#                    <li>#}
-                {#                        Enter alert message.#}
-                {#                    </li>#}
-                {#                    <li>#}
-                {#                        Get a message with cancellation code of your submission.#}
-                {#                    </li>#}
-                {##}
-                {##}
-                {#                </ul>#}
-                {##}
-                {#                <img id="dms-img" class="img-circle center-block" width="300" height="300"#}
-                {#                     src="{% static 'images_raw/text_message.png' %}"/>#}
 
             </div>
 
             <div class="col-sm-4 col-form">
 
                 <div class="div-form-selection">
-                    {#                    <p id="sms_info">You are sending message.</p>#}
 
                     <div class="button is-active" role="button" id="send_button"><i class="fa fa-send-o"></i>&nbsp;Send
                     </div>
@@ -136,9 +125,4 @@
 {% block js %}
     <script src="{% static 'scripts/navbar-bg.js' %}"></script>
     <script src="{% static 'scripts/sms_home.js' %}"></script>
-    {% if is_sent or is_error or cancel_message %}
-        <script>
-            $(".navbar").css("margin-bottom", "0")
-        </script>
-    {% endif %}
 {% endblock js %}

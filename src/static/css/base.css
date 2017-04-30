@@ -43,6 +43,11 @@ body {
     color: #444;
 }
 
+/*make some space between navbar and content body*/
+.separator{
+    margin: 1em 0;
+}
+
 .some-padding {
     padding: 5px;
 }
@@ -89,7 +94,7 @@ button:focus {
 }
 
 .navbar {
-    /*margin-bottom: 0;*/
+    margin-bottom: 0;
     padding: 20px 0 30px;
     border-radius: 0;
 }

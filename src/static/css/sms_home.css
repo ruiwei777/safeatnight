@@ -6,8 +6,9 @@
     margin-bottom: 10px;
 }
 
-.error {
+.shutdown {
     color: lightcoral;
+    text-align: center;
 }
 
 .message {
