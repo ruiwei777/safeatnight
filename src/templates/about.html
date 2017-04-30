@@ -1,25 +1,69 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-{% load crispy_forms_tags %}
 
 {% block head %}
 <link rel="stylesheet" href="{% static 'css/about.css' %}">
 {% endblock head %}
 
 {% block content %}
+<!-- About This Project -->
+<div>
+    <h1 class="heading">About safe@night</h1>
+    <p class="lead positioner">
+        Safety for night shift workers is a growing concern in Melbourne, and with the current trend in
+        crime rates
+        going up, these night shift workers are at a greater risk.
+    </p>
+
+    <p class="lead positioner">
+        In this age of technology, there is very little data on areas of concern such as crime rate in
+        different
+        locations and emergency alerts if in danger.
+    </p>
+
+    <p class="lead positioner">
+        Our site www.safeatnight.cf addresses the above mentioned issues, specifically aimed at
+        night shift
+        workers to utilise in making their lives more secure, as outline below.
+    </p>
 
 
+    <ul class="lead positioner">
+        <li>
+            The specific areas of concern focuses on the crime statistics by area.
+        </li>
+        <li>
+            A safety switch functionality is available for users to  send out alerts SMS at a set time.
+        </li>
+        <li>
+            Safety tips for new visitors in Melbourne to get to know this city.
+        </li>
+    </ul>
+
+
+    <div class=" lead positioner">
+        <h2 class="heading-medium">Attribution</h2>
+        <p>Crime statistics data is from <a target="_blank" rel="noreferrer"
+                                            href="https://www.crimestatistics.vic.gov.au/crime-statistics/latest-crime-data/recorded-offences">Crime
+            Statistics
+            Agency Victoria</a> under Creative Commons Attributon 4.0</p>
+    </div>
+</div>
+
+
+<!-- About Us -->
+<h1 class="heading">Team 24A-Spiderweb</h1>
     <div class="container">
 
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-sm-8 col-sm-offset-2 text-center">
                 <h1 class="logo-heading heading">Team 24A-Spiderweb</h1>
                 <hr class="featurette-divider">
             </div>
-        </div>
+        </div> -->
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2 text-center">
-                <p class="email"><i class="fa fa-envelope-o"></i> Email: 24a-spiderweb@googlegroups.com</p>
+                <a class="email" href="mailto:24a-spiderweb@googlegroups.com" target="_top"><i class="fa fa-envelope-o"></i> Email Us</a>
 
             </div>
         </div>
@@ -80,11 +124,9 @@
 
         <div class="row featurette">
             <div class="col-md-7 col-md-push-5">
-                <h1 class="featurette-heading">Ruiwei <span
+                <h1 class="featurette-heading">Tom <span
                         class="text-muted">A dedicated full-stack web developer.</span></h1>
-                <p class="lead">Experienced in Python Django web development with strong database knowledge. Solid
-                    front-end
-                    HTML, CSS, javascript and jQuery skill. A hungry learner for new technology.</p>
+                <p class="lead">Experienced in Node.js, Python Django, React.js and Angular.js full-stack web developement. A hungry learner for cutting-edge technologies.</p>
             </div>
             <div class="col-md-5 col-md-pull-7">
                 <img class="featurette-image img-circle center-block" src="{% static 'images/team_member/tom.jpg' %}" width="170"

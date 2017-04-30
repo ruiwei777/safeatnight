@@ -142,6 +142,10 @@ body {
     background-color: rgba(255, 255, 255, .15);
 }
 
+.search-text:focus{
+    background-color: rgba(255, 255, 255, .3);
+}
+
 @media (max-width: 400px) {
     .search-text {
         padding: 0;
@@ -231,7 +235,6 @@ body {
 }
 
 #description .index-btn:hover, #description .index-btn:focus {
-    box-shadow: 0 0 10px 0 rgba(255, 255, 255, .6);
     background-color: deepskyblue;
     border-color: deepskyblue;
     color: #111111;

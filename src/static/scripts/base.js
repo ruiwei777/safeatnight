@@ -14,16 +14,12 @@ $('.width-group').width(
 /* Adjust current "active" class in navbar */
 function adjustActive() {
     $(".navbar ul li a").removeClass("active");
-    if (window.location.pathname === "/") {
-        $("#home-a").addClass("active")
-    } else if (window.location.pathname.indexOf("sms") != -1) {
+    if (window.location.pathname.indexOf("sms") != -1) {
         $("#sms-a").addClass("active")
     } else if (window.location.pathname.indexOf("crime") != -1) {
         $("#cs-a").addClass("active")
-    } else if (window.location.pathname.indexOf("safeatnight") != -1) {
+    } else if (window.location.pathname.indexOf("about") != -1) {
         $("#about-a").addClass("active")
-    } else if (window.location.pathname.indexOf("us") != -1) {
-        $("#us-a").addClass("active")
     } else if (window.location.pathname.indexOf("info") != -1) {
         $("#info-a").addClass("active")
     }

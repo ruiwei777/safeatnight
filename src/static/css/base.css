@@ -72,6 +72,22 @@ button:focus {
     margin: 0 auto;
 }
 
+#logo {
+    font-size: 31px;
+    color: white;
+}
+
+#logo .safety {
+    font-weight: bolder;
+    color: deepskyblue;
+}
+
+@media(max-width: 768px){
+    #logo {
+        font-size: 24px;
+    }
+}
+
 .navbar {
     /*margin-bottom: 0;*/
     padding: 20px 0 30px;
@@ -86,61 +102,50 @@ button:focus {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
+    padding: .5em 0;
+}
+
+@media(max-width: 540px){
+        .navbar-box {
+        padding: 0;
+    }
 }
 
 .navbar-box ul {
     text-align: center;
 }
 
-#logo {
-    font-size: 31px;
-    color: white;
-}
 
-#logo .safety {
-    font-weight: bolder;
-    color: deepskyblue;
-}
 
 .navbar-item ul.navbar-ul {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    /*justify-content:center;*/
 }
 
 .navbar-item ul li {
     font-size: 1em;
     list-style: none;
-    padding: 9px 18px;
-    margin: 0;
+    padding: 0;
+    margin: 0 0 0 2em;
 }
 
-@media (max-width: 1430px) {
-    .navbar-item ul li {
-        padding: 2px 12px;
-    }
-}
-
-@media (max-width: 768px) {
-    .navbar-item ul li {
-        padding: 2px 7px;
-        line-height: 1.1;
-    }
-}
 
 .navbar-item ul li a {
     color: rgba(255, 255, 255, .75);
     font-weight: bold;
-    transition: color .5s;
 }
 
-ul.drop-menu > li:hover > a {
-    color: dodgerblue;
-}
 
 .navbar-item ul li a.active, .navbar-item ul li a:hover {
     color: dodgerblue;
+}
+
+@media(max-width: 768px){
+    .navbar-item ul li{
+        font-size: .7em;
+        margin: 0 0 0 1em;
+    }
 }
 
 /*----------------------
@@ -167,13 +172,6 @@ ul.drop-menu li {
     text-align: center;
 }
 
-ul.drop-menu li:hover {
-    /*background: #606060;*/
-}
-
-ul.drop-menu li:last-child {
-    border-radius: 0px 0px 5px 5px;
-}
 
 ul.drop-menu li {
     display: none;
@@ -295,11 +293,8 @@ hr.featurette-divider {
 }
 
 .custom-button:hover, .custom-button:focus, .custom-button:active, .custom-button.active {
-    /*color: #33a6cc;*/
-    /*border-color: #33a6cc;*/
 
     border-color: white;
-    /*transition*/
     color: #555555;
     background-color: white;
     text-shadow: none;
@@ -312,130 +307,3 @@ hr.featurette-divider {
     margin-bottom: 10px;
 }
 
-/*-------------------------------
-    Mobile Compatibility
---------------------------------*/
-@media (min-width: 1400px) {
-    .navbar {
-        padding-top: 65px;
-    }
-}
-
-@media (min-width: 768px) {
-    /*.navbar {*/
-    /*padding-top: 65px;*/
-    /*}*/
-    #description {
-        /*padding-top: 10vh;*/
-    }
-}
-
-@media (max-width: 1400px) {
-    .navbar-box {
-
-        align-items: center;
-        flex-direction: column;
-    }
-}
-
-@media (max-width: 1200px) {
-    .positioner {
-        max-width: 95vw;
-    }
-
-    #jumbotron {
-        height: 13vh;
-        text-align: center;
-        justify-content: center;
-    }
-}
-
-@media (max-width: 1000px) {
-    #logo {
-        font-size: 23px;
-    }
-
-    #logo .safety {
-        font-size: 27px;
-    }
-
-    .navbar {
-        margin-bottom: 0;
-        padding: 0;
-    }
-
-    .navbar-box {
-
-        align-items: center;
-        flex-direction: column;
-    }
-
-    .navbar-item ul {
-        padding: 0;
-    }
-
-    .navbar-box h3 {
-        margin: 5px;
-    }
-
-    .navbar-item ul li a {
-        font-size: 15px;
-    }
-
-}
-
-@media (max-width: 768px) {
-
-    #logo {
-        font-size: 26px;
-    }
-
-    #logo .safety {
-        font-size: 30px;
-    }
-
-    .navbar-item ul li a {
-        font-size: 17px;
-        border-bottom: none;
-    }
-
-}
-
-/*------------------
-    iPhone 6: 375px
-    iPhone 5: 320px
-------------------*/
-@media (max-width: 410px) {
-    /*iPhone 6*/
-    #logo {
-        font-size: 20px;
-    }
-
-    #logo .safety {
-        font-size: 23px;
-    }
-
-    .navbar-item ul li a {
-        font-size: 16px;
-    }
-}
-
-/*--------------------
-    Animation
---------------------*/
-@Keyframes list-in {
-    0% {
-        transform: translateX(-50%);
-        opacity: 0;
-    }
-
-    70% {
-        opacity: 1;
-    }
-
-    100% {
-        transform: translateX(0);
-        opacity: 1;
-
-    }
-}

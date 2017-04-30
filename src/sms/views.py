@@ -32,11 +32,9 @@ def index(request):
 
 
 def about_us(request):
-    return render(request, "about_us.html", {"title": "About Us"})
+    return render(request, "about.html", {"title": "About"})
 
 
-def about_safeatnight(request):
-    return render(request, "about_safeatnight.html", {"title": "About"})
 
 
 def sms_home(request):
