@@ -21,39 +21,9 @@ if not settings.DEBUG:
 
 
 
-    ALLOWED_HOSTS = ['www.safeatnight.cf', 'safeatnight.cf', 'www.safeatnight.ml', 'safeatnight.ml']
+    ALLOWED_HOSTS = ['www.safeatnight.cf', 'safeatnight.cf']
 
-    # Application definition
 
-    INSTALLED_APPS = [
-        'django.contrib.admin',
-        'django.contrib.auth',
-        'django.contrib.contenttypes',
-        'django.contrib.sessions',
-        'django.contrib.messages',
-        'django.contrib.staticfiles',
-        # my app
-        'sms',
-        'map',
-        'crimestats',
-        # third party
-        'crispy_forms',
-        'datetimewidget',
-        'django_twilio',
-    ]
-
-    MIDDLEWARE_CLASSES = [
-        'django.middleware.security.SecurityMiddleware',
-        'django.contrib.sessions.middleware.SessionMiddleware',
-        'django.middleware.common.CommonMiddleware',
-        'django.middleware.csrf.CsrfViewMiddleware',
-        'django.contrib.auth.middleware.AuthenticationMiddleware',
-        'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
-        'django.contrib.messages.middleware.MessageMiddleware',
-        'django.middleware.clickjacking.XFrameOptionsMiddleware',
-        # for django-datetime-widget
-        'django.middleware.locale.LocaleMiddleware',
-    ]
 
     ROOT_URLCONF = 'nightshiftworker.urls'
 
@@ -82,7 +52,7 @@ if not settings.DEBUG:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+            'NAME': os.path.join(os.path.dirname(BASE_DIR), 'db.sqlite3'),
         }
     }
 
