@@ -108,19 +108,12 @@ if not settings.DEBUG:
 
     # django-compressor
 
-    STATICFILES_FINDERS = (
-        'django.contrib.staticfiles.finders.FileSystemFinder',
-        'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-        # other finders..
-        'compressor.finders.CompressorFinder',
-    )
 
+    # COMPRESS_ENABLED = True
 
-    COMPRESS_ENABLED = True
-
-    COMPRESS_JS_FILTERS = [
-        'compressor.filters.template.TemplateFilter',
-    ]
+    # COMPRESS_JS_FILTERS = [
+    #     'compressor.filters.template.TemplateFilter',
+    # ]
 
     # Celery Settings
     CELERY_TIMEZONE = 'Australia/Melbourne'

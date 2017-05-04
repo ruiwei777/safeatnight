@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'map',
     'crimestats',
     # third party
-    'compressor',
+    # 'compressor',
     'crispy_forms',
     'datetimewidget',
     'django_twilio',
@@ -151,18 +151,18 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     # other finders..
-    'compressor.finders.CompressorFinder',
+    # 'compressor.finders.CompressorFinder',
 )
 
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "StaticRoot")
 
 # django-compressor
 
-COMPRESS_ENABLED = True
+# COMPRESS_ENABLED = True
 
-COMPRESS_JS_FILTERS = [
-    'compressor.filters.template.TemplateFilter',
-]
+# COMPRESS_JS_FILTERS = [
+#     'compressor.filters.template.TemplateFilter',
+# ]
 
 # Celery Settings
 CELERY_TIMEZONE = 'Australia/Melbourne'
