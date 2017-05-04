@@ -22,6 +22,7 @@ if not settings.DEBUG:
 
 
     ALLOWED_HOSTS = ['www.safeatnight.cf', 'safeatnight.cf']
+    ALLOWED_HOSTS = ['*']
 
 
 
@@ -103,9 +104,17 @@ if not settings.DEBUG:
 
     ]
 
-    STATIC_ROOT = os.path.join(BASE_DIR, "static_root")
+    STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "StaticRoot")
 
     # django-compressor
+
+    STATICFILES_FINDERS = (
+        'django.contrib.staticfiles.finders.FileSystemFinder',
+        'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+        # other finders..
+        'compressor.finders.CompressorFinder',
+    )
+
 
     COMPRESS_ENABLED = True
 
