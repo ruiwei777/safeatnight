@@ -242,29 +242,6 @@ $.fn.enterKey = function (fnc) {
 $("#search-text").enterKey(searchOnClick);
 $("#suburb-text").enterKey(searchOnClick);
 
-
-/**
- * Browser warning
- */
-function detectBrowser() {
-    var header = $("header");
-    // if (navigator.userAgent.indexOf("Firefox") != -1) {
-    //     header.css("margin-bottom", "0")
-    //         .after("<div class='bg-info text-center' style='font-size: 16px'>Firefox Browser might not get your location. Please Switch to" +
-    //             " Chrome to get better experience.</div>")
-    //
-    // }
-    // else if (navigator.userAgent.indexOf("Chrome") == -1) {
-    //     $("header").css("margin-bottom", "0")
-    //         .after("<div class='bg-info text-center' style='font-size: 16px'>Browsers other than Chrome might cause display issues.</div>")
-    //         .css("background", "deepskyblue")
-    // }
-    // This will cause navbar background abnormal!s
-}
-
-$(detectBrowser)
-
-
 // Geolocation API
 // https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyCNSq5fvWuyqJ1UIJjEcSLzX7T5BqfSYtI
 

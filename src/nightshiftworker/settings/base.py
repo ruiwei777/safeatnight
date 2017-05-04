@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'map',
     'crimestats',
     # third party
+    'compressor',
     'crispy_forms',
     'datetimewidget',
     'django_twilio',
@@ -144,6 +145,14 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 
 ]
+
+# Added this for Django Compressor
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    # other finders..
+    'compressor.finders.CompressorFinder',
+)
 
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "StaticRoot")
 
