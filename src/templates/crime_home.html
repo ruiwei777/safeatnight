@@ -140,7 +140,7 @@
 <script type="text/javascript">
     function drawBubbleChart() {
         var data_container = $("#data-container");
-        data_container.empty()
+        // data_container.empty()
 
         var svg_diameter = data_container.width() * 1;
 
@@ -290,9 +290,6 @@
                     })
                     .style("fill", function (d) {
                         return '#222222'
-/*                        if (d.size < 100) return "green"
-                        else if (d.size < 641) return "blue"
-                        else if (d.size >= 641) return "red"*/
                     });
 
 
@@ -314,16 +311,17 @@
              * @params d the destination to zoom
             */
             function zoom(d) {
-                // console.log(d)
+                // d is the target, no "this"
+                // d.depth === 0, d.depth === 2, d.depth === 1 && d.name = 'Melbourne CBD'
                 var focus0 = focus;
                 focus = d;
 
                 var transition = d3.transition()
-                        .duration(d3.event.altKey ? 7500 : 750);
+                    .duration(d3.event.altKey ? 7500 : 750);
+                    // .duration(750);
+
 
                 transition.tween("zoom", function () {
-                    
-
                     var view_start = view[2]
                     var view_end = focus.r * 2 + margin
 
@@ -332,26 +330,28 @@
                         zoomTo(i(t));
 
                         // console.log(focus)
-                        if(d.depth === 2){
-                            var arr = d.children
-                            for(let j=0; j<arr.length; j++){
-                                var child = arr[j]
+                        if(d.depth === 2 || d.name === 'Melbourne CBD'){
+                            var arr1 = d.children
+                            for(var j=0; j<arr1.length; j++){
+                                var child = arr1[j]
                                 var scale = getColorScale(view_start, view_end, child, true)
                                 changeCircleColor(child, scale(i(t)[2]))
                             }
-                        } else {
-                            var arr = focus0.children
-                            if(focus0.depth === 2){
-                                for(let j=0; j<arr.length; j++){
-                                    var child = arr[j]
-                                    var scale = getColorScale(view_start, view_end, child, false)
-                                    changeCircleColor(child, scale(i(t)[2]))
-                                }
+                            // console.log("d", d)
+                        } 
+
+                        // check if need to set color back to white
+                        var arr2 = focus0.children
+                        if(focus0.depth === 2 || focus0.name === 'Melbourne CBD'){
+                            for(var k=0; k<arr2.length; k++){
+                                var child0 = arr2[k]
+                                var scale = getColorScale(view_start, view_end, child0, false)
+                                changeCircleColor(child0, scale(i(t)[2]))
                             }
-                            
+                            // console.log("focus0", focus0)
                         }
-                        // changeCircleColor(d, newColor(i(t)[2]))
-                        // console.log(newColor(i(t)[2]))
+                            
+                        
                     };
                 })
                 
@@ -412,7 +412,7 @@
 }   // end of draw bubble chart
 
 $(drawBubbleChart())
-$(window).resize(drawBubbleChart)
+// $(window).resize(drawBubbleChart)
 </script>
 
 

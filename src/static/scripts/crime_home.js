@@ -6,7 +6,26 @@ function clickToId() {
         });
     };
 }
-$(clickToId())
+
+/*function clickToId(elementId){
+    var e = document.createEvent('UIEvents');
+    e.initUIEvent('click', true, true, window, 1);
+    d3.select('[id="'+ elementId +'"]').node().dispatchEvent(e);
+}*/
+
+/*function initOnClick(){
+    var $nodes = $("circle")
+    if($nodes.length < 2){
+        setTimeout(initOnClick, 1000)
+        return
+    }
+
+
+}*/
+
+$(clickToId)
+// $(window).on('load', initOnClick)
+
 
 
 // Reset button
@@ -129,14 +148,14 @@ function searchOnClick() {
 /**
  * After simulating d3 click, show the text on bubbles
  */
-function showText() {
-    setTimeout(function () {
-        var d3text = d3.selectAll("text.label");
-        d3text.style("display", "inline");
-        d3text.style("fill-opacity", 1)
-    }, 800)
+// function showText() {
+//     setTimeout(function () {
+//         var d3text = d3.selectAll("text.label");
+//         d3text.style("display", "inline");
+//         d3text.style("fill-opacity", 1)
+//     }, 800)
 
-}
+// }
 
 function displayDashboardData(postcode, postcode_localities, crimeRateText) {
     $("#postcode-text").text(postcode);
@@ -207,12 +226,49 @@ function getSuburb(id) {
 function clickToPostcode(postcode, postcode_localities) {
 
     var d3_circle = $("#" + postcode);
+    var parent = d3.selectAll("circle")
+    .filter(function(d){
+        if((d.depth === 2 && d.children) || (d.name === "Melbourne CBD")){
+            return true;
+        }
+        else 
+            return false;
+    })
+    .filter(function(d){
+        var children = d.children
+        for(var i=0; i<children.length; i++){
+            child = children[i]
+            var name = d.name.split(" - ")
+            var child_name = Number(postcode)
+
+            if ( name.length === 2){
+                var lower = Number(name[0])
+                var upper = Number(name[1])
+                
+                return lower <= child_name && child_name <= upper ? true : false
+
+            } else if(child_name >= 3000 && child_name <= 3006 
+                && child_name !== 3205 && name.length ===1) {
+                // Melbourne CBD
+                return true
+            }
+        }
+
+    })
+    // console.log(parent)
+    var $target = $("[id='" +parent[0][0].id + "']")
+    // console.log($target)
+    $target.d3Click()
+
+
+
+
     if (d3_circle.length > 0) {
         displayDashboardData(postcode, postcode_localities, getCrimeRate(postcode))
         //setComment(getCrimeRate(search_text), getSuburb(search_text))
         displayInformationParagraph(getCrimeRate(postcode));
-        d3_circle.d3Click();
-        showText();
+        // d3_circle.d3Click();
+        // showText();
 
     } else {
         displayInformationParagraph();
