@@ -5,11 +5,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-{#    <meta name="viewport" content="width=device-width">#}
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="Safety Information for Night-Shift Workers">
     <meta name="author" content="Ruiwei Liang">
-    <link rel="icon" href="{% static 'images/logo.png' %}">
+    <link rel="icon" href="{% static 'images/logo.png' %}" type="image/x-icon">
     <title>{{ title }} - NightShift Worker Safety</title>
 
     <!-- Bootstrap core CSS -->
@@ -23,12 +22,14 @@
     <link href="{% static 'css/base.css' %}" rel="stylesheet">
     <link href="{% static 'css/libs/font-awesome.min.css' %}" rel="stylesheet">
 
-    <!-- javascript -->
+    
     <script src="{% static 'scripts/libs/jquery.min.js' %}"></script>
     <script src="{% static 'scripts/libs/bootstrap.min.js' %}"></script>
-
     {% block head %}
     {% endblock head %}
+
+
+
 </head>
 <body>
 <header class="navbar">
@@ -54,6 +55,7 @@
 {% block content %}
 
 {% endblock content %}
+<!-- javascript -->
 
 <script src="{% static 'scripts/libs/holder.min.js' %}"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->

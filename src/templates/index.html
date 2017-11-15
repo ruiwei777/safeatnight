@@ -7,6 +7,10 @@
 
 {% endblock head %}
 {% block content %}
+    <img src="{% static 'images/index_bg/crime_home_2.jpg' %}" alt="" class="preload">
+    <div class="loading">
+        <i class="fa fa-refresh fa-spin fa-3x fa-fw" aria-hidden="true"></i>
+    </div>
     <div class="purpose positioner">
         <h2 class="purpose-text">
             The safety information and alerter system for night-shift workers
@@ -56,19 +60,11 @@
 
     </div>
 
-    <footer class="positioner">
+    <footer>
         <div class="info">
             Monash University 2016 IE Project, by Team 24A <a href="{% url 'about' %}">@SpiderWeb</a>
         </div>
     </footer>
-
-
-
-
-
-
-
-
 
 {% endblock content %}
 

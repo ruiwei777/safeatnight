@@ -43,6 +43,12 @@ body {
     color: #444;
 }
 
+body:after{
+    content:'';
+    display: table;
+    clear: both;
+}
+
 /*make some space between navbar and content body*/
 .separator{
     margin: 1em 0;

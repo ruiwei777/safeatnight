@@ -6,29 +6,51 @@
 /*index page body only*/
 body {
     background: radial-gradient(#1c3d7a, #1d4589);
-    background-image: url("../images/index_bg/crime_home_2.jpg");
     background-size: cover; /* <------ */
     background-repeat: no-repeat;
     background-position: center center;
-    text-shadow: 1px 1px 5px black;
     color: white;
     box-shadow: inset 0px 0px 300px black;
 
 }
 
+body.loaded{
+    background-image: url("../images/index_bg/crime_home_2.jpg");
+    text-shadow: 1px 1px 5px black;
+}
+
 /*body*/
+
+img.preload{
+    display: none;
+}
+
+body > .loading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,.2);
+    color: rgba(255,255,255, .9);
+}
+
+body.loaded > .loading{
+    display: none;
+}
 
 .purpose-text {
     color: rgba(255, 255, 255, .85);
     font-family: "Ropa Sans", Roboto, "Open Sans", Arial;
     font-size: 2em;
-    text-align: center;
 }
 
 @media (max-width: 1200px) {
     .purpose-text {
         font-size: 25px;
-        text-align: center;
     }
 
 }
@@ -250,8 +272,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    height: 10vh;
-
+    margin: 2em auto;
 }
 
 footer .info {
