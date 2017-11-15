@@ -20,9 +20,8 @@ if not settings.DEBUG:
     # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 
-
+    # put your domains here
     ALLOWED_HOSTS = ['www.safeatnight.cf', 'safeatnight.cf']
-    ALLOWED_HOSTS = ['*']
 
 
 

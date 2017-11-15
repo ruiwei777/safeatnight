@@ -13,16 +13,18 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 import os
 import sys
 
+# Please refer to passwords_default.py
+# and create a passwords.py inside this folder
 try:
-    from . import passwords
-except:
-    sys.stderr.write("Create a passwords.py under 'src/nightshiftworker/settings/' and specify your own"
-          " MY_SECRET_KEY, MY_TWILIO_ACCOUNT_SID and MY_TWILIO_AUTH_TOKEN\n")
-
+    from . import passwords as passwords
+except ImportError as ie:
+    sys.stderr.write("**Not found**: src/nightshiftworker/settings/passwords.py, fallback to passwords_default.py\n")
+    from . import passwords_default as passwords
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+PROJ_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))) # safeatnight
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))) # safeatnight/src
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/

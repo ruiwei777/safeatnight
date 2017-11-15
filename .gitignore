@@ -173,10 +173,14 @@ modules.xml
 .idea/misc.xml 
 *.ipr
 
+# IDE, Editor configs
+.idea/
+*.code-workspace
+.vscode/
+
 
 ### Local Settings ###
 run
-.idea/
 static_root/
 passwords.py
 settings_copy.py
@@ -185,7 +189,6 @@ w1.log
 w1.pid
 certbot-auto
 share/*
-README.md
 *.sublime-workspace
 *.sublime-project
 VENV/
