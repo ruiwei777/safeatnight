@@ -2,7 +2,7 @@
 * An SMS alerter system to send scheduled, asychronous text messages
 * Data visualisation for crime records in Victoria Australia
 
-[Demo](https://www.safeatnight.cf)
+[Demo](http://www.safeatnight.tk)
 
 # How to Run
 1. It is pretty straightforward. Just routine Django set up is enough. For beginners please check [guide.md](./guide.md).
