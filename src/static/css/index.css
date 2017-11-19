@@ -5,17 +5,15 @@
 
 /*index page body only*/
 body {
-    background: radial-gradient(#1c3d7a, #1d4589);
-    background-size: cover; /* <------ */
-    background-repeat: no-repeat;
-    background-position: center center;
+    background: linear-gradient(#00235f, #034ca0);
     color: white;
-    box-shadow: inset 0px 0px 300px black;
+    /* box-shadow: inset 0px 0px 300px black; */
 
 }
 
 body.loaded{
-    background-image: url("../images/index_bg/crime_home_2.jpg");
+    background: linear-gradient(rgba(0, 80, 185, 0.2), rgba(0,0,0,0.3)),
+    url("../images/index_bg/crime_home_2.jpg") 0% 0%/cover;
     text-shadow: 1px 1px 5px black;
 }
 
